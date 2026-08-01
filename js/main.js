@@ -826,15 +826,53 @@ function initNotes() {
 function initMail() {
   const form = document.querySelector('.mail-form');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+
+  const successBox = document.querySelector('.mail-success');
+  const errorBox = document.querySelector('.mail-error');
+  const sendAgainBtn = document.querySelector('.mail-send-another-btn');
+  const submitBtn = form.querySelector('.mail-send-btn');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = form.querySelector('[name="name"]').value;
-    const subject = form.querySelector('[name="subject"]').value || 'Hello from your portfolio';
-    const message = form.querySelector('[name="message"]').value;
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name}`);
-    const mailto = `mailto:noeman.elafia@outlook.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-    window.location.href = mailto;
+    if (errorBox) { errorBox.style.display = 'none'; errorBox.textContent = ''; }
+
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        Sound.open();
+        form.reset();
+        form.classList.add('is-hidden');
+        if (successBox) successBox.classList.add('is-visible');
+      } else {
+        throw new Error(result.message || 'Something went wrong.');
+      }
+    } catch (err) {
+      if (errorBox) {
+        errorBox.textContent = "That didn't go through, please try again or email noeman.elafia@outlook.com directly.";
+        errorBox.style.display = 'block';
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
   });
+
+  if (sendAgainBtn) {
+    sendAgainBtn.addEventListener('click', () => {
+      if (successBox) successBox.classList.remove('is-visible');
+      form.classList.remove('is-hidden');
+    });
+  }
 }
 
 /* ---------------------------------------------------------------------- */

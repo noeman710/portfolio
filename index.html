@@ -361,6 +361,8 @@
       </div>
       <div class="window-body">
         <form class="mail-form">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="checkbox" name="botcheck" class="mail-honeypot" tabindex="-1" autocomplete="off">
           <div class="mail-field">
             <label>To</label>
             <input type="text" value="noeman.elafia@outlook.com" disabled>
@@ -378,7 +380,14 @@
             <textarea name="message" required></textarea>
           </div>
           <button type="submit" class="mail-send-btn">Send</button>
+          <div class="mail-error" role="alert"></div>
         </form>
+        <div class="mail-success">
+          <div class="mail-success-icon">&#10003;</div>
+          <h3>Thank you!</h3>
+          <p>Your message has been sent. I read every message myself and will get back to you as soon as I can.</p>
+          <button class="mail-send-another-btn">Send Another Message</button>
+        </div>
       </div>
     </div>
 
