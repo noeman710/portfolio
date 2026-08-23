@@ -162,19 +162,21 @@ const filesystem = {
     type: 'file', kind: 'case-study', title: 'FinderrLink.case', parent: 'work',
     data: {
       title: 'FinderrLink',
-      tag: 'SaaS Platform · Mediassive Internship, 2026',
+      tag: 'SaaS Platform · Mediassive, 2026',
       summary: 'An intelligent SaaS platform connecting freelancers, enterprises, and agencies for hiring, collaboration, and mission matching, built around a native AI assistant.',
       cover: 'assets/images/projects/finderrlink-cover.jpg',
       body: [
         'Designed the complete platform end to end across three user roles (freelancer, enterprise, agency), including the freelancer dashboard, mission board, hiring and company cards, KPI widgets, and profile pages.',
         'Built a floating AI assistant into the experience that helps freelancers surface matching missions and helps enterprises write and publish missions in seconds, cutting mission creation down to under 30 seconds.',
         'Adapted the full interface for mobile, keeping visual and functional consistency across devices, shipping production-ready screens ready for real use.',
+        'Since joining Mediassive full time in August 2026, I\u2019ve stayed on the project as UX/UI and Graphic Designer, now also leading the graphic design, animations, and content shared on FinderrLink\u2019s official Instagram account.',
       ],
-      role: 'UX/UI Design Intern',
-      duration: 'Mediassive Internship, Ongoing Development',
+      role: 'UX/UI Design Intern, now UX/UI & Graphic Designer',
+      duration: 'Mediassive, Intern March 2026, Full Role Since August 2026',
       scope: '3 Roles, Web & Mobile',
       links: {
         live: 'https://finderrlink.com/',
+        instagram: 'https://www.instagram.com/finderrlink/',
       },
     },
   },
@@ -375,6 +377,9 @@ const WM = {
       }
       if (links.behance) {
         buttons.push(`<a href="${links.behance}" target="_blank" rel="noopener" class="case-link-btn case-link-behance">View on Behance</a>`);
+      }
+      if (links.instagram) {
+        buttons.push(`<a href="${links.instagram}" target="_blank" rel="noopener" class="case-link-btn case-link-instagram">View on Instagram</a>`);
       }
       linksRow.innerHTML = buttons.join('');
       linksRow.style.display = buttons.length ? 'flex' : 'none';
