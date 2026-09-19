@@ -135,9 +135,6 @@ const filesystem = {
   'social': {
     type: 'app', kind: 'social', title: 'Social', icon: 'social',
   },
-  'trash': {
-    type: 'app', kind: 'trash', title: 'Trash', icon: 'trash',
-  },
   'sura': {
     type: 'file', kind: 'case-study', title: 'Sura.case', parent: 'work',
     data: {
@@ -169,14 +166,35 @@ const filesystem = {
         'Designed the complete platform end to end across three user roles (freelancer, enterprise, agency), including the freelancer dashboard, mission board, hiring and company cards, KPI widgets, and profile pages.',
         'Built a floating AI assistant into the experience that helps freelancers surface matching missions and helps enterprises write and publish missions in seconds, cutting mission creation down to under 30 seconds.',
         'Adapted the full interface for mobile, keeping visual and functional consistency across devices, shipping production-ready screens ready for real use.',
-        'Since joining Mediassive full time in August 2026, I\u2019ve stayed on the project as UX/UI and Graphic Designer, now also leading the graphic design, animations, and content shared on FinderrLink\u2019s official Instagram account.',
+        'My performance during the internship led directly to a full-time offer. Since joining Mediassive as their sole in-house designer in August 2026, I\u2019ve continued leading the iterative UX/UI design of FinderrLink, working closely with the engineering team to bring changes into production, alongside building out the complete FinderrLink brand guidelines and visual identity.',
       ],
-      role: 'UX/UI Design Intern, now UX/UI & Graphic Designer',
-      duration: 'Mediassive, Intern March 2026, Full Role Since August 2026',
+      role: 'UX/UI Design Intern, now UX/UI, Graphic & Brand Designer',
+      duration: 'Mediassive, Intern March 2026, Full-Time Since August 2026',
       scope: '3 Roles, Web & Mobile',
       links: {
         live: 'https://finderrlink.com/',
         instagram: 'https://www.instagram.com/finderrlink/',
+      },
+    },
+  },
+  'finderrlink-brand': {
+    type: 'file', kind: 'case-study', title: 'FinderrLinkBrand.case', parent: 'work',
+    data: {
+      title: 'FinderrLink Brand Guidelines',
+      tag: 'Brand Identity · Mediassive, 2026',
+      summary: 'The complete brand identity system for FinderrLink, from purpose and personality through to logo construction, color, typography, and real-world mockups.',
+      cover: 'assets/images/projects/finderrlink-brand-cover.jpg',
+      body: [
+        'Built the FinderrLink brand from its foundations up: mission, vision, and purpose, four brand values (Trust, Simplicity, Innovation, Professionalism, Growth), and a defined personality (confident, approachable, minimalist) that\u2019s calm under pressure but always moving fast.',
+        'Defined a precise tone of voice and messaging pillars, including a preferred and avoided vocabulary, so every touchpoint from product copy to social captions sounds like the same brand.',
+        'Engineered the logo on a mathematical grid: a 1.68 ratio system governs icon size, spacing, and clear space at every scale, from a 16px favicon to large-format signage, with full color, reversed, and monochrome variants.',
+        'Built out the Coral and Charcoal color system with a secondary palette and signature gradient, paired Source Sans 3 across four weights, and defined photography direction, pattern language, and real-world mockups spanning UI, print, business cards, signage, and branded merchandise.',
+      ],
+      role: 'Brand Designer',
+      duration: 'Mediassive, 2026',
+      scope: 'Brand Identity, V1.0',
+      links: {
+        guide: 'assets/FinderrLink_Brand_Guidelines.pdf',
       },
     },
   },
@@ -303,8 +321,8 @@ const filesystem = {
   },
 };
 
-const desktopIconOrder = ['work', 'about', 'resume', 'notes', 'mail', 'social', 'trash'];
-const dockOrder = ['work', 'about', 'notes', 'mail', 'social', 'resume', null, 'trash'];
+const desktopIconOrder = ['work', 'about', 'resume', 'notes', 'mail', 'social'];
+const dockOrder = ['work', 'about', 'notes', 'mail', 'social', 'resume'];
 const workFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'work');
 
 /* ---------------------------------------------------------------------- */
@@ -380,6 +398,9 @@ const WM = {
       }
       if (links.instagram) {
         buttons.push(`<a href="${links.instagram}" target="_blank" rel="noopener" class="case-link-btn case-link-instagram">View on Instagram</a>`);
+      }
+      if (links.guide) {
+        buttons.push(`<a href="${links.guide}" target="_blank" rel="noopener" class="case-link-btn case-link-guide">View Guidelines (PDF)</a>`);
       }
       linksRow.innerHTML = buttons.join('');
       linksRow.style.display = buttons.length ? 'flex' : 'none';
