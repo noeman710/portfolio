@@ -146,6 +146,42 @@ const filesystem = {
     type: 'file', kind: 'photo', title: 'Photo 2', parent: 'photos',
     data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Noemane El Afia' },
   },
+  'photo-03': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 1', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 1' },
+  },
+  'photo-04': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 2', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 2' },
+  },
+  'photo-05': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 3', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 3' },
+  },
+  'photo-06': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 4', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 4' },
+  },
+  'photo-07': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 5', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 5' },
+  },
+  'photo-08': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 6', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 6' },
+  },
+  'photo-09': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 7', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 7' },
+  },
+  'photo-10': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 8', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 8' },
+  },
+  'photo-11': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 9' },
+  },
   'sura': {
     type: 'file', kind: 'case-study', title: 'Sura.case', parent: 'work',
     data: {
