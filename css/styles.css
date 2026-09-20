@@ -1089,6 +1089,7 @@ a.desktop-icon, a.ios-app {
 .icon-glyph.is-real-logo { background: none; box-shadow: none; }
 .icon-glyph.is-real-logo img { object-fit: contain; border-radius: 0; }
 .icon-glyph.folder { background: transparent url("../icons/Folder.png") center / contain no-repeat; }
+[data-open="photos"] .icon-glyph.folder { background-image: url("../icons/Photos.png"); }
 .icon-glyph.doc { background: transparent url("../icons/Document.png") center / contain no-repeat; }
 [data-open="about"] .icon-glyph.doc { background-image: url("../icons/Contacts.png"); }
 .icon-glyph.notes { background: transparent url("../icons/Notes.png") center / contain no-repeat; }
