@@ -26,7 +26,7 @@ const Sound = (() => {
     if (!AudioCtx) return null;
     ctx = new AudioCtx();
     masterGain = ctx.createGain();
-    masterGain.gain.value = muted ? 0 : 0.5;
+    masterGain.gain.value = muted ? 0 : 0.85;
     masterGain.connect(ctx.destination);
     return ctx;
   }
@@ -80,7 +80,7 @@ const Sound = (() => {
     setMuted(value) {
       muted = value;
       try { localStorage.setItem('sound-muted', value ? '1' : '0'); } catch (e) {}
-      if (masterGain) masterGain.gain.value = muted ? 0 : 0.5;
+      if (masterGain) masterGain.gain.value = muted ? 0 : 0.85;
     },
 
     open() { tone({ freq: 380, glideTo: 640, duration: 0.14, type: 'sine', gain: 0.2 }); },
