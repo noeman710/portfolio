@@ -1126,12 +1126,11 @@ a.desktop-icon, a.ios-app {
   position: absolute;
   top: 20px; right: 26px;
   width: 40px; height: 40px;
+  padding: 0;
   border-radius: 50%;
   border: none;
   background: rgba(255,255,255,0.12);
   color: #fff;
-  font-size: 1.6rem;
-  line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
