@@ -1069,31 +1069,30 @@ function bootApp() {
   if (plain) plain.style.display = 'none';
   if (os) os.style.display = 'block';
 
-  initBoot();
-  initSound();
-  renderFinder();
-  renderPhotosGrid();
-  initLightbox();
-  initTriggers();
-  initDragging();
-  initDockMagnify();
-  initSpotlight();
-  initClock();
-  initCoffeeWidget();
-  initQuoteWidget();
-  initNotes();
-  initMail();
+  const safe = (fn, label) => {
+    try { fn(); } catch (err) {
+      console.error('[bootApp] ' + label + ' failed:', err);
+    }
+  };
+
+  safe(initBoot, 'initBoot');
+  safe(initSound, 'initSound');
+  safe(renderFinder, 'renderFinder');
+  safe(renderPhotosGrid, 'renderPhotosGrid');
+  safe(initLightbox, 'initLightbox');
+  safe(initTriggers, 'initTriggers');
+  safe(initDragging, 'initDragging');
+  safe(initDockMagnify, 'initDockMagnify');
+  safe(initSpotlight, 'initSpotlight');
+  safe(initClock, 'initClock');
+  safe(initCoffeeWidget, 'initCoffeeWidget');
+  safe(initQuoteWidget, 'initQuoteWidget');
+  safe(initNotes, 'initNotes');
+  safe(initMail, 'initMail');
 }
 
-try {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bootApp);
-  } else {
-    bootApp();
-  }
-} catch (err) {
-  const plain = document.getElementById('plain-view');
-  const os = document.getElementById('os-view');
-  if (plain) plain.style.display = 'block';
-  if (os) os.style.display = 'none';
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootApp);
+} else {
+  bootApp();
 }
