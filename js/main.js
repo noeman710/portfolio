@@ -369,7 +369,7 @@ const filesystem = {
 };
 
 const desktopIconOrder = ['work', 'about', 'photos', 'resume', 'notes', 'mail', 'social'];
-const dockOrder = ['work', 'about', 'notes', 'mail', 'social', 'resume'];
+const dockOrder = ['work', 'about', 'photos', 'notes', 'mail', 'social', 'resume'];
 const workFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'work');
 const photoFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'photos');
 
