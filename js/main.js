@@ -135,6 +135,17 @@ const filesystem = {
   'social': {
     type: 'app', kind: 'social', title: 'Social', icon: 'social',
   },
+  'photos': {
+    type: 'app', kind: 'finder-photos', title: 'Photos', icon: 'folder',
+  },
+  'photo-01': {
+    type: 'file', kind: 'photo', title: 'Photo 1', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Noemane El Afia' },
+  },
+  'photo-02': {
+    type: 'file', kind: 'photo', title: 'Photo 2', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Noemane El Afia' },
+  },
   'sura': {
     type: 'file', kind: 'case-study', title: 'Sura.case', parent: 'work',
     data: {
@@ -321,9 +332,10 @@ const filesystem = {
   },
 };
 
-const desktopIconOrder = ['work', 'about', 'resume', 'notes', 'mail', 'social'];
+const desktopIconOrder = ['work', 'about', 'photos', 'resume', 'notes', 'mail', 'social'];
 const dockOrder = ['work', 'about', 'notes', 'mail', 'social', 'resume'];
 const workFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'work');
+const photoFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'photos');
 
 /* ---------------------------------------------------------------------- */
 /* Window manager                                                          */
@@ -348,6 +360,10 @@ const WM = {
     }
     if (entry.kind === 'case-study') {
       this.openCaseStudy(id);
+      return;
+    }
+    if (entry.kind === 'photo') {
+      openLightbox(entry.data.src, entry.data.alt);
       return;
     }
 
@@ -637,6 +653,63 @@ function renderFinder() {
 
   grid.querySelectorAll('[data-open]').forEach((el) => {
     el.addEventListener('click', () => { Sound.open(); WM.open(el.dataset.open, el); });
+  });
+}
+
+/* ---------------------------------------------------------------------- */
+/* Finder: populate the Photos folder + lightbox                           */
+/* ---------------------------------------------------------------------- */
+
+function renderPhotosGrid() {
+  const grid = document.querySelector('.photos-grid');
+  if (!grid) return;
+  grid.innerHTML = photoFiles.map((key) => {
+    const f = filesystem[key];
+    return `<button class="finder-file photo-file" data-open="${key}">
+      <span class="icon-glyph thumb"><img src="${f.data.src}" alt="${f.data.alt || ''}" loading="lazy"></span>
+      <span class="file-label">${f.title}</span>
+      <span class="file-meta">Image</span>
+    </button>`;
+  }).join('');
+
+  grid.querySelectorAll('[data-open]').forEach((el) => {
+    el.addEventListener('click', () => { Sound.open(); WM.open(el.dataset.open, el); });
+  });
+}
+
+function openLightbox(src, alt) {
+  const overlay = document.querySelector('.lightbox');
+  const img = overlay && overlay.querySelector('.lightbox-img');
+  if (!overlay || !img) return;
+  img.src = src;
+  img.alt = alt || '';
+  overlay.classList.add('is-visible');
+  overlay.setAttribute('aria-hidden', 'false');
+  Sound.open();
+}
+
+function closeLightbox() {
+  const overlay = document.querySelector('.lightbox');
+  if (!overlay || !overlay.classList.contains('is-visible')) return;
+  overlay.classList.remove('is-visible');
+  overlay.setAttribute('aria-hidden', 'true');
+  Sound.close();
+}
+
+function initLightbox() {
+  const overlay = document.querySelector('.lightbox');
+  if (!overlay) return;
+
+  overlay.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-visible')) closeLightbox();
+  });
+
+  document.querySelectorAll('.lightbox-trigger').forEach((img) => {
+    img.addEventListener('click', () => openLightbox(img.getAttribute('src'), img.getAttribute('alt')));
   });
 }
 
@@ -963,6 +1036,8 @@ function bootApp() {
   initBoot();
   initSound();
   renderFinder();
+  renderPhotosGrid();
+  initLightbox();
   initTriggers();
   initDragging();
   initDockMagnify();

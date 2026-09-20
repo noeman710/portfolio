@@ -182,6 +182,28 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
 }
 
+.desktop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,10,0.15), rgba(8,8,10,0.55) 75%, rgba(8,8,10,0.75));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.liquid-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+
+/* If WebGL2 isn't available, .liquid-bg is hidden and this class is added
+   so the photo wallpaper (already set as .desktop's own background) shows instead. */
+.desktop.no-liquid-bg::before { background: linear-gradient(180deg, rgba(8,8,10,0.15), rgba(8,8,10,0.55) 75%, rgba(8,8,10,0.75)); }
+
 /* ---------- Menu bar ---------- */
 
 .menu-bar {
@@ -609,6 +631,8 @@ a.desktop-icon, a.ios-app {
   border: 2px solid rgba(255,255,255,0.1);
 }
 .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.about-portrait img.lightbox-trigger { cursor: zoom-in; transition: transform 0.2s ease; }
+.about-portrait img.lightbox-trigger:hover { transform: scale(1.04); }
 .about-text h2 { font-size: 1.15rem; margin-bottom: 4px; }
 .about-text .about-role { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px; }
 .about-text p { color: var(--text-secondary); line-height: 1.65; margin-bottom: 10px; font-size: 0.92rem; }
@@ -1069,3 +1093,51 @@ a.desktop-icon, a.ios-app {
 [data-open="about"] .icon-glyph.doc { background-image: url("../icons/Contacts.png"); }
 .icon-glyph.notes { background: transparent url("../icons/Notes.png") center / contain no-repeat; }
 .icon-glyph.mail { background: transparent url("../icons/Mail.png") center / contain no-repeat; }
+
+/* ---------- Lightbox (Photos + About Me portrait) ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6,6,8,0.88);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease;
+  padding: 40px;
+}
+.lightbox.is-visible { opacity: 1; visibility: visible; }
+.lightbox-img {
+  max-width: min(90vw, 1100px);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+  transform: scale(0.96);
+  transition: transform 0.22s ease;
+}
+.lightbox.is-visible .lightbox-img { transform: scale(1); }
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 26px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+.finder-file.photo-file .icon-glyph.thumb { width: 100%; height: 92px; border-radius: 8px; }
+.finder-file.photo-file .icon-glyph.thumb img { border-radius: 8px; }
