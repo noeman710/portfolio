@@ -139,12 +139,12 @@ const filesystem = {
     type: 'app', kind: 'finder-photos', title: 'Photos', icon: 'folder',
   },
   'photo-01': {
-    type: 'file', kind: 'photo', title: 'Photo 1', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Noemane El Afia' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Iconic Pic 12' },
   },
   'photo-02': {
-    type: 'file', kind: 'photo', title: 'Photo 2', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Noemane El Afia' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 13', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Iconic Pic 13' },
   },
   'photo-03': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 1', parent: 'photos',
