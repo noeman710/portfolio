@@ -182,6 +182,14 @@ const filesystem = {
     type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
     data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 9' },
   },
+  'photo-12': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 10', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 10' },
+  },
+  'photo-13': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 11', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 11' },
+  },
   'sura': {
     type: 'file', kind: 'case-study', title: 'Sura.case', parent: 'work',
     data: {

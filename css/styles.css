@@ -8,7 +8,7 @@
   --window-bg: rgba(38, 38, 40, 0.92);
   --window-titlebar: rgba(48, 48, 50, 0.95);
   --window-border: rgba(255, 255, 255, 0.08);
-  --text-primary: #f2f2f3;
+  --text-primary: #ffffff;
   --text-secondary: #a5a5aa;
   --text-tertiary: #6e6e73;
   --accent: #0a84ff;
@@ -1066,6 +1066,9 @@ a.desktop-icon, a.ios-app {
   .case-meta-row { gap: 16px; }
   .notes-window .window-body { flex-direction: column; }
   .notes-sidebar { display: none; }
+
+  /* Brighter, fully opaque captions on mobile — these read too dim otherwise */
+  .ios-app-label, .finder-file .file-meta { color: #ffffff; opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
