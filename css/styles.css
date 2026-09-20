@@ -393,7 +393,7 @@ a.desktop-icon, a.ios-app {
 
 .widget-clock .clock-date { font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px; }
 
-.widget-coffee { display: flex; align-items: center; justify-content: space-between; }
+.widget-coffee-row { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
 .widget-coffee .coffee-count { font-size: 1.7rem; font-weight: 700; }
 .widget-coffee .coffee-btn {
   background: rgba(255,255,255,0.08);
