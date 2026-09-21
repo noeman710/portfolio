@@ -643,6 +643,17 @@ function initTriggers() {
 /* Dock magnification                                                       */
 /* ---------------------------------------------------------------------- */
 
+function initWidgetsCarousel() {
+  const track = document.querySelector('.ios-widgets-track');
+  const dots = document.querySelectorAll('.ios-widgets-dots .dot');
+  if (!track || !dots.length) return;
+
+  track.addEventListener('scroll', () => {
+    const page = Math.round(track.scrollLeft / track.clientWidth);
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === page));
+  }, { passive: true });
+}
+
 function initDockMagnify() {
   if (IS_MOBILE) return;
   const dock = document.querySelector('.dock');
@@ -923,18 +934,18 @@ const designQuotes = [
 ];
 
 function initQuoteWidget() {
-  const p = document.querySelector('.widget-quote p');
-  const btn = document.querySelector('.widget-quote button');
-  if (!p || !btn) return;
+  const ps = document.querySelectorAll('.widget-quote p');
+  const btns = document.querySelectorAll('.widget-quote button');
+  if (!ps.length) return;
   let last = -1;
   function next() {
     let i = Math.floor(Math.random() * designQuotes.length);
     if (i === last) i = (i + 1) % designQuotes.length;
     last = i;
-    p.textContent = designQuotes[i];
+    ps.forEach((p) => { p.textContent = designQuotes[i]; });
   }
   next();
-  btn.addEventListener('click', () => { Sound.click(); next(); });
+  btns.forEach((btn) => btn.addEventListener('click', () => { Sound.click(); next(); }));
 }
 
 /* ---------------------------------------------------------------------- */
@@ -944,64 +955,77 @@ function initQuoteWidget() {
 const musicTracks = [
   { title: 'Passionate Spectrum', artist: 'The Seven Deadly Sins — OP1', src: 'assets/audio/track-01.mp3' },
   { title: 'D-tecnoLife', artist: 'UVERworld — Bleach OP2', src: 'assets/audio/track-02.mp3' },
+  { title: 'Asterisk', artist: 'ORANGE RANGE — Bleach OP1', src: 'assets/audio/track-03.mp3' },
+  { title: 'Unravel', artist: 'TK from Ling tosite sigure — Tokyo Ghoul OP', src: 'assets/audio/track-04.mp3' },
 ];
 
 const playIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M8 5.5v13l11-6.5z"/></svg>';
 const pauseIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
 
 function initMusicWidget() {
-  const widget = document.querySelector('.widget-music');
-  if (!widget) return;
-  const audio = widget.querySelector('.music-audio');
-  const titleEl = widget.querySelector('.music-track-title');
-  const artistEl = widget.querySelector('.music-track-artist');
-  const playBtn = widget.querySelector('.music-play');
-  const prevBtn = widget.querySelector('.music-prev');
-  const nextBtn = widget.querySelector('.music-next');
-  const progress = widget.querySelector('.music-progress');
-  const progressFill = widget.querySelector('.music-progress-fill');
-  if (!audio || !titleEl || !playBtn) return;
+  const widgets = document.querySelectorAll('.widget-music');
+  if (!widgets.length) return;
 
+  const audio = new Audio();
   let index = 0;
+
+  const refs = Array.from(widgets).map((widget) => ({
+    widget,
+    titleEl: widget.querySelector('.music-track-title'),
+    artistEl: widget.querySelector('.music-track-artist'),
+    playBtn: widget.querySelector('.music-play'),
+    prevBtn: widget.querySelector('.music-prev'),
+    nextBtn: widget.querySelector('.music-next'),
+    progress: widget.querySelector('.music-progress'),
+    progressFill: widget.querySelector('.music-progress-fill'),
+  })).filter((r) => r.titleEl && r.playBtn);
 
   function loadTrack(i, autoplay) {
     index = (i + musicTracks.length) % musicTracks.length;
     const track = musicTracks[index];
-    titleEl.textContent = track.title;
-    artistEl.textContent = track.artist;
+    refs.forEach((r) => {
+      r.titleEl.textContent = track.title;
+      r.artistEl.textContent = track.artist;
+      if (r.progressFill) r.progressFill.style.width = '0%';
+    });
     audio.src = track.src;
-    progressFill.style.width = '0%';
     if (autoplay) audio.play().catch(() => {});
   }
 
   function setPlayingUI(isPlaying) {
-    playBtn.innerHTML = isPlaying ? pauseIcon : playIcon;
-    playBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
+    refs.forEach((r) => {
+      r.playBtn.innerHTML = isPlaying ? pauseIcon : playIcon;
+      r.playBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
+    });
   }
 
   loadTrack(0, false);
 
-  playBtn.addEventListener('click', () => {
-    Sound.click();
-    if (audio.paused) audio.play().catch(() => {});
-    else audio.pause();
+  refs.forEach((r) => {
+    r.playBtn.addEventListener('click', () => {
+      Sound.click();
+      if (audio.paused) audio.play().catch(() => {});
+      else audio.pause();
+    });
+    r.prevBtn.addEventListener('click', () => { Sound.click(); loadTrack(index - 1, !audio.paused); });
+    r.nextBtn.addEventListener('click', () => { Sound.click(); loadTrack(index + 1, !audio.paused); });
+    if (r.progress) {
+      r.progress.addEventListener('click', (e) => {
+        if (!audio.duration) return;
+        const rect = r.progress.getBoundingClientRect();
+        const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+        audio.currentTime = ratio * audio.duration;
+      });
+    }
   });
-
-  prevBtn.addEventListener('click', () => { Sound.click(); loadTrack(index - 1, !audio.paused); });
-  nextBtn.addEventListener('click', () => { Sound.click(); loadTrack(index + 1, !audio.paused); });
 
   audio.addEventListener('play', () => setPlayingUI(true));
   audio.addEventListener('pause', () => setPlayingUI(false));
   audio.addEventListener('ended', () => loadTrack(index + 1, true));
   audio.addEventListener('timeupdate', () => {
-    if (audio.duration) progressFill.style.width = ((audio.currentTime / audio.duration) * 100) + '%';
-  });
-
-  progress.addEventListener('click', (e) => {
     if (!audio.duration) return;
-    const rect = progress.getBoundingClientRect();
-    const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-    audio.currentTime = ratio * audio.duration;
+    const pct = (audio.currentTime / audio.duration) * 100 + '%';
+    refs.forEach((r) => { if (r.progressFill) r.progressFill.style.width = pct; });
   });
 }
 
@@ -1159,6 +1183,7 @@ function bootApp() {
   safe(initTriggers, 'initTriggers');
   safe(initDragging, 'initDragging');
   safe(initDockMagnify, 'initDockMagnify');
+  safe(initWidgetsCarousel, 'initWidgetsCarousel');
   safe(initSpotlight, 'initSpotlight');
   safe(initClock, 'initClock');
   safe(initCoffeeWidget, 'initCoffeeWidget');

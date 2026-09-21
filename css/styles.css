@@ -1037,13 +1037,27 @@ a.desktop-icon, a.ios-app {
     line-height: 1.2;
   }
 
-  .ios-widgets-row {
+  .ios-widgets-carousel { margin-top: 26px; }
+  .ios-widgets-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    scrollbar-width: none;
+  }
+  .ios-widgets-track::-webkit-scrollbar { display: none; }
+  .ios-widgets-page {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
     display: flex;
     gap: 12px;
-    margin-top: 26px;
+    min-width: 100%;
   }
-
-  .ios-widgets-row .widget { width: 100%; }
+  .ios-widgets-page .widget { width: 100%; }
+  .ios-widgets-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+  .ios-widgets-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: background 0.2s; }
+  .ios-widgets-dots .dot.is-active { background: #ffffff; }
 
   .ios-dock {
     flex-shrink: 0;
@@ -1051,7 +1065,7 @@ a.desktop-icon, a.ios-app {
     padding: 10px 18px;
     display: flex;
     justify-content: space-around;
-    background: var(--dock-bg);
+    background: rgba(30, 30, 34, 0.94);
     backdrop-filter: blur(24px) saturate(1.5);
     -webkit-backdrop-filter: blur(24px) saturate(1.5);
     border: 1px solid rgba(255,255,255,0.08);
