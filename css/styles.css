@@ -1039,29 +1039,31 @@ a.desktop-icon, a.ios-app {
     line-height: 1.2;
   }
 
-  .ios-widgets-carousel { margin-top: 26px; flex: 1; display: flex; flex-direction: column; min-height: 0; }
-  .ios-widgets-track {
+  .ios-pages-track {
     flex: 1;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: 12px;
     scrollbar-width: none;
+    min-height: 0;
   }
-  .ios-widgets-track::-webkit-scrollbar { display: none; }
-  .ios-widgets-page {
+  .ios-pages-track::-webkit-scrollbar { display: none; }
+  .ios-page {
     flex: 0 0 100%;
+    min-width: 100%;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    min-width: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
   }
-  .ios-widgets-page .widget { width: 100%; }
-  .ios-widgets-subrow { display: flex; gap: 12px; }
+  .ios-page::-webkit-scrollbar { display: none; }
+  .ios-page-widgets { padding-top: 10px; }
+
+  .ios-widgets-single { margin-top: 26px; }
+  .ios-widgets-subrow { display: flex; gap: 12px; margin-bottom: 12px; }
   .ios-widgets-subrow .widget { width: 100%; }
   .ios-widgets-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
   .ios-widgets-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: background 0.2s; }

@@ -644,7 +644,7 @@ function initTriggers() {
 /* ---------------------------------------------------------------------- */
 
 function initWidgetsCarousel() {
-  const track = document.querySelector('.ios-widgets-track');
+  const track = document.querySelector('.ios-pages-track');
   const dots = document.querySelectorAll('.ios-widgets-dots .dot');
   if (!track || !dots.length) return;
 
