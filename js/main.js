@@ -139,56 +139,56 @@ const filesystem = {
     type: 'app', kind: 'finder-photos', title: 'Photos', icon: 'folder',
   },
   'photo-01': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Iconic Pic 12' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 1', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Iconic Pic 1' },
   },
   'photo-02': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 13', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Iconic Pic 13' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 2', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Iconic Pic 2' },
   },
   'photo-03': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 1', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 1' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 3', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 3' },
   },
   'photo-04': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 2', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 2' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 4', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 4' },
   },
   'photo-05': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 3', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 3' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 5', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 5' },
   },
   'photo-06': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 4', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 4' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 6', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 6' },
   },
   'photo-07': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 5', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 5' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 7', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 7' },
   },
   'photo-08': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 6', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 6' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 8', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 8' },
   },
   'photo-09': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 7', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 7' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 9' },
   },
   'photo-10': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 8', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 8' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 10', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 10' },
   },
   'photo-11': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 9' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 11', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 11' },
   },
   'photo-12': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 10', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 10' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 12' },
   },
   'photo-13': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 11', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 11' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 13', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 13' },
   },
   'sura': {
     type: 'file', kind: 'case-study', title: 'Sura.case', parent: 'work',
@@ -248,9 +248,7 @@ const filesystem = {
       role: 'Brand Designer',
       duration: 'Mediassive, 2026',
       scope: 'Brand Identity, V1.0',
-      links: {
-        guide: 'assets/FinderrLink_Brand_Guidelines.pdf',
-      },
+      links: {},
     },
   },
   'entclinic': {
@@ -564,49 +562,72 @@ function openResume() {
 
 function initWindowResize() {
   if (IS_MOBILE) return;
+  const directions = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
   document.querySelectorAll('.os-window').forEach((win) => {
     if (win.querySelector('.window-resize-handle')) return;
-    const handle = document.createElement('div');
-    handle.className = 'window-resize-handle';
-    handle.setAttribute('aria-hidden', 'true');
-    win.appendChild(handle);
 
-    let resizing = false;
-    let startX, startY, startW, startH;
+    directions.forEach((dir) => {
+      const handle = document.createElement('div');
+      handle.className = `window-resize-handle window-resize-${dir}`;
+      handle.setAttribute('aria-hidden', 'true');
+      win.appendChild(handle);
 
-    handle.addEventListener('pointerdown', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      resizing = true;
-      startX = e.clientX;
-      startY = e.clientY;
-      const rect = win.getBoundingClientRect();
-      startW = rect.width;
-      startH = rect.height;
-      win.style.width = startW + 'px';
-      win.style.height = startH + 'px';
-      win.classList.add('is-resizing');
-      const id = win.id.replace('win-', '');
-      if (WM && WM.focus) WM.focus(id);
-      handle.setPointerCapture(e.pointerId);
-    });
+      let resizing = false;
+      let startX, startY, startW, startH, startLeft, startTop;
 
-    handle.addEventListener('pointermove', (e) => {
-      if (!resizing) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      const minW = 340;
-      const minH = 260;
-      const maxW = window.innerWidth - 40;
-      const maxH = window.innerHeight - 80;
-      win.style.width = Math.min(maxW, Math.max(minW, startW + dx)) + 'px';
-      win.style.height = Math.min(maxH, Math.max(minH, startH + dy)) + 'px';
-    });
+      handle.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        resizing = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = win.getBoundingClientRect();
+        startW = rect.width;
+        startH = rect.height;
+        startLeft = rect.left;
+        startTop = rect.top;
+        win.style.width = startW + 'px';
+        win.style.height = startH + 'px';
+        win.style.left = startLeft + 'px';
+        win.style.top = startTop + 'px';
+        win.classList.add('is-resizing');
+        const id = win.id.replace('win-', '');
+        if (WM && WM.focus) WM.focus(id);
+        handle.setPointerCapture(e.pointerId);
+      });
 
-    ['pointerup', 'pointercancel'].forEach((evt) => {
-      handle.addEventListener(evt, () => {
-        resizing = false;
-        win.classList.remove('is-resizing');
+      handle.addEventListener('pointermove', (e) => {
+        if (!resizing) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const minW = 340;
+        const minH = 260;
+        const maxW = window.innerWidth - 40;
+        const maxH = window.innerHeight - 80;
+
+        if (dir.includes('e')) {
+          win.style.width = Math.min(maxW, Math.max(minW, startW + dx)) + 'px';
+        }
+        if (dir.includes('s')) {
+          win.style.height = Math.min(maxH, Math.max(minH, startH + dy)) + 'px';
+        }
+        if (dir.includes('w')) {
+          const proposedW = Math.min(maxW, Math.max(minW, startW - dx));
+          win.style.width = proposedW + 'px';
+          win.style.left = (startLeft + (startW - proposedW)) + 'px';
+        }
+        if (dir.includes('n')) {
+          const proposedH = Math.min(maxH, Math.max(minH, startH - dy));
+          win.style.height = proposedH + 'px';
+          win.style.top = Math.max(28, startTop + (startH - proposedH)) + 'px';
+        }
+      });
+
+      ['pointerup', 'pointercancel'].forEach((evt) => {
+        handle.addEventListener(evt, () => {
+          resizing = false;
+          win.classList.remove('is-resizing');
+        });
       });
     });
   });
