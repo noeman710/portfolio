@@ -593,6 +593,33 @@ a.desktop-icon, a.ios-app {
 
 .window-titlebar:active { cursor: grabbing; }
 
+.window-resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  z-index: 20;
+  touch-action: none;
+}
+.window-resize-handle::before {
+  content: '';
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 9px;
+  height: 9px;
+  background:
+    linear-gradient(135deg, transparent 0 45%, rgba(255,255,255,0.35) 45% 55%, transparent 55% 100%),
+    linear-gradient(135deg, transparent 0 65%, rgba(255,255,255,0.35) 65% 75%, transparent 75% 100%);
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+.window-resize-handle:hover::before { opacity: 1; }
+.os-window.is-resizing { transition: none; user-select: none; }
+.os-window.is-resizing .window-body { pointer-events: none; }
+
 .traffic-lights { display: flex; gap: 8px; }
 .traffic-lights button {
   width: 12px; height: 12px;
@@ -703,6 +730,7 @@ a.desktop-icon, a.ios-app {
 .about-text h2 { font-size: 1.15rem; margin-bottom: 4px; }
 .about-text .about-role { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px; }
 .about-text p { color: var(--text-secondary); line-height: 1.65; margin-bottom: 10px; font-size: 0.92rem; }
+.about-outro { color: var(--text-secondary); line-height: 1.65; font-size: 0.92rem; }
 
 .about-section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); margin: 22px 0 10px; }
 .about-list-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--window-border); font-size: 0.88rem; }
@@ -989,6 +1017,17 @@ a.desktop-icon, a.ios-app {
     padding-bottom: env(safe-area-inset-bottom);
   }
 
+  /* Dim the animated wallpaper on mobile so icons, text and cards read at full brightness */
+  .ios-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 6, 10, 0.42);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ios-shell > * { position: relative; z-index: 1; }
+
   .ios-statusbar {
     height: 34px;
     flex-shrink: 0;
@@ -1012,7 +1051,7 @@ a.desktop-icon, a.ios-app {
   .ios-app-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px 10px;
+    gap: clamp(16px, 5vw, 26px) 10px;
     margin-top: 22px;
   }
 
@@ -1027,17 +1066,18 @@ a.desktop-icon, a.ios-app {
   }
 
   .ios-app .icon-glyph {
-    width: 58px;
-    height: 58px;
+    width: clamp(58px, 16vw, 74px);
+    height: clamp(58px, 16vw, 74px);
     border-radius: 16px;
-    font-size: 1.7rem;
+    font-size: clamp(1.7rem, 5vw, 2.1rem);
   }
 
   .ios-app-label {
-    font-size: 0.7rem;
-    color: var(--text-secondary);
+    font-size: clamp(0.72rem, 3.1vw, 0.85rem);
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.25;
   }
 
   .ios-pages-track {
@@ -1066,6 +1106,10 @@ a.desktop-icon, a.ios-app {
     overflow-x: hidden;
   }
   .ios-page-widgets { padding-top: 10px; }
+  .window-resize-handle { display: none; }
+
+  /* Solid, fully-opaque card backgrounds on mobile — the glassy 55% look reads dim against the animated wallpaper */
+  .ios-home .widget { background: rgba(26, 26, 29, 0.96); }
 
   .ios-widgets-single { margin-top: 4px; }
   .ios-widgets-single .widget { width: 100%; }

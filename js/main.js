@@ -562,6 +562,56 @@ function openResume() {
 /* Dragging                                                                 */
 /* ---------------------------------------------------------------------- */
 
+function initWindowResize() {
+  if (IS_MOBILE) return;
+  document.querySelectorAll('.os-window').forEach((win) => {
+    if (win.querySelector('.window-resize-handle')) return;
+    const handle = document.createElement('div');
+    handle.className = 'window-resize-handle';
+    handle.setAttribute('aria-hidden', 'true');
+    win.appendChild(handle);
+
+    let resizing = false;
+    let startX, startY, startW, startH;
+
+    handle.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      resizing = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      const rect = win.getBoundingClientRect();
+      startW = rect.width;
+      startH = rect.height;
+      win.style.width = startW + 'px';
+      win.style.height = startH + 'px';
+      win.classList.add('is-resizing');
+      const id = win.id.replace('win-', '');
+      if (WM && WM.focus) WM.focus(id);
+      handle.setPointerCapture(e.pointerId);
+    });
+
+    handle.addEventListener('pointermove', (e) => {
+      if (!resizing) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      const minW = 340;
+      const minH = 260;
+      const maxW = window.innerWidth - 40;
+      const maxH = window.innerHeight - 80;
+      win.style.width = Math.min(maxW, Math.max(minW, startW + dx)) + 'px';
+      win.style.height = Math.min(maxH, Math.max(minH, startH + dy)) + 'px';
+    });
+
+    ['pointerup', 'pointercancel'].forEach((evt) => {
+      handle.addEventListener(evt, () => {
+        resizing = false;
+        win.classList.remove('is-resizing');
+      });
+    });
+  });
+}
+
 function initDragging() {
   if (IS_MOBILE) return;
   document.querySelectorAll('.window-titlebar').forEach((bar) => {
@@ -1182,6 +1232,7 @@ function bootApp() {
   safe(initLightbox, 'initLightbox');
   safe(initTriggers, 'initTriggers');
   safe(initDragging, 'initDragging');
+  safe(initWindowResize, 'initWindowResize');
   safe(initDockMagnify, 'initDockMagnify');
   safe(initWidgetsCarousel, 'initWidgetsCarousel');
   safe(initSpotlight, 'initSpotlight');
