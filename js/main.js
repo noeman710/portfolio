@@ -938,6 +938,74 @@ function initQuoteWidget() {
 }
 
 /* ---------------------------------------------------------------------- */
+/* Music widget (favorite songs player)                                    */
+/* ---------------------------------------------------------------------- */
+
+const musicTracks = [
+  { title: 'Passionate Spectrum', artist: 'The Seven Deadly Sins — OP1', src: 'assets/audio/track-01.mp3' },
+  { title: 'D-tecnoLife', artist: 'UVERworld — Bleach OP2', src: 'assets/audio/track-02.mp3' },
+];
+
+const playIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M8 5.5v13l11-6.5z"/></svg>';
+const pauseIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+
+function initMusicWidget() {
+  const widget = document.querySelector('.widget-music');
+  if (!widget) return;
+  const audio = widget.querySelector('.music-audio');
+  const titleEl = widget.querySelector('.music-track-title');
+  const artistEl = widget.querySelector('.music-track-artist');
+  const playBtn = widget.querySelector('.music-play');
+  const prevBtn = widget.querySelector('.music-prev');
+  const nextBtn = widget.querySelector('.music-next');
+  const progress = widget.querySelector('.music-progress');
+  const progressFill = widget.querySelector('.music-progress-fill');
+  if (!audio || !titleEl || !playBtn) return;
+
+  let index = 0;
+
+  function loadTrack(i, autoplay) {
+    index = (i + musicTracks.length) % musicTracks.length;
+    const track = musicTracks[index];
+    titleEl.textContent = track.title;
+    artistEl.textContent = track.artist;
+    audio.src = track.src;
+    progressFill.style.width = '0%';
+    if (autoplay) audio.play().catch(() => {});
+  }
+
+  function setPlayingUI(isPlaying) {
+    playBtn.innerHTML = isPlaying ? pauseIcon : playIcon;
+    playBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
+  }
+
+  loadTrack(0, false);
+
+  playBtn.addEventListener('click', () => {
+    Sound.click();
+    if (audio.paused) audio.play().catch(() => {});
+    else audio.pause();
+  });
+
+  prevBtn.addEventListener('click', () => { Sound.click(); loadTrack(index - 1, !audio.paused); });
+  nextBtn.addEventListener('click', () => { Sound.click(); loadTrack(index + 1, !audio.paused); });
+
+  audio.addEventListener('play', () => setPlayingUI(true));
+  audio.addEventListener('pause', () => setPlayingUI(false));
+  audio.addEventListener('ended', () => loadTrack(index + 1, true));
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) progressFill.style.width = ((audio.currentTime / audio.duration) * 100) + '%';
+  });
+
+  progress.addEventListener('click', (e) => {
+    if (!audio.duration) return;
+    const rect = progress.getBoundingClientRect();
+    const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    audio.currentTime = ratio * audio.duration;
+  });
+}
+
+/* ---------------------------------------------------------------------- */
 /* Notes app (localStorage persistence)                                    */
 /* ---------------------------------------------------------------------- */
 
@@ -1095,6 +1163,7 @@ function bootApp() {
   safe(initClock, 'initClock');
   safe(initCoffeeWidget, 'initCoffeeWidget');
   safe(initQuoteWidget, 'initQuoteWidget');
+  safe(initMusicWidget, 'initMusicWidget');
   safe(initNotes, 'initNotes');
   safe(initMail, 'initMail');
 }
