@@ -1003,8 +1003,10 @@ a.desktop-icon, a.ios-app {
 
   .ios-home {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     padding: 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .ios-app-grid {
@@ -1037,10 +1039,12 @@ a.desktop-icon, a.ios-app {
     line-height: 1.2;
   }
 
-  .ios-widgets-carousel { margin-top: 26px; }
+  .ios-widgets-carousel { margin-top: 26px; flex: 1; display: flex; flex-direction: column; min-height: 0; }
   .ios-widgets-track {
+    flex: 1;
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 12px;
@@ -1051,10 +1055,14 @@ a.desktop-icon, a.ios-app {
     flex: 0 0 100%;
     scroll-snap-align: start;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: 12px;
     min-width: 100%;
   }
   .ios-widgets-page .widget { width: 100%; }
+  .ios-widgets-subrow { display: flex; gap: 12px; }
+  .ios-widgets-subrow .widget { width: 100%; }
   .ios-widgets-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
   .ios-widgets-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: background 0.2s; }
   .ios-widgets-dots .dot.is-active { background: #ffffff; }
