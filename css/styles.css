@@ -346,6 +346,7 @@ img { display: block; max-width: 100%; }
 .icon-glyph.doc { background: linear-gradient(160deg, #fbfbfc 0%, #dcdce0 100%); color: #1a1a1a; }
 .icon-glyph.notes { background: linear-gradient(160deg, #ffe08a 0%, #ffc93c 55%, #e89b00 100%); }
 .icon-glyph.mail { background: linear-gradient(160deg, #7fc4ff 0%, #2f83e8 55%, #0b56b8 100%); }
+.icon-glyph.maps { background: linear-gradient(160deg, #8ee39a 0%, #4fb85f 55%, #2c8a3a 100%); }
 .icon-glyph.social { background: linear-gradient(160deg, #ffb088 0%, #ff7a4d 55%, #d84b1f 100%); }
 .icon-glyph.brand-instagram { background: radial-gradient(circle at 30% 110%, #ffd521, #f50000 30%, #d6249f 55%, #7638fa 100%); }
 .icon-glyph.brand-linkedin { background: linear-gradient(160deg, #2f9bf0, #0a66c2 60%, #08498c 100%); }
@@ -1319,6 +1320,7 @@ a.desktop-icon, a.ios-app {
 [data-open="about"] .icon-glyph.doc { background-image: url("../icons/Contacts.png"); }
 .icon-glyph.notes { background: transparent url("../icons/Notes.png") center / contain no-repeat; }
 .icon-glyph.mail { background: transparent url("../icons/Mail.png") center / contain no-repeat; }
+.icon-glyph.maps { background: transparent url("../icons/Maps.png") center / contain no-repeat; }
 
 /* ---------- Lightbox (Photos + About Me portrait) ---------- */
 .lightbox {
@@ -1366,3 +1368,29 @@ a.desktop-icon, a.ios-app {
 
 .finder-file.photo-file .icon-glyph.thumb { width: 100%; height: 92px; border-radius: 8px; }
 .finder-file.photo-file .icon-glyph.thumb img { border-radius: 8px; }
+
+/* ---------- Maps ---------- */
+.maps-body { position: relative; padding: 0; overflow: hidden; }
+.maps-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: grayscale(1) invert(1);
+  -webkit-filter: grayscale(1) invert(1);
+}
+.maps-caption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: rgba(20, 20, 22, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid var(--window-border);
+  pointer-events: none;
+}

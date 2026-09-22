@@ -132,6 +132,9 @@ const filesystem = {
   'mail': {
     type: 'app', kind: 'mail', title: 'Mail', icon: 'mail',
   },
+  'maps': {
+    type: 'app', kind: 'maps', title: 'Maps', icon: 'maps',
+  },
   'social': {
     type: 'app', kind: 'social', title: 'Social', icon: 'social',
   },
@@ -374,8 +377,8 @@ const filesystem = {
   },
 };
 
-const desktopIconOrder = ['work', 'about', 'photos', 'resume', 'notes', 'mail', 'social'];
-const dockOrder = ['work', 'about', 'photos', 'notes', 'mail', 'social', 'resume'];
+const desktopIconOrder = ['work', 'about', 'photos', 'maps', 'resume', 'notes', 'mail', 'social'];
+const dockOrder = ['work', 'about', 'photos', 'maps', 'notes', 'mail', 'social', 'resume'];
 const workFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'work');
 const photoFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'photos');
 
