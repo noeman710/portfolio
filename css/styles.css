@@ -1378,6 +1378,7 @@ a.desktop-icon, a.ios-app {
   display: block;
   filter: grayscale(1) invert(1);
   -webkit-filter: grayscale(1) invert(1);
+  pointer-events: none;
 }
 .maps-caption {
   position: absolute;
