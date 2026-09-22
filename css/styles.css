@@ -1266,6 +1266,13 @@ a.desktop-icon, a.ios-app {
   .traffic-lights .tl-close::before {
     content: '\2039 Home';
     white-space: nowrap;
+    position: static;
+    inset: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+    background-image: none;
+    opacity: 1;
   }
 
   .window-title {
