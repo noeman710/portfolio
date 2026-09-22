@@ -255,6 +255,13 @@ img { display: block; max-width: 100%; }
   gap: 6px;
 }
 
+.ios-battery-pct {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
 .menu-clock { color: var(--text-primary); font-variant-numeric: tabular-nums; }
 
 /* ---------- Desktop icons ---------- */
@@ -1092,7 +1099,7 @@ a.desktop-icon, a.ios-app {
   .ios-home {
     flex: 1;
     overflow-y: hidden;
-    padding: 10px 20px 20px;
+    padding: 10px 0 20px;
     display: flex;
     flex-direction: column;
   }
@@ -1147,6 +1154,7 @@ a.desktop-icon, a.ios-app {
     width: 100%;
     min-width: 100%;
     max-width: 100%;
+    padding: 0 20px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     display: flex;
