@@ -646,6 +646,30 @@ a.desktop-icon, a.ios-app {
 .traffic-lights .tl-min { background: var(--traffic-yellow); }
 .traffic-lights .tl-max { background: var(--traffic-green); }
 
+.traffic-lights button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 7px;
+  height: 7px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+.traffic-lights:hover button::before { opacity: 1; }
+.traffic-lights .tl-close::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 1.5L8.5 8.5M8.5 1.5L1.5 8.5' stroke='%234d0000' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.traffic-lights .tl-min::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 5H8.5' stroke='%235c4400' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.traffic-lights .tl-max::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 5.5L4.2 5.5L4.2 8.2M8.5 4.5L5.8 4.5L5.8 1.8' stroke='%23004d17' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 .window-title {
   font-size: 0.82rem;
   font-weight: 600;
