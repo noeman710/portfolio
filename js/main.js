@@ -411,9 +411,6 @@ const WM = {
       openLightbox(entry.data.src, entry.data.alt);
       return;
     }
-    if (entry.kind === 'maps') {
-      ensureTangierMap();
-    }
 
     const el = this.getWindowEl(id);
     if (!el) return;
@@ -427,10 +424,7 @@ const WM = {
     this.updateMenuBarTitle();
 
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        el.classList.add('is-animated-in');
-        if (entry.kind === 'maps' && tangierMap) tangierMap.invalidateSize();
-      });
+      requestAnimationFrame(() => el.classList.add('is-animated-in'));
     });
 
     const firstField = el.querySelector('input, textarea, button.finder-file, .window-body [tabindex]');
@@ -950,48 +944,6 @@ function initSpotlight() {
 /* ---------------------------------------------------------------------- */
 /* Menu bar clock                                                           */
 /* ---------------------------------------------------------------------- */
-
-let tangierMap = null;
-
-function ensureTangierMap() {
-  if (tangierMap || typeof L === 'undefined') return;
-  const container = document.getElementById('tangier-map');
-  if (!container) return;
-
-  const coords = [35.7595, -5.8340];
-
-  tangierMap = L.map(container, {
-    zoomControl: true,
-    attributionControl: true,
-  }).setView(coords, 13);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 19,
-  }).addTo(tangierMap);
-
-  const pinHtml = `
-    <div class="maps-pin-marker">
-      <span class="maps-pin-pulse"></span>
-      <span class="maps-pin-pulse maps-pin-pulse-delay"></span>
-      <img class="maps-pin-avatar" src="assets/images/portrait.jpg" alt="Noemane El Afia">
-    </div>
-    <div class="maps-pin-card">
-      <div class="maps-pin-name">Noemane El Afia</div>
-      <div class="maps-pin-role">UX/UI Designer</div>
-      <div class="maps-pin-location"><svg viewBox="0 0 24 24" width="11" height="11" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="currentColor"/></svg>Tangier, Morocco</div>
-    </div>
-  `;
-
-  const icon = L.divIcon({
-    html: pinHtml,
-    className: 'maps-pin',
-    iconSize: [0, 0],
-    iconAnchor: [0, 26],
-  });
-
-  L.marker(coords, { icon, interactive: false, keyboard: false }).addTo(tangierMap);
-}
 
 function initBatteryStatus() {
   const fillEl = document.querySelector('.ios-battery-fill');
