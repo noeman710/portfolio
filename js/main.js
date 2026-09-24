@@ -1094,12 +1094,12 @@ function initQuoteWidget() {
 /* ---------------------------------------------------------------------- */
 
 const musicTracks = [
+  { title: 'Fullmetal Alchemist: Brotherhood', artist: 'Opening Theme', src: 'assets/audio/track-06.mp3' },
   { title: 'Passionate Spectrum', artist: 'The Seven Deadly Sins — OP1', src: 'assets/audio/track-01.mp3' },
   { title: 'D-tecnoLife', artist: 'UVERworld — Bleach OP2', src: 'assets/audio/track-02.mp3' },
   { title: 'Asterisk', artist: 'ORANGE RANGE — Bleach OP1', src: 'assets/audio/track-03.mp3' },
   { title: 'Unravel', artist: 'TK from Ling tosite sigure — Tokyo Ghoul OP', src: 'assets/audio/track-04.mp3' },
   { title: 'ALONES', artist: 'Aqua Timez — Bleach OP', src: 'assets/audio/track-05.mp3' },
-  { title: 'Fullmetal Alchemist: Brotherhood', artist: 'Opening Theme', src: 'assets/audio/track-06.mp3' },
 ];
 
 const playIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M8 5.5v13l11-6.5z"/></svg>';
