@@ -1404,6 +1404,30 @@ a.desktop-icon, a.ios-app {
   pointer-events: none;
 }
 
+.maps-info-card {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #1c1c1f;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+.maps-info-name { font-size: 0.85rem; font-weight: 700; color: #ffffff; line-height: 1.3; }
+.maps-info-role { font-size: 0.72rem; color: #b8b8bd; margin-top: 2px; }
+.maps-info-location {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.68rem;
+  color: #6fb3ff;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
 .maps-pin {
   display: flex;
   flex-direction: column;
