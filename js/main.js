@@ -974,12 +974,7 @@ function ensureTangierMap() {
     <div class="maps-pin-marker">
       <span class="maps-pin-pulse"></span>
       <span class="maps-pin-pulse maps-pin-pulse-delay"></span>
-      <img class="maps-pin-avatar" src="assets/images/portrait.jpg" alt="Noemane El Afia">
-    </div>
-    <div class="maps-pin-card">
-      <div class="maps-pin-name">Noemane El Afia</div>
-      <div class="maps-pin-role">UX/UI Designer</div>
-      <div class="maps-pin-location"><svg viewBox="0 0 24 24" width="11" height="11" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="currentColor"/></svg>Tangier, Morocco</div>
+      <img class="maps-pin-avatar" src="assets/images/portrait.jpg" alt="Noemane El Afia" title="Noemane El Afia — UX/UI Designer, Tangier, Morocco">
     </div>
   `;
 
