@@ -145,53 +145,49 @@ const filesystem = {
     type: 'file', kind: 'photo', title: 'Iconic Pic 1', parent: 'photos',
     data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Iconic Pic 1' },
   },
-  'photo-02': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 2', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-02.jpg', alt: 'Iconic Pic 2' },
-  },
   'photo-03': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 3', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 3' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 2', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 2' },
   },
   'photo-04': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 4', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 4' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 3', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 3' },
   },
   'photo-05': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 5', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 5' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 4', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 4' },
   },
   'photo-06': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 6', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 6' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 5', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 5' },
   },
   'photo-07': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 7', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 7' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 6', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 6' },
   },
   'photo-08': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 8', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 8' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 7', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 7' },
   },
   'photo-09': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 9' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 8', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 8' },
   },
   'photo-10': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 10', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 10' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 9' },
   },
   'photo-11': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 11', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 11' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 10', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 10' },
   },
   'photo-12': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 12' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 11', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 11' },
   },
   'photo-13': {
-    type: 'file', kind: 'photo', title: 'Iconic Pic 13', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 13' },
+    type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
+    data: { src: 'assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 12' },
   },
   'sura': {
     type: 'file', kind: 'case-study', title: 'Sura.case', parent: 'work',
@@ -1102,6 +1098,8 @@ const musicTracks = [
   { title: 'D-tecnoLife', artist: 'UVERworld — Bleach OP2', src: 'assets/audio/track-02.mp3' },
   { title: 'Asterisk', artist: 'ORANGE RANGE — Bleach OP1', src: 'assets/audio/track-03.mp3' },
   { title: 'Unravel', artist: 'TK from Ling tosite sigure — Tokyo Ghoul OP', src: 'assets/audio/track-04.mp3' },
+  { title: 'ALONES', artist: 'Aqua Timez — Bleach OP', src: 'assets/audio/track-05.mp3' },
+  { title: 'Fullmetal Alchemist: Brotherhood', artist: 'Opening Theme', src: 'assets/audio/track-06.mp3' },
 ];
 
 const playIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M8 5.5v13l11-6.5z"/></svg>';
