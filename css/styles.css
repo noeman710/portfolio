@@ -1410,6 +1410,29 @@ a.desktop-icon, a.ios-app {
   align-items: center;
   pointer-events: none;
 }
+
+/* Dark-themed Leaflet zoom control */
+.maps-body .leaflet-control-zoom {
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
+}
+.maps-body .leaflet-control-zoom-in,
+.maps-body .leaflet-control-zoom-out {
+  background-color: #1c1c1f !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+.maps-body .leaflet-control-zoom-in:hover,
+.maps-body .leaflet-control-zoom-out:hover {
+  background-color: #2a2a2e !important;
+}
+.maps-body .leaflet-control-zoom-in.leaflet-disabled,
+.maps-body .leaflet-control-zoom-out.leaflet-disabled {
+  background-color: #17171a !important;
+  color: rgba(255,255,255,0.3) !important;
+}
 .maps-pin-marker {
   position: relative;
   width: 52px;

@@ -962,7 +962,7 @@ function ensureTangierMap() {
 
   tangierMap = L.map(container, {
     zoomControl: true,
-    attributionControl: true,
+    attributionControl: false,
   }).setView(coords, 13);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
