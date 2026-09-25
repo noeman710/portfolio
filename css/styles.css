@@ -544,15 +544,15 @@ a.desktop-icon, a.ios-app {
   left: 50%;
   transform: translate(-50%, -4px) scale(0.92);
   margin-bottom: 10px;
-  padding: 5px 11px;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-window);
   background: #1c1c1f;
   border: 1px solid rgba(255,255,255,0.14);
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.5);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
