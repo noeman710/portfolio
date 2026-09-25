@@ -537,6 +537,57 @@ a.desktop-icon, a.ios-app {
 
 .dock-item .icon-glyph { width: 44px; height: 44px; box-shadow: none; }
 
+.dock-item::before {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -4px) scale(0.92);
+  margin-bottom: 10px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  background: #1c1c1f;
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s;
+  z-index: 50;
+}
+.dock-tip-tail {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-bottom: 6px;
+  transform: translate(-50%, 0) rotate(45deg) scale(0.92);
+  background: #1c1c1f;
+  border-right: 1px solid rgba(255,255,255,0.14);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease, visibility 0.12s;
+  z-index: 49;
+}
+.dock-item:hover::before,
+.dock-item:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -8px) scale(1);
+}
+.dock-item:hover .dock-tip-tail,
+.dock-item:focus-visible .dock-tip-tail {
+  opacity: 1;
+  visibility: visible;
+}
+
 .dock-item::after {
   content: '';
   position: absolute;
