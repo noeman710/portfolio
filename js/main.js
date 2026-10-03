@@ -371,6 +371,27 @@ const filesystem = {
       },
     },
   },
+  'roux': {
+    type: 'file', kind: 'case-study', title: 'Roux.case', parent: 'work',
+    data: {
+      title: 'ROUX',
+      tag: 'Brand & Web Design · Photography Studio, 2026',
+      summary: 'A visual identity and website for ROUX, a fashion, editorial, and portrait photography studio, built around the idea of concrete, light, and shadow.',
+      cover: 'assets/images/projects/roux-cover.jpg',
+      body: [
+        'ROUX is a photography studio focused on fashion, editorials, portraits, and campaigns, built for people, brands, and stories that deserve to be seen. I developed the digital presentation under a \\u2018Concrete Light Shadow\\u2019 direction, raw texture and hard contrast carried through the typography and layout so the site feels as considered as the photography itself.',
+        'Rather than organising the site around service categories, I structured it around the people actually browsing it: clients who need to discover the work quickly, understand the studio\\u2019s visual style, and decide whether ROUX is the right creative partner. A persona-driven flow, anchored around a fictional client profile, guided how the imagery and pacing were sequenced across the page.',
+        'Large, confident type carries attitude without competing with the photography, while smaller supporting details give each story its context, letting the imagery stay the hero throughout the fashion, editorial, portrait, and campaign sections.',
+        'Worked on this collaboratively with my friend Kari.',
+      ],
+      role: 'Brand & Web Design (with Kari)',
+      duration: 'Collaborative Project, 2026',
+      scope: 'Visual Identity & Responsive Web',
+      links: {
+        behance: 'https://www.behance.net/gallery/256328111/ROUX-A-Visual-World-Built-Around-Photography',
+      },
+    },
+  },
 };
 
 const desktopIconOrder = ['work', 'about', 'photos', 'maps', 'resume', 'notes', 'mail', 'social'];
