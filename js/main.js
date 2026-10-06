@@ -143,51 +143,51 @@ const filesystem = {
   },
   'photo-01': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 1', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-01.jpg', alt: 'Iconic Pic 1' },
+    data: { src: '/assets/images/photos/photo-01.jpg', alt: 'Iconic Pic 1' },
   },
   'photo-03': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 2', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 2' },
+    data: { src: '/assets/images/photos/photo-03.jpg', alt: 'Iconic Pic 2' },
   },
   'photo-04': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 3', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 3' },
+    data: { src: '/assets/images/photos/photo-04.jpg', alt: 'Iconic Pic 3' },
   },
   'photo-05': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 4', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 4' },
+    data: { src: '/assets/images/photos/photo-05.jpg', alt: 'Iconic Pic 4' },
   },
   'photo-06': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 5', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 5' },
+    data: { src: '/assets/images/photos/photo-06.jpg', alt: 'Iconic Pic 5' },
   },
   'photo-07': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 6', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 6' },
+    data: { src: '/assets/images/photos/photo-07.jpg', alt: 'Iconic Pic 6' },
   },
   'photo-08': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 7', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 7' },
+    data: { src: '/assets/images/photos/photo-08.jpg', alt: 'Iconic Pic 7' },
   },
   'photo-09': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 8', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 8' },
+    data: { src: '/assets/images/photos/photo-09.jpg', alt: 'Iconic Pic 8' },
   },
   'photo-10': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 9', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 9' },
+    data: { src: '/assets/images/photos/photo-10.jpg', alt: 'Iconic Pic 9' },
   },
   'photo-11': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 10', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 10' },
+    data: { src: '/assets/images/photos/photo-11.jpg', alt: 'Iconic Pic 10' },
   },
   'photo-12': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 11', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 11' },
+    data: { src: '/assets/images/photos/photo-12.jpg', alt: 'Iconic Pic 11' },
   },
   'photo-13': {
     type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
-    data: { src: 'assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 12' },
+    data: { src: '/assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 12' },
   },
   'roux': {
     type: 'file', kind: 'case-study', title: 'Roux.case', parent: 'work',
@@ -195,7 +195,7 @@ const filesystem = {
       title: 'ROUX',
       tag: 'Brand & Web Design · Photography Studio, 2026',
       summary: 'A visual identity and website for ROUX, a fashion, editorial, and portrait photography studio, built around the idea of concrete, light, and shadow.',
-      cover: 'assets/images/projects/roux-cover.jpg',
+      cover: '/assets/images/projects/roux-cover.jpg',
       body: [
         'ROUX is a photography studio focused on fashion, editorials, portraits, and campaigns, built for people, brands, and stories that deserve to be seen. I developed the digital presentation under a \\u2018Concrete Light Shadow\\u2019 direction, raw texture and hard contrast carried through the typography and layout so the site feels as considered as the photography itself.',
         'Rather than organising the site around service categories, I structured it around the people actually browsing it: clients who need to discover the work quickly, understand the studio\\u2019s visual style, and decide whether ROUX is the right creative partner. A persona-driven flow, anchored around a fictional client profile, guided how the imagery and pacing were sequenced across the page.',
@@ -216,7 +216,7 @@ const filesystem = {
       title: 'Sura',
       tag: 'Landing Page · Personal Project, 2026',
       summary: 'A high-performance landing page for a fictional digital growth agency, designed to command trust through precision rather than decoration.',
-      cover: 'assets/images/projects/sura-cover.jpg',
+      cover: '/assets/images/projects/sura-cover.jpg',
       body: [
         'Most agencies talk about marketing, but Sura needed to feel like infrastructure. I approached the interface as a high-performance machine, pairing an obsidian-tech aesthetic with data-driven layouts so the design earns trust through clarity and precision rather than asking for it.',
         'Every engine starts with one idea. Before opening any software, I sketched and analysed Sura\u2019s core goals on paper, then moved from rough sketch to a high-fidelity mockup, making sure the final design was a fully engineered solution rather than just visual polish.',
@@ -236,7 +236,7 @@ const filesystem = {
       title: 'FinderrLink',
       tag: 'SaaS Platform · Mediassive, 2026',
       summary: 'An intelligent SaaS platform connecting freelancers, enterprises, and agencies for hiring, collaboration, and mission matching, built around a native AI assistant.',
-      cover: 'assets/images/projects/finderrlink-cover.jpg',
+      cover: '/assets/images/projects/finderrlink-cover.jpg',
       body: [
         'Designed the complete platform end to end across three user roles (freelancer, enterprise, agency), including the freelancer dashboard, mission board, hiring and company cards, KPI widgets, and profile pages.',
         'Built a floating AI assistant into the experience that helps freelancers surface matching missions and helps enterprises write and publish missions in seconds, cutting mission creation down to under 30 seconds.',
@@ -258,7 +258,7 @@ const filesystem = {
       title: 'FinderrLink Brand Guidelines',
       tag: 'Brand Identity · Mediassive, 2026',
       summary: 'The complete brand identity system for FinderrLink, from purpose and personality through to logo construction, color, typography, and real-world mockups.',
-      cover: 'assets/images/projects/finderrlink-brand-cover.jpg',
+      cover: '/assets/images/projects/finderrlink-brand-cover.jpg',
       body: [
         'Built the FinderrLink brand from its foundations up: mission, vision, and purpose, four brand values (Trust, Simplicity, Innovation, Professionalism, Growth), and a defined personality (confident, approachable, minimalist) that\u2019s calm under pressure but always moving fast.',
         'Defined a precise tone of voice and messaging pillars, including a preferred and avoided vocabulary, so every touchpoint from product copy to social captions sounds like the same brand.',
@@ -277,7 +277,7 @@ const filesystem = {
       title: 'Centre ORL Tanger',
       tag: 'Web Platform · Freelance, 2026',
       summary: 'A booking and consultation site for a specialist ENT (ear, nose, and throat) clinic in Tangier, built bilingual (French/Arabic) for a local patient base.',
-      cover: 'assets/images/projects/entclinic-cover.jpg',
+      cover: '/assets/images/projects/entclinic-cover.jpg',
       body: [
         'Designed a warm, trust-building homepage for Dr. Bezzari Malhi Alae\u2019s ENT practice, leading with his credentials (15+ years of experience, CNSS/AMO coverage) and a direct consultation booking form above the fold.',
         'Structured the site around real patient concerns, laid out as clear service categories such as hearing and balance, snoring and sleep apnea, pediatric ENT, and thyroid, each with matching Arabic labels for bilingual accessibility.',
@@ -297,7 +297,7 @@ const filesystem = {
       title: 'LUMA',
       tag: 'Landing Page · Personal Project, 2026',
       summary: 'A digital flagship store for LUMA, a fictional AR-eyewear brand, designed to carry the user from an emotional "wow" hero moment down to hard technical proof.',
-      cover: 'assets/images/projects/luma-cover.jpg',
+      cover: '/assets/images/projects/luma-cover.jpg',
       body: [
         'Framed the landing page as a digital flagship store rather than a simple product page, opening with an immersive hero built around the wearer and backed by real-feeling stats (market growth, unit shipments, field of view, peak brightness) to establish credibility instantly.',
         'Grounded the visual direction in human-centred research, defining the target audience and identifying the value propositions that needed to lead the story: speed, comfort, and cutting-edge technology, expressed through a dark, cinematic AR-innovation showcase and a Poppins-led type system.',
@@ -317,7 +317,7 @@ const filesystem = {
       title: 'Styla',
       tag: 'Mobile App · Personal Project, 2026',
       summary: 'A UX/UI concept for a modern fashion shopping app, designed to fix the clutter and difficulty of finding products that plague most e-commerce apps.',
-      cover: 'assets/images/projects/styla-cover.jpg',
+      cover: '/assets/images/projects/styla-cover.jpg',
       body: [
         'Started from a clear problem statement: online fashion shoppers struggle with cluttered browsing, hard-to-find products, and outdated interfaces. I set out to design a seamless, visually engaging shopping experience built around easy navigation, visual product discovery, and personalized recommendations.',
         'Followed a full user-centered process, moving through discovery and research, persona-building (goals, frustrations, tech habits), design and prototyping, then testing and iteration, so every screen was grounded in an actual user need rather than just aesthetics.',
@@ -337,7 +337,7 @@ const filesystem = {
       title: 'Aureum',
       tag: 'Web Platform · Personal Project, 2026',
       summary: 'A high-end jewelry house concept built around restraint and material presence, letting diamonds, gold, and negative space carry the luxury rather than heavy branding.',
-      cover: 'assets/images/projects/aureum-cover.jpg',
+      cover: '/assets/images/projects/aureum-cover.jpg',
       body: [
         'Designed Aureum as a digital jewelry house, opening with a cinematic "Exceptional Brilliance Awaits" hero and letting full-bleed product photography (diamond necklaces, statement earrings) do the selling instead of promotional copy.',
         'Paired an elegant serif display face with Inter for body text, and built a quiet, near-monochrome dark palette so the jewelry itself, not the interface, stayed the visual focus throughout Signature Collections and Curated Masterpieces.',
@@ -357,7 +357,7 @@ const filesystem = {
       title: 'Aetherix',
       tag: 'Landing Page · Personal Project, 2026',
       summary: 'A high-impact landing page for a premium drone brand, designed to balance aspirational, cinematic imagery with the hard technical specs serious buyers need.',
-      cover: 'assets/images/projects/aetherix-cover.jpg',
+      cover: '/assets/images/projects/aetherix-cover.jpg',
       body: [
         'The high-end drone market tends to either drown users in technical data or oversell on lifestyle imagery. I designed Aetherix around Progressive Disclosure: an emotional, high-impact hero draws the user in first, then the page gradually introduces performance data and social proof as they scroll.',
         'Structured the flow through a simplified product architecture and a value-first "Perspectives Unlocked" gallery, letting real-world use cases (filmmaking, adventure photography, exploration) build desire before any spec sheet appears.',
@@ -377,7 +377,7 @@ const filesystem = {
       title: 'ESIVO',
       tag: 'Web Platform · Collaborative Project, 2026',
       summary: 'A brand and product site for a next-generation GPU architecture company, designed to make deeply technical hardware feel as credible and precise as the engineering behind it.',
-      cover: 'assets/images/projects/esivo-cover.jpg',
+      cover: '/assets/images/projects/esivo-cover.jpg',
       body: [
         'Designed the ESIVO site around the idea that every component in the ESIVO-1 was a research paper before it was a product, translating that rigor into a confident, high-contrast red, black, and white system built for a technical, engineering-literate audience.',
         'Structured the story around ESIVO\u2019s six independent engineering systems (thermal, cooling, signal, power, compute, memory), optimized in isolation then calibrated together, and let hard performance numbers (128 TFLOPS, 2.4TB/s, 1.6TB/s optical bandwidth) carry as much visual weight as the product photography.',
@@ -403,6 +403,77 @@ const photoFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent ==
 /* Window manager                                                          */
 /* ---------------------------------------------------------------------- */
 
+/* ---------------------------------------------------------------------- */
+/* Router — gives each window a real URL so mobile back/swipe-back closes   */
+/* the window instead of leaving the site, and pages are shareable/linkable */
+/* ---------------------------------------------------------------------- */
+
+const ROUTE_APP_IDS = ['work', 'about', 'photos', 'notes', 'mail', 'maps'];
+const ROUTE_CASE_IDS = Object.keys(filesystem).filter((k) => filesystem[k].kind === 'case-study');
+
+let routeState = { app: null, case: null };
+let routerBooted = false;
+
+function routePathFor(state) {
+  if (!state || !state.app) return '/';
+  if (state.case) return '/' + state.app + '/' + state.case;
+  return '/' + state.app;
+}
+
+function parseRoutePath(pathname) {
+  const parts = pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+  if (parts.length === 0) return { app: null, case: null };
+  const [first, second] = parts;
+  if (first === 'work' && second && ROUTE_CASE_IDS.includes(second)) {
+    return { app: 'work', case: second };
+  }
+  if (ROUTE_APP_IDS.includes(first)) {
+    return { app: first, case: null };
+  }
+  return { app: null, case: null };
+}
+
+function applyRouteState(newState) {
+  const old = routeState;
+  if (old.case && old.case !== newState.case) {
+    WM.close('case-viewer', true);
+  }
+  if (old.app && old.app !== newState.app) {
+    WM.close(old.app, true);
+  }
+  if (newState.app && newState.app !== old.app) {
+    WM.open(newState.app, null, true);
+  }
+  if (newState.case && newState.case !== old.case) {
+    WM.openCaseStudy(newState.case, true);
+  }
+  routeState = newState;
+}
+
+function routeNavigate(appId, caseId) {
+  const newState = { app: appId || null, case: caseId || null };
+  const path = routePathFor(newState);
+  if (routePathFor(routeState) === path) { routeState = newState; return; }
+  history.pushState(newState, '', path);
+  routeState = newState;
+}
+
+function initRouter() {
+  const initial = parseRoutePath(window.location.pathname);
+  history.replaceState({ app: null, case: null }, '', '/');
+  routerBooted = true;
+  if (initial.app) {
+    const path = routePathFor(initial);
+    history.pushState(initial, '', path);
+    applyRouteState(initial);
+  }
+
+  window.addEventListener('popstate', (e) => {
+    const state = e.state || { app: null, case: null };
+    applyRouteState(state);
+  });
+}
+
 const WM = {
   zCounter: 100,
   openWindows: new Set(),
@@ -412,7 +483,7 @@ const WM = {
     return document.getElementById('win-' + id);
   },
 
-  open(id, triggerEl) {
+  open(id, triggerEl, skipHistory) {
     const entry = filesystem[id];
     if (!entry) return;
 
@@ -421,7 +492,7 @@ const WM = {
       return;
     }
     if (entry.kind === 'case-study') {
-      this.openCaseStudy(id);
+      this.openCaseStudy(id, skipHistory);
       return;
     }
     if (entry.kind === 'photo') {
@@ -430,6 +501,10 @@ const WM = {
     }
     if (entry.kind === 'maps') {
       ensureTangierMap();
+    }
+
+    if (!skipHistory && routerBooted && ROUTE_APP_IDS.includes(id)) {
+      routeNavigate(id, null);
     }
 
     const el = this.getWindowEl(id);
@@ -454,10 +529,17 @@ const WM = {
     if (firstField) setTimeout(() => firstField.focus(), 60);
   },
 
-  openCaseStudy(id) {
+  openCaseStudy(id, skipHistory) {
     const data = filesystem[id].data;
     const el = document.getElementById('win-case-viewer');
     if (!el) return;
+
+    if (!skipHistory && routerBooted) {
+      routeNavigate('work', id);
+    }
+    if (!this.openWindows.has('work')) {
+      this.open('work', null, true);
+    }
 
     el.querySelector('.case-title').textContent = data.title;
     el.querySelector('.case-tag').textContent = data.tag;
@@ -506,7 +588,16 @@ const WM = {
     });
   },
 
-  close(id) {
+  close(id, skipHistory) {
+    if (!skipHistory && routerBooted && (ROUTE_APP_IDS.includes(id) || id === 'case-viewer')) {
+      const isCurrentRoute = (id === 'case-viewer' && routeState.case) ||
+        (id === routeState.app && !routeState.case);
+      if (isCurrentRoute && history.state && (history.state.app || history.state.case)) {
+        history.back();
+        return;
+      }
+    }
+
     const el = this.getWindowEl(id);
     if (!el) return;
     el.classList.remove('is-animated-in');
@@ -991,7 +1082,7 @@ function ensureTangierMap() {
     <div class="maps-pin-marker">
       <span class="maps-pin-pulse"></span>
       <span class="maps-pin-pulse maps-pin-pulse-delay"></span>
-      <img class="maps-pin-avatar" src="assets/images/portrait.jpg" alt="Noemane El Afia" title="Noemane El Afia — UX/UI Designer, Tangier, Morocco">
+      <img class="maps-pin-avatar" src="/assets/images/portrait.jpg" alt="Noemane El Afia" title="Noemane El Afia — UX/UI Designer, Tangier, Morocco">
     </div>
   `;
 
@@ -1115,12 +1206,12 @@ function initQuoteWidget() {
 /* ---------------------------------------------------------------------- */
 
 const musicTracks = [
-  { title: 'Fullmetal Alchemist: Brotherhood', artist: 'Opening Theme', src: 'assets/audio/track-06.mp3' },
-  { title: 'Passionate Spectrum', artist: 'The Seven Deadly Sins — OP1', src: 'assets/audio/track-01.mp3' },
-  { title: 'D-tecnoLife', artist: 'UVERworld — Bleach OP2', src: 'assets/audio/track-02.mp3' },
-  { title: 'Asterisk', artist: 'ORANGE RANGE — Bleach OP1', src: 'assets/audio/track-03.mp3' },
-  { title: 'Unravel', artist: 'TK from Ling tosite sigure — Tokyo Ghoul OP', src: 'assets/audio/track-04.mp3' },
-  { title: 'ALONES', artist: 'Aqua Timez — Bleach OP', src: 'assets/audio/track-05.mp3' },
+  { title: 'Fullmetal Alchemist: Brotherhood', artist: 'Opening Theme', src: '/assets/audio/track-06.mp3' },
+  { title: 'Passionate Spectrum', artist: 'The Seven Deadly Sins — OP1', src: '/assets/audio/track-01.mp3' },
+  { title: 'D-tecnoLife', artist: 'UVERworld — Bleach OP2', src: '/assets/audio/track-02.mp3' },
+  { title: 'Asterisk', artist: 'ORANGE RANGE — Bleach OP1', src: '/assets/audio/track-03.mp3' },
+  { title: 'Unravel', artist: 'TK from Ling tosite sigure — Tokyo Ghoul OP', src: '/assets/audio/track-04.mp3' },
+  { title: 'ALONES', artist: 'Aqua Timez — Bleach OP', src: '/assets/audio/track-05.mp3' },
 ];
 
 const playIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M8 5.5v13l11-6.5z"/></svg>';
@@ -1344,6 +1435,7 @@ function bootApp() {
   safe(renderFinder, 'renderFinder');
   safe(renderPhotosGrid, 'renderPhotosGrid');
   safe(initLightbox, 'initLightbox');
+  safe(initRouter, 'initRouter');
   safe(initTriggers, 'initTriggers');
   safe(initDragging, 'initDragging');
   safe(initWindowResize, 'initWindowResize');
