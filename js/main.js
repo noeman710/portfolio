@@ -86,6 +86,30 @@ const Sound = (() => {
     open() { tone({ freq: 380, glideTo: 640, duration: 0.14, type: 'sine', gain: 0.2 }); },
     close() { tone({ freq: 460, glideTo: 220, duration: 0.13, type: 'sine', gain: 0.16 }); },
     click() { tone({ freq: 880, duration: 0.05, type: 'sine', gain: 0.1 }); },
+    // Gravity mode: physical hit sounds. strength 0..1, kind = icon | card | widget | window
+    impact(kind, strength = 0.5, bump = false) {
+      const s = Math.max(0.05, Math.min(1, strength));
+      const j = 0.9 + Math.random() * 0.25; // slight pitch variation so it never sounds looped
+      if (kind === 'window') {
+        tone({ freq: 120 * j, glideTo: 42, duration: 0.28, type: 'sine', gain: 0.5 * s });
+        noiseBurst({ duration: 0.12, gain: 0.22 * s, filterFreq: 500 });
+      } else if (kind === 'widget') {
+        tone({ freq: 200 * j, glideTo: 70, duration: 0.17, type: 'sine', gain: 0.4 * s });
+        noiseBurst({ duration: 0.06, gain: 0.16 * s, filterFreq: 1400 });
+      } else if (kind === 'card') {
+        tone({ freq: 340 * j, glideTo: 130, duration: 0.09, type: 'triangle', gain: 0.28 * s });
+        noiseBurst({ duration: 0.035, gain: 0.1 * s, filterFreq: 3000 });
+      } else {
+        tone({ freq: 260 * j, glideTo: 90, duration: 0.12, type: 'sine', gain: 0.34 * s });
+        noiseBurst({ duration: 0.045, gain: 0.13 * s, filterFreq: 2200 });
+      }
+      if (bump) tone({ freq: 1300 * j, duration: 0.03, type: 'square', gain: 0.03 * s }); // object-on-object tick
+    },
+    gravityOn() {
+      tone({ freq: 700, glideTo: 90, duration: 0.55, type: 'sawtooth', gain: 0.07 });
+      noiseBurst({ duration: 0.5, gain: 0.07, filterFreq: 900 });
+    },
+    gravityOff() { tone({ freq: 160, glideTo: 820, duration: 0.6, type: 'sine', gain: 0.14 }); },
     hover() { tone({ freq: 1500, duration: 0.025, type: 'sine', gain: 0.035 }); },
     coffee() {
       tone({ freq: 320, glideTo: 210, duration: 0.11, type: 'triangle', gain: 0.18 });
@@ -104,6 +128,7 @@ function initGravity() {
     if (on === !!g) return;
     btn.setAttribute('aria-checked', on ? 'true' : 'false');
     desk.classList.toggle('gravity-on', on);
+    Sound.resume(); if (on) Sound.gravityOn(); else Sound.gravityOff();
     if (on) { g = window.startGravity(desk); }
     else { const cur = g; g = null; cur.stop(); }
   };

@@ -50,6 +50,35 @@ function startGravity(desk) {
 
     const tracked = new Set();
 
+    // ---- collision sounds ----
+    const kindOf = (el) => el.classList.contains('os-window') ? 'window'
+      : el.classList.contains('widget') ? 'widget'
+      : el.classList.contains('finder-file') ? 'card' : 'icon';
+    const owner = new Map(); // matter body -> element
+    let lastHit = 0;
+    const lastBody = new WeakMap();
+    function hookSounds(eng) {
+      Matter.Events.on(eng, 'collisionStart', (ev) => {
+        if (typeof Sound === 'undefined' || stopped) return;
+        const now = performance.now();
+        if (now - lastHit < 55) return; // keep it from turning into noise
+        for (const pair of ev.pairs) {
+          const a = pair.bodyA, b = pair.bodyB;
+          const speed = Math.hypot(a.velocity.x - b.velocity.x, a.velocity.y - b.velocity.y);
+          if (speed < 1.6) continue;
+          const dyn = [a, b].filter((x) => owner.has(x));
+          if (!dyn.length) continue;
+          const body = dyn.reduce((p, c) => (c.mass > p.mass ? c : p));
+          if (now - (lastBody.get(body) || 0) < 140) continue;
+          lastBody.set(body, now);
+          lastHit = now;
+          Sound.impact(kindOf(owner.get(body)), Math.min(1, speed / 14), dyn.length === 2);
+          break;
+        }
+      });
+    }
+    hookSounds(engine);
+
     function addItem(el) {
       if (tracked.has(el)) return;
       tracked.add(el);
@@ -72,6 +101,7 @@ function startGravity(desk) {
       Body.setVelocity(body, { x: (Math.random() - 0.5) * 2, y: 0 });
       el.style.willChange = 'transform';
       Composite.add(engine.world, body);
+      owner.set(body, el);
       const it = { el, body, cx, cy, off: null };
       items.push(it);
 
@@ -188,12 +218,14 @@ function startGravity(desk) {
         });
         Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.06);
         Composite.add(eng.world, body);
+        owner.set(body, k);
         k.style.willChange = 'transform';
         const kit = { el: k, body, cx: kr.left - br.left + kr.width / 2, cy: kr.top - br.top + kr.height / 2, kid: true };
         kit.cleanup = attachGrab(k, body, eng, toLocal, () => true, null);
         items.push(kit);
         return kit;
       });
+      hookSounds(eng);
       return { eng, bodyEl, subItems };
     }
 
