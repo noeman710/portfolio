@@ -431,9 +431,22 @@
     const a = e.target.closest('.trash-act');
     if (a && !a.disabled) { snd('click'); a.dataset.act === 'empty' ? emptyFlow() : restoreAll(); }
   });
+  const PKEY = 'icon_trash_pos';
+  let lastPos = null; // where the user last left the Trash window
+  try { lastPos = JSON.parse(sessionStorage.getItem(PKEY) || 'null'); } catch (e) {}
+  function placePanel() {
+    if (window.matchMedia('(max-width: 760px)').matches) return; // phones use a bottom sheet
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    let x = (innerWidth - w) / 2, y = (innerHeight - h) / 2; // default: centre of the screen
+    if (lastPos) { x = lastPos.x; y = lastPos.y; }
+    x = Math.max(0, Math.min(innerWidth - Math.min(w, 120), x));
+    y = Math.max(28, Math.min(innerHeight - 60, y));
+    Object.assign(panel.style, { left: x + 'px', top: y + 'px', right: 'auto', bottom: 'auto' });
+  }
   function openPanel() {
     renderPanel();
     panel.hidden = false;
+    placePanel();
     requestAnimationFrame(() => panel.classList.add('is-in'));
     if (typeof WM !== 'undefined' && WM.focus) { /* keep above windows via z-index */ }
   }
@@ -460,7 +473,14 @@
       panel.style.top = Math.max(28, Math.min(innerHeight - 60, e.clientY - d.y)) + 'px';
       panel.style.right = 'auto'; panel.style.bottom = 'auto';
     });
-    ['pointerup', 'pointercancel'].forEach((ev) => bar.addEventListener(ev, () => { d = null; }));
+    ['pointerup', 'pointercancel'].forEach((ev) => bar.addEventListener(ev, () => {
+      if (d) {
+        const r = panel.getBoundingClientRect();
+        lastPos = { x: r.left, y: r.top };
+        try { sessionStorage.setItem(PKEY, JSON.stringify(lastPos)); } catch (e) {}
+      }
+      d = null;
+    }));
   })();
 
   persist();
