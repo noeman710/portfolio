@@ -1646,3 +1646,11 @@ a.desktop-icon, a.ios-app {
   .trash-panel { left: 12px !important; right: 12px !important; bottom: 24px !important; top: auto !important; width: auto; max-width: none; z-index: 6500; }
   .ctx-item { padding: 11px 12px; font-size: .95rem; }
 }
+
+/* drag an item onto the Trash */
+body.is-trash-dragging, body.is-trash-dragging * { user-select: none; cursor: grabbing !important; }
+.trash-pending { opacity: .35; }
+.trash-ghost { filter: drop-shadow(0 12px 18px rgba(0,0,0,.5)); }
+#trash-dock { transition: transform .15s var(--ease); }
+#trash-dock.is-hot { transform: scale(1.35) translateY(-8px) !important; }
+#trash-dock.is-hot .icon-glyph { filter: drop-shadow(0 0 10px rgba(255,69,58,.8)); }

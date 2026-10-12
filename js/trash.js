@@ -152,6 +152,87 @@
     if (t && t.__swallow) { e.stopImmediatePropagation(); e.preventDefault(); t.__swallow = false; }
   }, true);
 
+  /* ---------- drag an item onto the Trash ---------- */
+  let dnd = null; // {t, d, sx, sy, started, ghost, hot}
+  const dropZone = () => {
+    const b = document.getElementById('trash-dock');
+    if (!b) return null;
+    const r = b.getBoundingClientRect();
+    return r.width ? { l: r.left - 26, r: r.right + 26, t: r.top - 30, b: r.bottom + 20, cx: r.left + r.width / 2, cy: r.top + r.height / 2 } : null;
+  };
+  document.addEventListener('pointerdown', (e) => {
+    if (e.button > 0 || e.pointerType === 'touch' || desk.classList.contains('gravity-on') || busy) return;
+    const t = targetOf(e);
+    if (!t || t.closest('.ios-shell')) return;
+    if (t.matches('.widget') && e.target.closest('button, a, input, .music-progress')) return;
+    const d = describe(t);
+    if (!d) return;
+    dnd = { t, d, sx: e.clientX, sy: e.clientY, started: false };
+  }, true);
+  document.addEventListener('pointermove', (e) => {
+    if (!dnd) return;
+    if (!dnd.started) {
+      if (Math.hypot(e.clientX - dnd.sx, e.clientY - dnd.sy) < 10) return;
+      if (hold) { clearTimeout(hold.timer); hold = null; }
+      closeMenu();
+      const t = dnd.t;
+      const r = t.getBoundingClientRect();
+      const g = t.cloneNode(true);
+      g.removeAttribute('id');
+      g.classList.add('trash-ghost');
+      Object.assign(g.style, { position: 'fixed', left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', margin: '0', zIndex: 5000, pointerEvents: 'none', transition: 'none' });
+      document.body.appendChild(g);
+      dnd.ghost = g; dnd.ox = dnd.sx - r.left; dnd.oy = dnd.sy - r.top; dnd.r = r;
+      dnd.started = true;
+      t.classList.add('trash-pending');
+      document.body.classList.add('is-trash-dragging');
+      closeMenu();
+    }
+    const g = dnd.ghost;
+    const dx = e.clientX - dnd.sx, dy = e.clientY - dnd.sy;
+    const z = dropZone();
+    const hot = !!z && e.clientX > z.l && e.clientX < z.r && e.clientY > z.t && e.clientY < z.b;
+    g.style.transform = `translate(${dx}px, ${dy}px) rotate(${Math.max(-8, Math.min(8, dx / 40))}deg) scale(${hot ? 0.7 : 1.04})`;
+    if (hot !== dnd.hot) {
+      dnd.hot = hot;
+      const b = document.getElementById('trash-dock');
+      if (b) b.classList.toggle('is-hot', hot);
+      if (hot) snd('hover');
+    }
+  }, true);
+  document.addEventListener('dragstart', (e) => { if (dnd) e.preventDefault(); }, true);
+  document.addEventListener('selectstart', (e) => { if (dnd) e.preventDefault(); }, true);
+  function endDnd(e, cancelled) {
+    if (!dnd) return;
+    const s = dnd; dnd = null;
+    if (!s.started) return;
+    document.body.classList.remove('is-trash-dragging');
+    const b = document.getElementById('trash-dock');
+    if (b) b.classList.remove('is-hot');
+    s.t.__swallow = true;
+    setTimeout(() => { s.t.__swallow = false; }, 80);
+    const g = s.ghost;
+    const z = dropZone();
+    if (!cancelled && s.hot && z) {
+      // swallowed by the Trash, then the usual "removing…" loader
+      const dx = z.cx - (s.r.left + s.r.width / 2), dy = z.cy - (s.r.top + s.r.height / 2);
+      g.style.transition = 'transform .28s cubic-bezier(.5,0,.8,.4), opacity .28s ease-in';
+      g.style.transform = `translate(${dx}px, ${dy}px) scale(.1) rotate(16deg)`;
+      g.style.opacity = '0';
+      setTimeout(() => g.remove(), 300);
+      removeFlow(s.t, s.d, { dropped: true });
+    } else {
+      // not over the Trash: spring back
+      g.style.transition = 'transform .3s cubic-bezier(.2,.9,.3,1.2), opacity .3s';
+      g.style.transform = 'translate(0,0) rotate(0) scale(1)';
+      g.style.opacity = '0.4';
+      setTimeout(() => { g.remove(); s.t.classList.remove('trash-pending'); }, 320);
+    }
+  }
+  document.addEventListener('pointerup', (e) => endDnd(e, false), true);
+  document.addEventListener('pointercancel', (e) => endDnd(e, true), true);
+  addEventListener('blur', () => endDnd(null, true));
+
   /* ---------- the loader ---------- */
   const loader = document.createElement('div');
   loader.className = 'rm-loader';
@@ -227,7 +308,7 @@
     g.style.opacity = '0.2';
     return new Promise((res) => setTimeout(() => { g.remove(); res(); }, 680));
   }
-  async function removeFlow(el, d) {
+  async function removeFlow(el, d, opt) {
     if (busy) return;
     busy = true;
     const isApp = d.kind === 'app';
@@ -242,9 +323,10 @@
     snd('open');
     await runLoader({ title, steps, ms: 1500 + Math.random() * 900, icon: d.icon || (d.kind === 'widget' ? '<span class="rm-widget-glyph"></span>' : '') });
     closeWindowsFor(d);
-    await flyToTrash(el);
+    if (!(opt && opt.dropped)) await flyToTrash(el);
     if (!trashed.some((t) => t.id === d.id)) trashed.push({ id: d.id, kind: d.kind, label: d.label, sel: d.sel, icon: d.icon });
     persist();
+    el.classList.remove('trash-pending');
     snd('impact', 'card', 0.7);
     bounceTrash();
     busy = false;
