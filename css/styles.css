@@ -1584,8 +1584,8 @@ a.desktop-icon, a.ios-app {
    Trash, context menu, remove loader
    ========================================================================== */
 .icon-glyph.trash { background: transparent url("../icons/Trash%20Empty.png") center / contain no-repeat; }
-#trash-dock.is-full .icon-glyph.trash { background-image: url("../icons/Trash%20Full.png"); }
-#trash-dock.is-bounce .icon-glyph { animation: trashBounce .6s var(--ease); }
+#trash-dock.is-full .icon-glyph.trash, #trash-ios.is-full .icon-glyph.trash { background-image: url("../icons/Trash%20Full.png"); }
+#trash-dock.is-bounce .icon-glyph, #trash-ios.is-bounce .icon-glyph { animation: trashBounce .6s var(--ease); }
 @keyframes trashBounce { 0%{transform:scale(1)} 25%{transform:scale(1.28) rotate(-8deg)} 55%{transform:scale(.92) rotate(5deg)} 100%{transform:scale(1)} }
 .trash-badge { position: absolute; top: -4px; right: -4px; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px; background: #ff453a; color: #fff; font-size: 0.65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 4px rgba(0,0,0,.4); z-index: 2; }
 .trash-badge[hidden] { display: none; }
@@ -1638,4 +1638,11 @@ a.desktop-icon, a.ios-app {
 .trash-toast.is-in { opacity: 1; transform: translate(-50%, 0); }
 .restored-pop { animation: restoredPop .6s var(--ease); }
 @keyframes restoredPop { 0% { transform: scale(.2); opacity: 0; } 60% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
-@media (max-width: 760px) { #trash-dock, .dock-sep { display: none; } }
+#trash-ios { position: relative; }
+#trash-ios .trash-badge { top: 0; right: 8px; }
+.ios-app, .ios-dock-item, .ios-shell .widget, .desktop-icon, .dock-item { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+@media (max-width: 760px) {
+  #trash-dock, .dock-sep { display: none; }
+  .trash-panel { left: 12px !important; right: 12px !important; bottom: 24px !important; top: auto !important; width: auto; max-width: none; z-index: 6500; }
+  .ctx-item { padding: 11px 12px; font-size: .95rem; }
+}

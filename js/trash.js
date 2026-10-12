@@ -4,7 +4,7 @@
    Everything lives in sessionStorage, so a page refresh brings it all back. */
 (function () {
   const desk = document.querySelector('.desktop');
-  if (!desk || window.matchMedia('(max-width: 760px)').matches) return;
+  if (!desk) return;
 
   const KEY = 'icon_trash_session';
   let trashed = []; // {id, kind, label, sel, icon}
@@ -35,8 +35,7 @@
 
   /* ---------- what is removable ---------- */
   function describe(el) {
-    if (el.closest('.ios-shell')) return null;
-    const label = (el.getAttribute('aria-label') || (el.querySelector('.file-label, .desktop-icon-label, .icon-label, span:last-child') || el).textContent || '').trim().replace(/\s+/g, ' ');
+    const label = (el.getAttribute('aria-label') || (el.querySelector('.file-label, .ios-app-label, .desktop-icon-label, .icon-label, span:last-child') || el).textContent || '').trim().replace(/\s+/g, ' ');
     const iconEl = el.querySelector('.icon-glyph');
     const icon = iconEl ? iconEl.outerHTML : '';
     if (el.matches('.finder-file')) {
@@ -44,13 +43,13 @@
       return { kind: photo ? 'image' : 'project', id: (photo ? 'img:' : 'proj:') + el.dataset.open, label: (el.querySelector('.file-label') || el).textContent.trim() || label,
         sel: `.finder-file[data-open="${el.dataset.open}"]`, icon, open: true };
     }
-    if (el.matches('.dock-item[data-open], .desktop-icon[data-open]')) {
+    if (el.matches('.dock-item[data-open], .desktop-icon[data-open], .ios-app[data-open], .ios-dock-item[data-open]')) {
       const k = el.dataset.open;
-      return { kind: 'app', id: 'app:' + k, label, sel: `:is(.desktop-icon,.dock-item,.ios-app)[data-open="${k}"]`, icon, open: true };
+      return { kind: 'app', id: 'app:' + k, label, sel: `:is(.desktop-icon,.dock-item,.ios-app,.ios-dock-item)[data-open="${k}"]`, icon, open: true };
     }
-    if (el.matches('a.desktop-icon')) {
+    if (el.matches('a.desktop-icon, a.ios-app')) {
       const h = el.getAttribute('href');
-      return { kind: 'app', id: 'app:' + h, label, sel: `a.desktop-icon[href="${h}"]`, icon, open: true };
+      return { kind: 'app', id: 'app:' + h, label, sel: `a.desktop-icon[href="${h}"],a.ios-app[href="${h}"]`, icon, open: true };
     }
     if (el.matches('.widget')) {
       const c = Array.from(el.classList).find((x) => x.startsWith('widget-'));
@@ -60,10 +59,10 @@
     }
     return null;
   }
-  const TARGETS = '.finder-file, .dock-item[data-open], .desktop-icon, .widget';
+  const TARGETS = '.finder-file, .dock-item[data-open], .desktop-icon, .widget, .ios-app[data-open], a.ios-app, .ios-dock-item[data-open]';
   function targetOf(e) {
     const t = e.target.closest && e.target.closest(TARGETS);
-    return t && !t.closest('.ios-shell') ? t : null;
+    return t || null;
   }
 
   /* ---------- context menu ---------- */
@@ -74,18 +73,21 @@
   document.body.appendChild(menu);
   const TRASH_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+  let openedAt = 0;
   function closeMenu() { menu.hidden = true; menu.innerHTML = ''; }
   function openMenu(x, y, rows) {
     menu.innerHTML = rows.map((r, i) => r === '-' ? '<div class="ctx-sep"></div>'
       : r.head ? `<div class="ctx-head">${esc(r.head)}</div>`
       : `<button class="ctx-item${r.danger ? ' is-danger' : ''}" data-i="${i}" role="menuitem"${r.disabled ? ' disabled' : ''}>${r.icon || ''}<span>${esc(r.text)}</span></button>`).join('');
     menu.hidden = false;
+    openedAt = performance.now();
     const w = menu.offsetWidth, h = menu.offsetHeight;
     menu.style.left = Math.max(6, Math.min(x, innerWidth - w - 6)) + 'px';
     menu.style.top = Math.max(6, Math.min(y, innerHeight - h - 6)) + 'px';
     menu.onclick = (e) => {
       const b = e.target.closest('.ctx-item');
       if (!b || b.disabled) return;
+      if (performance.now() - openedAt < 400) return; // the finger that held may still be lifting
       const r = rows[+b.dataset.i];
       closeMenu();
       snd('click');
@@ -121,7 +123,7 @@
     const t = targetOf(e);
     if (t && describe(t)) { e.preventDefault(); openMenu(e.clientX, e.clientY, rowsFor(t)); return; }
     // empty desktop area (not over a window / the menu bar / the dock)
-    if (e.target.closest('.os-window, .menu-bar, .dock, .overlay, .welcome-overlay, .lightbox, input, textarea')) return;
+    if (e.target.closest('.os-window, .menu-bar, .dock, .ios-shell, .overlay, .welcome-overlay, .lightbox, input, textarea')) return;
     if (e.target.closest('.desktop')) { e.preventDefault(); openMenu(e.clientX, e.clientY, rowsForDesk()); }
   });
 
@@ -135,7 +137,7 @@
     hold = { t, sx, sy, timer: setTimeout(() => {
       hold.fired = true;
       t.__swallow = true;
-      openMenu(sx, sy, rowsFor(t));
+      openMenu(sx + 8, sy + 16, rowsFor(t));
     }, 650) };
   }, true);
   document.addEventListener('pointermove', (e) => {
@@ -208,7 +210,7 @@
     } catch (e) {}
   }
   function flyToTrash(el) {
-    const dest = document.getElementById('trash-dock');
+    const dest = [document.getElementById('trash-dock'), document.getElementById('trash-ios')].find((d) => d && d.getBoundingClientRect().width);
     const r = el.getBoundingClientRect();
     if (!dest || !r.width) return Promise.resolve();
     const g = el.cloneNode(true);
@@ -289,20 +291,19 @@
   window.Trash.isHidden = (el) => { try { return origHidden(el) || (permanent.length && el.matches(permanent.join(','))); } catch (e) { return false; } };
 
   /* ---------- dock icon ---------- */
-  const trashBtn = document.getElementById('trash-dock');
+  const trashBtns = [document.getElementById('trash-dock'), document.getElementById('trash-ios')].filter(Boolean);
+  const trashBtn = trashBtns[0];
   function updateTrashIcon() {
-    if (!trashBtn) return;
-    trashBtn.classList.toggle('is-full', trashed.length > 0);
-    const badge = trashBtn.querySelector('.trash-badge');
-    if (badge) { badge.textContent = trashed.length; badge.hidden = !trashed.length; }
+    trashBtns.forEach((b) => {
+      b.classList.toggle('is-full', trashed.length > 0);
+      const badge = b.querySelector('.trash-badge');
+      if (badge) { badge.textContent = trashed.length; badge.hidden = !trashed.length; }
+    });
   }
   function bounceTrash() {
-    if (!trashBtn) return;
-    trashBtn.classList.remove('is-bounce');
-    void trashBtn.offsetWidth;
-    trashBtn.classList.add('is-bounce');
+    trashBtns.forEach((b) => { b.classList.remove('is-bounce'); void b.offsetWidth; b.classList.add('is-bounce'); });
   }
-  if (trashBtn) trashBtn.addEventListener('click', () => { snd('open'); togglePanel(); });
+  trashBtns.forEach((b) => b.addEventListener('click', () => { snd('open'); togglePanel(); }));
 
   /* ---------- toast ---------- */
   function toast(text) {
