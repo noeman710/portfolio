@@ -251,8 +251,10 @@ img { display: block; max-width: 100%; }
   font: inherit; font-size: 0.8rem; padding: 2px 8px; border-radius: 6px;
 }
 .menu-gravity-btn:hover { opacity: 1; }
-.menu-gravity-btn[aria-pressed="true"] { opacity: 1; border-color: currentColor; background: rgba(255,255,255,0.1); }
-.menu-gravity-btn[aria-pressed="true"] svg { transform: rotate(0deg); }
+.g-switch { width: 28px; height: 16px; border-radius: 999px; background: rgba(255,255,255,0.22); position: relative; transition: background .2s; flex: none; }
+.g-switch i { position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.menu-gravity-btn[aria-checked="true"] .g-switch { background: var(--accent, #34c759); }
+.menu-gravity-btn[aria-checked="true"] .g-switch i { transform: translateX(12px); }
 .desktop.gravity-on .desktop-icon, .desktop.gravity-on .widget { cursor: grab; touch-action: none; }
 .desktop.gravity-on .desktop-icon.is-grabbed, .desktop.gravity-on .widget.is-grabbed { cursor: grabbing; z-index: 30; }
 .desktop.gravity-on .desktop-icon:hover { background: none; }

@@ -102,7 +102,7 @@ function initGravity() {
   let g = null;
   const set = (on) => {
     if (on === !!g) return;
-    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.setAttribute('aria-checked', on ? 'true' : 'false');
     desk.classList.toggle('gravity-on', on);
     if (on) { g = window.startGravity(desk); }
     else { const cur = g; g = null; cur.stop(); }
