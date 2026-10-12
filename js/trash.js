@@ -332,7 +332,7 @@
   function renderPanel() {
     if (!listEl) return;
     if (!trashed.length) {
-      listEl.innerHTML = '<div class="trash-empty"><svg viewBox="0 0 24 24" width="44" height="44" fill="none"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Trash is empty</p><small>Right-click (or press and hold) any app, project or image to remove it.</small></div>';
+      listEl.innerHTML = '<div class="trash-empty"><img src="/icons/Trash%20Empty.png" width="56" height="56" alt=""><p>Trash is empty</p><small>Right-click (or press and hold) any app, project or image to remove it.</small></div>';
     } else {
       listEl.innerHTML = trashed.map((t) => `<div class="trash-row">
         <span class="trash-thumb">${t.icon || '<span class="trash-widget-glyph"></span>'}</span>

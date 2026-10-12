@@ -1583,10 +1583,8 @@ a.desktop-icon, a.ios-app {
 /* ==========================================================================
    Trash, context menu, remove loader
    ========================================================================== */
-.icon-glyph.trash { background: none; }
-.icon-glyph.trash svg { display: block; width: 44px; height: 44px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.4)); }
-.icon-glyph.trash .trash-paper { opacity: 0; transform: translateY(5px); transition: opacity .2s, transform .2s; }
-#trash-dock.is-full .trash-paper { opacity: 1; transform: none; }
+.icon-glyph.trash { background: transparent url("../icons/Trash%20Empty.png") center / contain no-repeat; }
+#trash-dock.is-full .icon-glyph.trash { background-image: url("../icons/Trash%20Full.png"); }
 #trash-dock.is-bounce .icon-glyph { animation: trashBounce .6s var(--ease); }
 @keyframes trashBounce { 0%{transform:scale(1)} 25%{transform:scale(1.28) rotate(-8deg)} 55%{transform:scale(.92) rotate(5deg)} 100%{transform:scale(1)} }
 .trash-badge { position: absolute; top: -4px; right: -4px; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px; background: #ff453a; color: #fff; font-size: 0.65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 4px rgba(0,0,0,.4); z-index: 2; }
