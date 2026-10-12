@@ -75,42 +75,52 @@ function startGravity(desk) {
       const it = { el, body, cx, cy, off: null };
       items.push(it);
 
-      // ---- grab & throw (windows are grabbed by their title bar) ----
-      let drag = null;
+      const toLocal = (e) => {
+        const d = desk.getBoundingClientRect();
+        return { x: e.clientX - d.left, y: e.clientY - d.top };
+      };
       const grabbable = (e) => {
         if (isWin) return !!e.target.closest('.window-titlebar') && !e.target.closest('.traffic-lights');
         return !(isWidget && e.target.closest('button, a, input, .music-progress'));
       };
+      it.cleanup = attachGrab(el, body, engine, toLocal, grabbable, () => {
+        if (isWin && typeof WM !== 'undefined') WM.focus(el.id.replace('win-', ''));
+      });
+      if (isWin) it.sub = createSub(el, it, r);
+    }
+
+    // Generic grab & throw: drag a body with a spring constraint. `toLocal` maps a
+    // pointer event into that body's world coordinates.
+    function attachGrab(el, body, eng, toLocal, grabbable, beforeGrab) {
+      let drag = null;
       const onDown = (e) => {
         if (e.button !== 0 || !grabbable(e)) return;
         e.preventDefault();
-        e.stopPropagation(); // keep the normal title-bar dragger out of it
-        if (isWin && typeof WM !== 'undefined') WM.focus(el.id.replace('win-', ''));
+        e.stopPropagation(); // keep the normal title-bar dragger / click handlers out of it
+        if (beforeGrab) beforeGrab();
         el.setPointerCapture(e.pointerId);
-        const d = desk.getBoundingClientRect();
-        const px = e.clientX - d.left;
-        const py = e.clientY - d.top;
-        const ox = px - body.position.x;
-        const oy = py - body.position.y;
+        const p = toLocal(e);
+        const ox = p.x - body.position.x;
+        const oy = p.y - body.position.y;
         const c = Math.cos(-body.angle);
         const sn = Math.sin(-body.angle);
         const constraint = Constraint.create({
-          pointA: { x: px, y: py }, bodyB: body, pointB: { x: ox * c - oy * sn, y: ox * sn + oy * c },
+          pointA: { x: p.x, y: p.y }, bodyB: body, pointB: { x: ox * c - oy * sn, y: ox * sn + oy * c },
           stiffness: 0.18, damping: 0.12, length: 0,
         });
-        Composite.add(engine.world, constraint);
+        Composite.add(eng.world, constraint);
         drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY, moved: false, constraint };
         el.classList.add('is-grabbed');
       };
       const onMove = (e) => {
         if (!drag || e.pointerId !== drag.id) return;
-        const d = desk.getBoundingClientRect();
-        drag.constraint.pointA = { x: e.clientX - d.left, y: e.clientY - d.top };
+        e.stopPropagation();
+        drag.constraint.pointA = toLocal(e);
         if (Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) > 6) drag.moved = true;
       };
       const onUp = (e) => {
         if (!drag || e.pointerId !== drag.id) return;
-        Composite.remove(engine.world, drag.constraint);
+        Composite.remove(eng.world, drag.constraint);
         if (drag.moved) el.__wasDragged = true;
         drag = null;
         el.classList.remove('is-grabbed');
@@ -124,7 +134,7 @@ function startGravity(desk) {
       el.addEventListener('pointerup', onUp);
       el.addEventListener('pointercancel', onUp);
       el.addEventListener('click', onClick, true);
-      it.cleanup = () => {
+      return () => {
         el.removeEventListener('pointerdown', onDown, true);
         el.removeEventListener('pointermove', onMove);
         el.removeEventListener('pointerup', onUp);
@@ -132,8 +142,59 @@ function startGravity(desk) {
         el.removeEventListener('click', onClick, true);
         el.classList.remove('is-grabbed');
         el.__wasDragged = false;
-        if (drag) Composite.remove(engine.world, drag.constraint);
+        if (drag) Composite.remove(eng.world, drag.constraint);
       };
+    }
+
+    // Items inside a window (Work / Photos cards) fall inside that window, in their own
+    // little world whose floor and walls are the window body.
+    function createSub(win, winIt, winRect) {
+      const bodyEl = win.querySelector('.window-body');
+      if (!bodyEl) return null;
+      const kids = Array.from(bodyEl.querySelectorAll('.finder-file'));
+      if (!kids.length) return null;
+      bodyEl.scrollTop = 0;
+      bodyEl.classList.add('g-lock');
+      const br = bodyEl.getBoundingClientRect();
+      const offX = br.left - winRect.left;
+      const offY = br.top - winRect.top;
+      const bw = bodyEl.clientWidth;
+      const bh = bodyEl.clientHeight;
+      const eng = Engine.create({ gravity: { x: 0, y: 1.1 } });
+      const o = { isStatic: true, friction: 0.6 };
+      Composite.add(eng.world, [
+        Bodies.rectangle(bw / 2, bh + T / 2, bw * 3, T, o),
+        Bodies.rectangle(-T / 2, bh / 2, T, bh * 6, o),
+        Bodies.rectangle(bw + T / 2, bh / 2, T, bh * 6, o),
+      ]);
+      const toLocal = (e) => {
+        // pointer -> window-body coordinates, undoing the window's physics transform
+        const d = desk.getBoundingClientRect();
+        const px = e.clientX - d.left - winIt.body.position.x;
+        const py = e.clientY - d.top - winIt.body.position.y;
+        const c = Math.cos(-winIt.body.angle);
+        const sn = Math.sin(-winIt.body.angle);
+        return { x: px * c - py * sn + winRect.width / 2 - offX, y: px * sn + py * c + winRect.height / 2 - offY };
+      };
+      const subItems = kids.map((k) => {
+        k.style.transition = 'none';
+        k.style.transform = 'none';
+        const kr = k.getBoundingClientRect();
+        const cx = kr.left - br.left + kr.width / 2;
+        // anything that started below the visible area is dropped in from the top instead
+        const cy = Math.min(kr.top - br.top + kr.height / 2, bh - kr.height / 2 - 4);
+        const body = Bodies.rectangle(cx, cy, kr.width, kr.height, {
+          restitution: 0.3, friction: 0.5, frictionAir: 0.012, density: 0.002, chamfer: { radius: 6 },
+        });
+        Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.06);
+        Composite.add(eng.world, body);
+        k.style.willChange = 'transform';
+        const kit = { el: k, body, cx: kr.left - br.left + kr.width / 2, cy: kr.top - br.top + kr.height / 2, kid: true };
+        kit.cleanup = attachGrab(k, body, eng, toLocal, () => true, null);
+        items.push(kit);
+        return kit;
+      });
+      return { eng, bodyEl, subItems };
     }
 
     // Windows can be opened/closed while gravity is on: keep bodies in sync.
@@ -141,9 +202,10 @@ function startGravity(desk) {
       const live = new Set(desk.querySelectorAll(SEL));
       live.forEach((el) => addItem(el));
       items = items.filter((it) => {
-        if (live.has(it.el)) return true;
+        if (it.kid || live.has(it.el)) return true;
         Composite.remove(engine.world, it.body);
         it.cleanup();
+        if (it.sub) { it.sub.bodyEl.classList.remove('g-lock'); it.sub.subItems.forEach((k) => { k.cleanup(); k.el.style.transform = ''; k.el.style.willChange = ''; k.el.style.transition = ''; k.dead = true; }); items = items.filter((x) => !x.dead); }
         tracked.delete(it.el);
         it.el.style.transform = '';
         it.el.style.willChange = '';
@@ -170,6 +232,7 @@ function startGravity(desk) {
       const dt = Math.min(t - last, 33);
       last = t;
       Engine.update(engine, dt || 16);
+      for (const it of items) if (it.sub) Engine.update(it.sub.eng, dt || 16);
       for (const { el, body, cx, cy } of items) {
         el.style.transform = `translate(${(body.position.x - cx).toFixed(2)}px, ${(body.position.y - cy).toFixed(2)}px) rotate(${body.angle.toFixed(4)}rad)`;
       }
@@ -186,6 +249,7 @@ function startGravity(desk) {
       removeListeners.forEach((fn) => fn());
       items.forEach((it) => it.cleanup && it.cleanup());
       removeListeners = [];
+      items.forEach((it) => { if (it.sub) it.sub.bodyEl.classList.remove('g-lock'); });
       const list = items;
       items = [];
       if (!list.length) { if (onDone) onDone(); return; }
