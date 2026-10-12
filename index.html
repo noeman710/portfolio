@@ -195,6 +195,8 @@
       <button class="dock-item" data-id="notes" data-open="notes" aria-label="Notes"><span class="icon-glyph notes"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="white" stroke-width="1.8"/><path d="M8 9H16M8 13H13" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="dock-tip-tail" aria-hidden="true"></span></button>
       <button class="dock-item" data-id="mail" data-open="mail" aria-label="Mail"><span class="icon-glyph mail"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="white" stroke-width="1.8"/><path d="M4 6.5L12 13L20 6.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="dock-tip-tail" aria-hidden="true"></span></button>
       <button class="dock-item" data-open="resume" aria-label="Resume"><span class="icon-glyph doc"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M6 2.5H13.5L18.5 7.5V19.5C18.5 20.6 17.6 21.5 16.5 21.5H6C4.9 21.5 4 20.6 4 19.5V4.5C4 3.4 4.9 2.5 6 2.5Z" fill="#4a4a52"/><path d="M13.5 2.5V6.5C13.5 7.05 13.95 7.5 14.5 7.5H18.5" fill="#8a8a92"/><path d="M7 12H15M7 15.5H15M7 18.5H12" stroke="white" stroke-width="1.1" stroke-linecap="round"/></svg></span><span class="dock-tip-tail" aria-hidden="true"></span></button>
+      <span class="dock-sep" aria-hidden="true"></span>
+      <button class="dock-item" id="trash-dock" aria-label="Trash"><span class="icon-glyph trash"><svg class="trash-svg" viewBox="0 0 48 48" width="44" height="44" fill="none"><defs><linearGradient id="tg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9ecf2"/><stop offset="1" stop-color="#9aa0ad"/></linearGradient><linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd3dc" stop-opacity=".92"/><stop offset="1" stop-color="#7d8493" stop-opacity=".95"/></linearGradient></defs><g class="trash-paper"><path d="M15 15L19 8L25 12L30 7L34 14Z" fill="#fff" stroke="#c9ccd4" stroke-width="1"/><path d="M19 8L22 14M30 7L28 14" stroke="#c9ccd4" stroke-width="1"/></g><path d="M9 14H39L36.4 41.2C36.3 42.3 35.4 43 34.4 43H13.6C12.6 43 11.7 42.3 11.6 41.2L9 14Z" fill="url(#tg2)" stroke="#6c7280" stroke-width="1.2"/><path class="trash-lines" d="M17 19V38M24 19V38M31 19V38" stroke="#59606d" stroke-width="1.6" stroke-linecap="round" stroke-opacity=".7"/><path d="M13 22H35M13 30H35" stroke="#59606d" stroke-width="1" stroke-opacity=".35"/><rect x="7" y="10" width="34" height="5" rx="2.5" fill="url(#tg1)" stroke="#6c7280" stroke-width="1.2"/><path d="M19 10V8.2C19 7.5 19.5 7 20.2 7H27.8C28.5 7 29 7.5 29 8.2V10" stroke="#6c7280" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="trash-badge" hidden>0</span><span class="dock-tip-tail" aria-hidden="true"></span></button>
     </div>
 
     <!-- iOS-style mobile home screen (shown only under the mobile breakpoint) -->
@@ -522,6 +524,7 @@
 <script src="/js/liquid-bg.js"></script>
 <script src="/js/gravity.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/trash.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>

@@ -206,35 +206,48 @@ function startGravity(desk) {
         const sn = Math.sin(-winIt.body.angle);
         return { x: px * c - py * sn + winRect.width / 2 - offX, y: px * sn + py * c + winRect.height / 2 - offY };
       };
-      const subItems = kids.map((k) => {
+      const sub = { eng, bodyEl, known: new Set(), subItems: [] };
+      sub.addKid = (k, fromTop) => {
+        sub.known.add(k);
         k.style.transition = 'none';
         k.style.transform = 'none';
         const kr = k.getBoundingClientRect();
-        const cx = kr.left - br.left + kr.width / 2;
-        // anything that started below the visible area is dropped in from the top instead
-        const cy = Math.min(kr.top - br.top + kr.height / 2, bh - kr.height / 2 - 4);
-        const body = Bodies.rectangle(cx, cy, kr.width, kr.height, {
+        const lx = kr.left - br.left + kr.width / 2;
+        const ly = kr.top - br.top + kr.height / 2;
+        // anything that started below the visible area (or was just restored) drops in from the top
+        const cy = fromTop ? kr.height / 2 + 6 : Math.min(ly, bh - kr.height / 2 - 4);
+        const body = Bodies.rectangle(lx, cy, kr.width, kr.height, {
           restitution: 0.3, friction: 0.5, frictionAir: 0.012, density: 0.002, chamfer: { radius: 6 },
         });
         Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.06);
         Composite.add(eng.world, body);
         owner.set(body, k);
         k.style.willChange = 'transform';
-        const kit = { el: k, body, cx: kr.left - br.left + kr.width / 2, cy: kr.top - br.top + kr.height / 2, kid: true };
+        const kit = { el: k, body, cx: lx, cy: ly, kid: true, eng, sub };
         kit.cleanup = attachGrab(k, body, eng, toLocal, () => true, null);
         items.push(kit);
-        return kit;
-      });
+        sub.subItems.push(kit);
+      };
+      kids.forEach((k) => sub.addKid(k, false));
       hookSounds(eng);
-      return { eng, bodyEl, subItems };
+      return sub;
     }
 
     // Windows can be opened/closed while gravity is on: keep bodies in sync.
     function sync() {
-      const live = new Set(desk.querySelectorAll(SEL));
+      const hid = (el) => !!(window.Trash && window.Trash.isHidden(el));
+      const live = new Set(Array.from(desk.querySelectorAll(SEL)).filter((el) => !hid(el)));
       live.forEach((el) => addItem(el));
       items = items.filter((it) => {
-        if (it.kid || live.has(it.el)) return true;
+        if (it.kid) {
+          if (!it.dead && !hid(it.el)) return true;
+          Composite.remove(it.eng.world, it.body);
+          it.cleanup();
+          it.el.style.transform = ''; it.el.style.willChange = '';
+          it.sub.known.delete(it.el);
+          return false;
+        }
+        if (live.has(it.el)) return true;
         Composite.remove(engine.world, it.body);
         it.cleanup();
         if (it.sub) { it.sub.bodyEl.classList.remove('g-lock'); it.sub.subItems.forEach((k) => { k.cleanup(); k.el.style.transform = ''; k.el.style.willChange = ''; k.el.style.transition = ''; k.dead = true; }); items = items.filter((x) => !x.dead); }
@@ -244,6 +257,34 @@ function startGravity(desk) {
         if (it.el.classList.contains('os-window')) it.el.style.transition = '';
         return false;
       });
+      // cards restored from the Trash while gravity is on: drop them in
+      items.filter((it) => it.sub && !it.kid).forEach((it) => {
+        it.sub.bodyEl.querySelectorAll('.finder-file').forEach((k) => {
+          if (!it.sub.known.has(k) && !hid(k)) it.sub.addKid(k, true);
+        });
+      });
+      // the layout reflows when something is removed/restored: re-base every body on it
+      const ver = window.Trash ? window.Trash.version : 0;
+      if (ver !== lastVer) { lastVer = ver; rebase(); }
+    }
+    let lastVer = window.Trash ? window.Trash.version : 0;
+    function rebase() {
+      const saved = items.map((it) => it.el.style.transform);
+      items.forEach((it) => { it.el.style.transform = 'none'; });
+      const dr = desk.getBoundingClientRect();
+      items.forEach((it) => {
+        if (it.kid) {
+          const br = it.sub.bodyEl.getBoundingClientRect();
+          const kr = it.el.getBoundingClientRect();
+          it.cx = kr.left - br.left + kr.width / 2;
+          it.cy = kr.top - br.top + kr.height / 2;
+        } else {
+          const r = it.el.getBoundingClientRect();
+          it.cx = r.left - dr.left + r.width / 2;
+          it.cy = r.top - dr.top + r.height / 2;
+        }
+      });
+      items.forEach((it, i) => { it.el.style.transform = saved[i]; });
     }
     sync();
     const syncTimer = setInterval(sync, 150);
