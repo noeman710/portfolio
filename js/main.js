@@ -95,6 +95,25 @@ const Sound = (() => {
   };
 })();
 
+function initGravity() {
+  const btn = document.getElementById('gravity-toggle');
+  const desk = document.querySelector('.desktop');
+  if (!btn || !desk || !window.startGravity) return;
+  let g = null;
+  const set = (on) => {
+    if (on === !!g) return;
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    desk.classList.toggle('gravity-on', on);
+    if (on) { g = window.startGravity(desk); }
+    else { const cur = g; g = null; cur.stop(); }
+  };
+  btn.addEventListener('click', () => set(!g));
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'g' || e.key === 'G') && !e.metaKey && !e.ctrlKey && !e.altKey &&
+        !/INPUT|TEXTAREA/.test((e.target.tagName || '')) && !e.target.isContentEditable) set(!g);
+  });
+}
+
 function initSound() {
   const btn = document.getElementById('sound-toggle');
   if (btn) {
@@ -1432,6 +1451,7 @@ function bootApp() {
 
   safe(initBoot, 'initBoot');
   safe(initSound, 'initSound');
+  safe(initGravity, 'initGravity');
   safe(renderFinder, 'renderFinder');
   safe(renderPhotosGrid, 'renderPhotosGrid');
   safe(initLightbox, 'initLightbox');
