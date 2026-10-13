@@ -173,9 +173,6 @@ const filesystem = {
   'notes': {
     type: 'app', kind: 'notes', title: 'Notes', icon: 'notes',
   },
-  'kayn': {
-    type: 'app', kind: 'kayn', title: 'Kayn 3D', icon: 'kayn',
-  },
   'mail': {
     type: 'app', kind: 'mail', title: 'Mail', icon: 'mail',
   },
@@ -441,7 +438,7 @@ const filesystem = {
   },
 };
 
-const desktopIconOrder = ['work', 'about', 'photos', 'maps', 'resume', 'notes', 'kayn', 'mail', 'social'];
+const desktopIconOrder = ['work', 'about', 'photos', 'maps', 'resume', 'notes', 'mail', 'social'];
 const dockOrder = ['work', 'about', 'photos', 'maps', 'notes', 'mail', 'social', 'resume'];
 const workFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'work');
 const photoFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'photos');
@@ -548,10 +545,6 @@ const WM = {
     }
     if (entry.kind === 'maps') {
       ensureTangierMap();
-    }
-    if (entry.kind === 'kayn') {
-      const fr = document.querySelector('#win-kayn .kayn-frame');
-      if (fr && !fr.src) fr.src = fr.dataset.src; // load the 3D model only when first opened
     }
 
     if (!skipHistory && routerBooted && ROUTE_APP_IDS.includes(id)) {

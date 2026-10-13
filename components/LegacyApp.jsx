@@ -10,6 +10,7 @@ const SCRIPTS = [
   '/js/gravity.js',
   '/js/main.js',
   '/js/trash.js',
+  '/js/kayn.js',
 ];
 
 function load(src) {
