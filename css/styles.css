@@ -259,7 +259,7 @@ img { display: block; max-width: 100%; }
 .desktop.gravity-on .desktop-icon.is-grabbed, .desktop.gravity-on .widget.is-grabbed { cursor: grabbing; z-index: 30; }
 .desktop.gravity-on .desktop-icon:hover { background: none; }
 /* gravity: window contents fall inside the window, so no scrolling while it's on */
-.window-body.g-lock { overflow: hidden !important; }
+.window-body.g-lock, .trash-list.g-lock { overflow: hidden !important; }
 .desktop.gravity-on .finder-file { cursor: grab; touch-action: none; }
 .desktop.gravity-on .finder-file.is-grabbed { cursor: grabbing; z-index: 5; position: relative; }
 @media (max-width: 760px) { .menu-gravity-btn { display: none; } }

@@ -30,7 +30,7 @@ function startGravity(desk) {
     const { Engine, Bodies, Body, Composite, Constraint } = M;
 
     const engine = Engine.create({ gravity: { x: 0, y: 1.1 } });
-    const SEL = '.desktop-icons > .desktop-icon, .widgets > .widget, .os-window.is-visible';
+    const SEL = '.desktop-icons > .desktop-icon, .widgets > .widget, .os-window.is-visible, .trash-panel:not([hidden])';
     const W = () => desk.clientWidth;
     const H = () => desk.clientHeight;
     const T = 300;
@@ -49,6 +49,7 @@ function startGravity(desk) {
     Composite.add(engine.world, world);
 
     const tracked = new Set();
+    const KID_SEL = '.finder-file, .trash-row, .trash-empty';
 
     // ---- collision sounds ----
     const kindOf = (el) => el.classList.contains('os-window') ? 'window'
@@ -82,7 +83,7 @@ function startGravity(desk) {
     function addItem(el) {
       if (tracked.has(el)) return;
       tracked.add(el);
-      const isWin = el.classList.contains('os-window');
+      const isWin = el.classList.contains('os-window') || el.classList.contains('trash-panel');
       const isWidget = el.classList.contains('widget');
       // Measure the true layout position (no leftover transform / transition).
       el.style.transition = 'none';
@@ -114,7 +115,7 @@ function startGravity(desk) {
         return !(isWidget && e.target.closest('button, a, input, .music-progress'));
       };
       it.cleanup = attachGrab(el, body, engine, toLocal, grabbable, () => {
-        if (isWin && typeof WM !== 'undefined') WM.focus(el.id.replace('win-', ''));
+        if (isWin && typeof WM !== 'undefined' && el.id.indexOf('win-') === 0) WM.focus(el.id.replace('win-', ''));
       });
       if (isWin) it.sub = createSub(el, it, r);
     }
@@ -179,9 +180,9 @@ function startGravity(desk) {
     // Items inside a window (Work / Photos cards) fall inside that window, in their own
     // little world whose floor and walls are the window body.
     function createSub(win, winIt, winRect) {
-      const bodyEl = win.querySelector('.window-body');
+      const bodyEl = win.querySelector('.window-body, .trash-list');
       if (!bodyEl) return null;
-      const kids = Array.from(bodyEl.querySelectorAll('.finder-file'));
+      const kids = Array.from(bodyEl.querySelectorAll(KID_SEL));
       if (!kids.length) return null;
       bodyEl.scrollTop = 0;
       bodyEl.classList.add('g-lock');
@@ -224,7 +225,7 @@ function startGravity(desk) {
         owner.set(body, k);
         k.style.willChange = 'transform';
         const kit = { el: k, body, cx: lx, cy: ly, kid: true, eng, sub };
-        kit.cleanup = attachGrab(k, body, eng, toLocal, () => true, null);
+        kit.cleanup = attachGrab(k, body, eng, toLocal, (e) => !e.target.closest('.trash-restore'), null);
         items.push(kit);
         sub.subItems.push(kit);
       };
@@ -236,11 +237,11 @@ function startGravity(desk) {
     // Windows can be opened/closed while gravity is on: keep bodies in sync.
     function sync() {
       const hid = (el) => !!(window.Trash && window.Trash.isHidden(el));
-      const live = new Set(Array.from(desk.querySelectorAll(SEL)).filter((el) => !hid(el)));
+      const live = new Set(Array.from(document.querySelectorAll(SEL)).filter((el) => !hid(el)));
       live.forEach((el) => addItem(el));
       items = items.filter((it) => {
         if (it.kid) {
-          if (!it.dead && !hid(it.el)) return true;
+          if (!it.dead && it.el.isConnected && !hid(it.el)) return true;
           Composite.remove(it.eng.world, it.body);
           it.cleanup();
           it.el.style.transform = ''; it.el.style.willChange = '';
@@ -254,12 +255,12 @@ function startGravity(desk) {
         tracked.delete(it.el);
         it.el.style.transform = '';
         it.el.style.willChange = '';
-        if (it.el.classList.contains('os-window')) it.el.style.transition = '';
+        if (it.el.classList.contains('os-window') || it.el.classList.contains('trash-panel')) it.el.style.transition = '';
         return false;
       });
       // cards restored from the Trash while gravity is on: drop them in
       items.filter((it) => it.sub && !it.kid).forEach((it) => {
-        it.sub.bodyEl.querySelectorAll('.finder-file').forEach((k) => {
+        it.sub.bodyEl.querySelectorAll(KID_SEL).forEach((k) => {
           if (!it.sub.known.has(k) && !hid(k)) it.sub.addKid(k, true);
         });
       });
