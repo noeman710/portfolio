@@ -405,7 +405,7 @@
   panel.setAttribute('role', 'dialog');
   panel.setAttribute('aria-label', 'Trash');
   panel.innerHTML = `<div class="window-titlebar trash-bar">
-      <div class="traffic-lights"><button class="tl-close" aria-label="Close Trash"></button><span class="tl-min"></span><span class="tl-max"></span></div>
+      <div class="traffic-lights"><button class="tl-close" aria-label="Close Trash"></button><button class="tl-min" aria-label="Close Trash"></button><button class="tl-max" aria-label="Trash"></button></div>
       <span class="window-title">Trash</span></div>
     <div class="trash-list"></div>
     <div class="trash-foot"><button class="trash-act" data-act="restore-all">Restore All</button><button class="trash-act is-danger" data-act="empty">Empty Trash</button></div>`;
@@ -426,7 +426,7 @@
     panel.querySelectorAll('.trash-act').forEach((b) => { b.disabled = !trashed.length; });
   }
   panel.addEventListener('click', (e) => {
-    if (e.target.closest('.tl-close')) { closePanel(); return; }
+    if (e.target.closest('.tl-close, .tl-min')) { closePanel(); return; }
     const r = e.target.closest('.trash-restore');
     if (r) { snd('click'); restore(r.dataset.id); return; }
     const a = e.target.closest('.trash-act');
