@@ -15,7 +15,7 @@ const SCRIPTS = [
 function load(src) {
   return new Promise((resolve) => {
     const s = document.createElement('script');
-    s.src = src;
+    s.src = src.startsWith('/') ? `${src}?v=${process.env.NEXT_PUBLIC_BUILD}` : src;
     s.onload = resolve;
     s.onerror = resolve; // a failed CDN script must not stop the rest of the site
     document.body.appendChild(s);
