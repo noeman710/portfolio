@@ -427,6 +427,7 @@
   }
   panel.addEventListener('click', (e) => {
     if (e.target.closest('.tl-close, .tl-min')) { closePanel(); return; }
+    if (e.target.closest('.tl-max')) { snd('click'); panel.classList.toggle('is-max'); return; }
     const r = e.target.closest('.trash-restore');
     if (r) { snd('click'); restore(r.dataset.id); return; }
     const a = e.target.closest('.trash-act');
@@ -454,7 +455,7 @@
   function closePanel() {
     if (panel.hidden) return;
     panel.classList.remove('is-in');
-    setTimeout(() => { panel.hidden = true; }, 180);
+    setTimeout(() => { panel.hidden = true; panel.classList.remove('is-max'); }, 180);
   }
   function togglePanel() { panel.hidden ? openPanel() : closePanel(); }
 
@@ -463,7 +464,7 @@
     const bar = panel.querySelector('.trash-bar');
     let d = null;
     bar.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('.traffic-lights')) return;
+      if (e.target.closest('.traffic-lights') || panel.classList.contains('is-max')) return;
       const r = panel.getBoundingClientRect();
       d = { x: e.clientX - r.left, y: e.clientY - r.top };
       bar.setPointerCapture(e.pointerId);
