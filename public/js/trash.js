@@ -325,6 +325,7 @@
     closeWindowsFor(d);
     if (!(opt && opt.dropped)) await flyToTrash(el);
     if (!trashed.some((t) => t.id === d.id)) trashed.push({ id: d.id, kind: d.kind, label: d.label, sel: d.sel, icon: d.icon });
+    if (d.id === 'widget:widget-music') window.dispatchEvent(new Event('music:stop'));
     persist();
     el.classList.remove('trash-pending');
     snd('impact', 'card', 0.7);

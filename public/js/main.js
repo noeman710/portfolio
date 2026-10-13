@@ -1309,20 +1309,42 @@ function initMusicWidget() {
     r.prevBtn.addEventListener('click', () => { Sound.click(); loadTrack(index - 1, !audio.paused); });
     r.nextBtn.addEventListener('click', () => { Sound.click(); loadTrack(index + 1, !audio.paused); });
     if (r.progress) {
-      r.progress.addEventListener('click', (e) => {
-        if (!audio.duration) return;
+      let dragging = false;
+      const seekTo = (e) => {
         const rect = r.progress.getBoundingClientRect();
         const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-        audio.currentTime = ratio * audio.duration;
+        const pct = ratio * 100 + '%';
+        refs.forEach((o) => { if (o.progressFill) o.progressFill.style.width = pct; });
+        if (audio.duration) audio.currentTime = ratio * audio.duration;
+      };
+      r.progress.addEventListener('pointerdown', (e) => {
+        if (e.button !== undefined && e.button > 0) return;
+        dragging = true;
+        try { r.progress.setPointerCapture(e.pointerId); } catch (err) {}
+        r.progress.classList.add('is-seeking');
+        seekTo(e);
+        e.preventDefault();
       });
+      r.progress.addEventListener('pointermove', (e) => { if (dragging) seekTo(e); });
+      const end = (e) => {
+        if (!dragging) return;
+        dragging = false;
+        r.progress.classList.remove('is-seeking');
+        try { r.progress.releasePointerCapture(e.pointerId); } catch (err) {}
+      };
+      r.progress.addEventListener('pointerup', end);
+      r.progress.addEventListener('pointercancel', end);
     }
   });
+
+  // Removing the music widget stops the song.
+  window.addEventListener('music:stop', () => { audio.pause(); });
 
   audio.addEventListener('play', () => setPlayingUI(true));
   audio.addEventListener('pause', () => setPlayingUI(false));
   audio.addEventListener('ended', () => loadTrack(index + 1, true));
   audio.addEventListener('timeupdate', () => {
-    if (!audio.duration) return;
+    if (!audio.duration || refs.some((x) => x.progress && x.progress.classList.contains('is-seeking'))) return;
     const pct = (audio.currentTime / audio.duration) * 100 + '%';
     refs.forEach((r) => { if (r.progressFill) r.progressFill.style.width = pct; });
   });
