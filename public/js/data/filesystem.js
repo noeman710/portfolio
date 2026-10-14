@@ -78,6 +78,9 @@ const filesystem = {
     type: 'file', kind: 'photo', title: 'Iconic Pic 13', parent: 'photos',
     data: { src: '/assets/images/photos/photo-14.jpg', alt: 'Iconic Pic 13' },
   },
+  'mediassive': {
+    type: 'folder', kind: 'folder', title: 'Mediassive', parent: 'work',
+  },
   'roux': {
     type: 'file', kind: 'case-study', title: 'Roux.case', parent: 'work',
     data: {
@@ -119,9 +122,6 @@ const filesystem = {
       },
     },
   },
-  'mediassive': {
-    type: 'folder', kind: 'folder', title: 'Mediassive', parent: 'work',
-  },
   'finderrlink': {
     type: 'file', kind: 'case-study', title: 'FinderrLink.case', parent: 'mediassive',
     data: {
@@ -144,7 +144,7 @@ const filesystem = {
     },
   },
   'finderrlink-brand': {
-    type: 'file', kind: 'case-study', title: 'FinderrLinkBrand.case', parent: 'mediassive',
+    type: 'file', kind: 'case-study', title: 'Brand', parent: 'mediassive',
     data: {
       title: 'FinderrLink Brand Guidelines',
       tag: 'Brand Identity · Mediassive, 2026',
