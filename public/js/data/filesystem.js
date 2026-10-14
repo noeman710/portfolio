@@ -119,8 +119,11 @@ const filesystem = {
       },
     },
   },
+  'mediassive': {
+    type: 'folder', kind: 'folder', title: 'Mediassive', parent: 'work',
+  },
   'finderrlink': {
-    type: 'file', kind: 'case-study', title: 'FinderrLink.case', parent: 'work',
+    type: 'file', kind: 'case-study', title: 'FinderrLink.case', parent: 'mediassive',
     data: {
       title: 'FinderrLink',
       tag: 'SaaS Platform · Mediassive, 2026',
@@ -136,13 +139,12 @@ const filesystem = {
       duration: 'Mediassive, Intern March 2026, Full-Time Since August 2026',
       scope: '3 Roles, Web & Mobile',
       links: {
-        live: 'https://finderrlink.com/',
         instagram: 'https://www.instagram.com/finderrlink/',
       },
     },
   },
   'finderrlink-brand': {
-    type: 'file', kind: 'case-study', title: 'FinderrLinkBrand.case', parent: 'work',
+    type: 'file', kind: 'case-study', title: 'FinderrLinkBrand.case', parent: 'mediassive',
     data: {
       title: 'FinderrLink Brand Guidelines',
       tag: 'Brand Identity · Mediassive, 2026',
@@ -285,5 +287,4 @@ const filesystem = {
 
 const desktopIconOrder = ['work', 'about', 'photos', 'maps', 'resume', 'notes', 'mail', 'social'];
 const dockOrder = ['work', 'about', 'photos', 'maps', 'notes', 'mail', 'social', 'resume'];
-const workFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'work');
 const photoFiles = Object.keys(filesystem).filter((k) => filesystem[k].parent === 'photos');

@@ -14,6 +14,11 @@ const WM = {
     const entry = filesystem[id];
     if (!entry) return;
 
+    if (entry.kind === 'folder') {
+      this.open('work', triggerEl, skipHistory);
+      openFinderFolder(id);
+      return;
+    }
     if (entry.kind === 'pdf') {
       openResume();
       return;

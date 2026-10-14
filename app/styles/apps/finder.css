@@ -24,3 +24,8 @@
 .finder-file .icon-glyph { width: 52px; height: 52px; font-size: 1.5rem; background: linear-gradient(160deg, #ffd479, #e08a1e); }
 .finder-file .file-label { font-size: 0.75rem; line-height: 1.25; }
 .finder-file .file-meta { font-size: 0.65rem; color: var(--text-tertiary); }
+
+.finder-folder .icon-glyph { background: transparent url("/icons/Folder.png") center / contain no-repeat; }
+.finder-path { display: flex; align-items: center; gap: 12px; margin: -4px 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--window-border); }
+.finder-back { background: none; border: 0; color: var(--accent); font: inherit; font-size: 0.85rem; font-weight: 500; padding: 4px 6px 4px 0; cursor: pointer; }
+.finder-path-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
