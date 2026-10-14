@@ -1,0 +1,39 @@
+/* ---------- Case study viewer ---------- */
+
+.case-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+.case-header h2 { font-size: 1.3rem; }
+.case-tag { display: inline-block; font-size: 0.7rem; color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 20px; margin-top: 6px; }
+.case-visual {
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  background: linear-gradient(150deg, #2b2b30, #17171a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.12);
+  border: 1px solid var(--window-border);
+}
+.case-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.case-link-btn {
+  font-size: 0.72rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--window-border);
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.case-link-btn:hover { background: rgba(255,255,255,0.08); }
+.case-link-btn.case-link-live { background: var(--accent); border-color: var(--accent); color: #fff; }
+.case-link-btn.case-link-live:hover { background: #2b95ff; }
+.finder-file .icon-glyph.thumb { background: none; }
+.finder-file .icon-glyph.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.case-body p { color: var(--text-secondary); margin-bottom: 14px; line-height: 1.65; }
+.case-meta-row { display: flex; gap: 28px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--window-border); flex-wrap: wrap; }
+.case-meta-row div span { display: block; font-size: 0.68rem; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
+.case-meta-row div p { color: var(--text-primary); font-size: 0.88rem; }

@@ -1,0 +1,35 @@
+/* ---------- Notes app ---------- */
+
+.notes-window .window-body { padding: 0; display: flex; }
+.notes-sidebar {
+  width: 130px;
+  border-right: 1px solid var(--window-border);
+  padding: 14px 10px;
+  flex-shrink: 0;
+}
+.notes-sidebar .notes-item {
+  font-size: 0.78rem;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+.notes-editor {
+  flex: 1;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.notes-editor textarea {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+}
+.notes-status { font-size: 0.7rem; color: var(--text-tertiary); margin-top: 8px; }

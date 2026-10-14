@@ -1,0 +1,82 @@
+/* ---------- Welcome popup ---------- */
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.welcome-overlay.is-visible { display: flex; }
+.welcome-overlay.is-animated-in { opacity: 1; }
+
+.welcome-box {
+  width: min(420px, 100%);
+  background: rgba(32,32,36,0.94);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--window-border);
+  border-radius: 18px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55);
+  padding: 32px 28px 26px;
+  text-align: center;
+  transform: scale(0.94) translateY(6px);
+  transition: transform 0.3s var(--ease);
+}
+
+.welcome-overlay.is-animated-in .welcome-box { transform: scale(1) translateY(0); }
+
+.welcome-portrait {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.welcome-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.welcome-title { font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; }
+.welcome-text { font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 22px; }
+
+.welcome-continue-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 26px;
+  border-radius: 20px;
+}
+.welcome-continue-btn:hover { background: #2b95ff; }
+
+.spotlight-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--window-border);
+}
+
+.spotlight-results { max-height: 300px; overflow-y: auto; }
+.spotlight-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.spotlight-result.is-active { background: var(--accent-soft); color: var(--text-primary); }
+.spotlight-empty { padding: 20px; color: var(--text-tertiary); font-size: 0.85rem; text-align: center; }

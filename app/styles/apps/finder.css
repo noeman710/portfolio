@@ -1,0 +1,26 @@
+/* ---------- Finder ---------- */
+
+.finder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 18px;
+}
+
+.finder-file {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 6px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.finder-file:hover { background: rgba(255,255,255,0.06); }
+
+.finder-file .icon-glyph { width: 52px; height: 52px; font-size: 1.5rem; background: linear-gradient(160deg, #ffd479, #e08a1e); }
+.finder-file .file-label { font-size: 0.75rem; line-height: 1.25; }
+.finder-file .file-meta { font-size: 0.65rem; color: var(--text-tertiary); }

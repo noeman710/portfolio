@@ -1,0 +1,73 @@
+/* ---------- Mail app ---------- */
+
+.mail-field { margin-bottom: 14px; }
+.mail-field label { display: block; font-size: 0.72rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.mail-field input, .mail-field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--window-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 0.9rem;
+  outline: none;
+}
+.mail-field input:focus, .mail-field textarea:focus { border-color: var(--accent); }
+.mail-field textarea { min-height: 120px; resize: vertical; }
+.mail-send-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.mail-send-btn:hover { background: #2b95ff; }
+.mail-send-btn:disabled { opacity: 0.6; cursor: default; }
+
+.mail-honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+.mail-error {
+  display: none;
+  color: #ff8a8a;
+  font-size: 0.78rem;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.mail-form.is-hidden { display: none; }
+
+.mail-success {
+  display: none;
+  text-align: center;
+  padding: 44px 20px 24px;
+}
+.mail-success.is-visible { display: block; }
+
+.mail-success-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: rgba(74,158,255,0.15);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.mail-success h3 { font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; }
+.mail-success p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 22px; }
+
+.mail-send-another-btn {
+  background: none;
+  border: 1px solid var(--window-border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+}
+.mail-send-another-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.3); }

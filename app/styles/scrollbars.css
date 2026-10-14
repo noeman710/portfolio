@@ -1,0 +1,46 @@
+/* ---------- Custom scrollbars (match the dark theme instead of the OS default) ---------- */
+.window-body,
+.trash-list,
+#plain-view,
+.spotlight-results,
+.notes-editor textarea,
+.ios-page {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.22) transparent;
+}
+.window-body::-webkit-scrollbar,
+.trash-list::-webkit-scrollbar,
+#plain-view::-webkit-scrollbar,
+.spotlight-results::-webkit-scrollbar,
+.notes-editor textarea::-webkit-scrollbar,
+.ios-page::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.window-body::-webkit-scrollbar-track,
+.trash-list::-webkit-scrollbar-track,
+#plain-view::-webkit-scrollbar-track,
+.spotlight-results::-webkit-scrollbar-track,
+.notes-editor textarea::-webkit-scrollbar-track,
+.ios-page::-webkit-scrollbar-track {
+  background: transparent;
+}
+.window-body::-webkit-scrollbar-thumb,
+.trash-list::-webkit-scrollbar-thumb,
+#plain-view::-webkit-scrollbar-thumb,
+.spotlight-results::-webkit-scrollbar-thumb,
+.notes-editor textarea::-webkit-scrollbar-thumb,
+.ios-page::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.22);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.window-body::-webkit-scrollbar-thumb:hover,
+.trash-list::-webkit-scrollbar-thumb:hover,
+#plain-view::-webkit-scrollbar-thumb:hover,
+.spotlight-results::-webkit-scrollbar-thumb:hover,
+.notes-editor textarea::-webkit-scrollbar-thumb:hover,
+.ios-page::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255,255,255,0.38);
+}

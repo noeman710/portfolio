@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Plain view (no-JS / accessible fallback)
+   ========================================================================== */
+
+#plain-view {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 24px 100px;
+  overflow-y: auto;
+  height: 100%;
+  line-height: 1.6;
+}
+
+#plain-view h1 { font-size: 2rem; margin-bottom: 6px; }
+#plain-view h2 { font-size: 1.3rem; margin: 40px 0 14px; color: var(--text-primary); }
+#plain-view p { color: var(--text-secondary); margin-bottom: 10px; }
+#plain-view .eyebrow { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
+#plain-view ul { padding-left: 20px; color: var(--text-secondary); }
+#plain-view li { margin-bottom: 8px; }
+#plain-view .plain-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+#plain-view .plain-links a {
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid rgba(10,132,255,0.35);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+#plain-view .plain-card {
+  border: 1px solid var(--window-border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+#plain-view .plain-card h3 { font-size: 1.05rem; margin-bottom: 4px; }
+#plain-view .plain-card span { color: var(--text-tertiary); font-size: 0.82rem; }

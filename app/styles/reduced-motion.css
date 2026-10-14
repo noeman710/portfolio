@@ -1,0 +1,4 @@
+@media (prefers-reduced-motion: reduce) {
+  .os-window, #boot-screen { transition: none; }
+  .boot-bar-fill { animation: none; width: 100%; }
+}

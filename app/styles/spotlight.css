@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Spotlight search
+   ========================================================================== */
+
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 2000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 14vh;
+}
+
+.spotlight-overlay.is-visible { display: flex; }
+
+.spotlight-box {
+  width: min(560px, 90vw);
+  background: rgba(38,38,42,0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--window-border);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
