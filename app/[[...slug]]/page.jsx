@@ -6,7 +6,7 @@ const APPS = ['work', 'about', 'photos', 'notes', 'mail', 'maps'];
 export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return [{ slug: [] }, ...APPS.map((a) => ({ slug: [a] }))];
+  return [{ slug: [] }, ...APPS.map((a) => ({ slug: [a] })), { slug: ['work', 'mediassive'] }];
 }
 
 export default function Page() {

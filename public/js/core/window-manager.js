@@ -15,8 +15,8 @@ const WM = {
     if (!entry) return;
 
     if (entry.kind === 'folder') {
-      this.open('work', triggerEl, skipHistory);
-      openFinderFolder(id);
+      this.open('work', triggerEl, true);
+      openFinderFolder(id, skipHistory);
       return;
     }
     if (entry.kind === 'pdf') {
@@ -33,6 +33,11 @@ const WM = {
     }
     if (entry.kind === 'maps') {
       ensureTangierMap();
+    }
+
+    if (id === 'work' && !this.openWindows.has('work') && finderFolder !== 'work') {
+      finderFolder = 'work';
+      renderFinder();
     }
 
     if (!skipHistory && routerBooted && ROUTE_APP_IDS.includes(id)) {
@@ -67,7 +72,7 @@ const WM = {
     if (!el) return;
 
     if (!skipHistory && routerBooted) {
-      routeNavigate('work', id);
+      routeNavigate('work', id, filesystem[id].parent !== 'work' ? filesystem[id].parent : null);
     }
     if (!this.openWindows.has('work')) {
       this.open('work', null, true);
@@ -122,6 +127,15 @@ const WM = {
 
   close(id, skipHistory) {
     if (!skipHistory && routerBooted && (ROUTE_APP_IDS.includes(id) || id === 'case-viewer')) {
+      if (id === 'work' && routeState.folder && !routeState.case) {
+        // inside a sub-folder the history has an extra step: close the window directly and reset the URL
+        history.replaceState(emptyRoute(), '', '/');
+        routeState = emptyRoute();
+        finderFolder = 'work';
+        renderFinder();
+        this.close(id, true);
+        return;
+      }
       const isCurrentRoute = (id === 'case-viewer' && routeState.case) ||
         (id === routeState.app && !routeState.case);
       if (isCurrentRoute && history.state && (history.state.app || history.state.case)) {

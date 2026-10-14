@@ -4,9 +4,10 @@
 
 let finderFolder = 'work';
 
-function openFinderFolder(id) {
+function openFinderFolder(id, skipHistory) {
   finderFolder = filesystem[id] && filesystem[id].kind === 'folder' ? id : 'work';
   renderFinder();
+  if (!skipHistory && routerBooted) routeNavigate('work', null, finderFolder === 'work' ? null : finderFolder);
 }
 
 function renderFinder() {
