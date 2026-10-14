@@ -1,0 +1,49 @@
+/* ==========================================================================
+   404 page: the animated background stays, everything else on the desktop is hidden
+   ========================================================================== */
+
+body:has(.nf-page) #os-view > :not(.desktop),
+body:has(.nf-page) .desktop > :not(.liquid-bg),
+body:has(.nf-page) #plain-view { display: none !important; }
+
+.nf-page {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  color: var(--text-primary);
+}
+.nf-code {
+  margin: 0;
+  font-size: clamp(6rem, 22vw, 13rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #ffffff 20%, rgba(255,255,255,0.15));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.nf-title { margin: 0; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 600; }
+.nf-text { margin: 0; max-width: 380px; color: var(--text-secondary); line-height: 1.5; }
+.nf-btn {
+  margin-top: 14px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.nf-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-1px); }

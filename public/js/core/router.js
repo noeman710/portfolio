@@ -66,6 +66,7 @@ function routeNavigate(appId, caseId, folderId) {
 }
 
 function initRouter() {
+  if (document.querySelector('.nf-page')) return; // 404 page: leave the URL alone
   const initial = parseRoutePath(window.location.pathname);
   history.replaceState(emptyRoute(), '', '/');
   routerBooted = true;
