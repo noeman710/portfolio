@@ -1,7 +1,7 @@
 /* Router
    Gives each window a real URL so the mobile back / swipe-back gesture closes it. */
 
-const ROUTE_APP_IDS = ['work', 'about', 'photos', 'notes', 'mail', 'maps'];
+const ROUTE_APP_IDS = ['work', 'about', 'photos', 'notes', 'mail', 'maps', 'trash'];
 const ROUTE_CASE_IDS = Object.keys(filesystem).filter((k) => filesystem[k].kind === 'case-study');
 
 let routeState = { app: null, folder: null, case: null };
@@ -41,10 +41,12 @@ function applyRouteState(newState) {
     WM.close('case-viewer', true);
   }
   if (old.app && old.app !== newState.app) {
-    WM.close(old.app, true);
+    if (old.app === 'trash') { if (window.Trash && window.Trash.close) window.Trash.close(); }
+    else WM.close(old.app, true);
   }
   if (newState.app && newState.app !== old.app) {
-    WM.open(newState.app, null, true);
+    if (newState.app === 'trash') { if (window.Trash && window.Trash.open) window.Trash.open(); } // else trash.js opens it on load
+    else WM.open(newState.app, null, true);
   }
   if (newState.app === 'work' && (newState.folder !== old.folder || newState.app !== old.app)) {
     openFinderFolder(newState.folder || 'work', true);

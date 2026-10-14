@@ -445,15 +445,21 @@
     y = Math.max(28, Math.min(innerHeight - 60, y));
     Object.assign(panel.style, { left: x + 'px', top: y + 'px', right: 'auto', bottom: 'auto' });
   }
-  function openPanel() {
+  function openPanel(skipHistory) {
+    if (!panel.hidden && panel.classList.contains('is-in')) return;
     renderPanel();
     panel.hidden = false;
+    if (skipHistory !== true && routerBooted) routeNavigate('trash', null, null); // gives the Trash its own URL: /trash
     placePanel();
     requestAnimationFrame(() => panel.classList.add('is-in'));
     if (typeof WM !== 'undefined' && WM.focus) { /* keep above windows via z-index */ }
   }
-  function closePanel() {
+  function closePanel(skipHistory) {
     if (panel.hidden) return;
+    if (skipHistory !== true && routerBooted && routeState.app === 'trash' && history.state && history.state.app) {
+      history.back(); // popstate closes the panel and the URL steps back
+      return;
+    }
     panel.classList.remove('is-in');
     setTimeout(() => { panel.hidden = true; panel.classList.remove('is-max'); }, 180);
   }
@@ -484,6 +490,10 @@
       d = null;
     }));
   })();
+
+  window.Trash.open = () => openPanel(true);
+  window.Trash.close = () => closePanel(true);
+  if (routerBooted && routeState.app === 'trash') openPanel(true); // page loaded directly on /trash
 
   persist();
   updateTrashIcon();
