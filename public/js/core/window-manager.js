@@ -111,7 +111,7 @@ const WM = {
 
     el.querySelector('.case-paragraphs').innerHTML = data.body.map((p) => `<p>${p}</p>`).join('');
     el.querySelector('.case-role').textContent = data.role;
-    el.querySelector('.case-duration').textContent = data.duration;
+    el.querySelector('.case-context').textContent = data.context;
     el.querySelector('.case-scope').textContent = data.scope;
     el.querySelector('.window-title').textContent = data.title;
 

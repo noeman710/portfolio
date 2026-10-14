@@ -95,7 +95,7 @@ const filesystem = {
         'Worked on this collaboratively with my friend Kari.',
       ],
       role: 'Brand & Web Design (with Kari)',
-      duration: 'Collaborative Project, 2026',
+      context: 'Collaborative Project, 2026',
       scope: 'Visual Identity & Responsive Web',
       links: {
         behance: 'https://www.behance.net/gallery/256328111/ROUX-A-Visual-World-Built-Around-Photography',
@@ -115,7 +115,7 @@ const filesystem = {
         'Growth doesn\u2019t stay behind a desk, so I carried the same visual authority and high-speed feel from desktop through to mobile, keeping the experience responsive, fast, and consistent everywhere.',
       ],
       role: 'Personal / Concept Project',
-      duration: 'Self-Directed',
+      context: 'Self-Directed',
       scope: 'Responsive Web, Desktop & Mobile',
       links: {
         behance: 'https://www.behance.net/gallery/250656571/SURA-Digital-Growth-Agency-Landing-Page',
@@ -136,7 +136,7 @@ const filesystem = {
         'My performance during the internship led directly to a full-time offer. Since joining Mediassive as their sole in-house designer in August 2026, I\u2019ve continued leading the iterative UX/UI design of FinderrLink, working closely with the engineering team to bring changes into production, alongside building out the complete FinderrLink brand guidelines and visual identity.',
       ],
       role: 'UX/UI Design Intern, now UX/UI, Graphic & Brand Designer',
-      duration: 'Mediassive, Intern March 2026, Full-Time Since August 2026',
+      context: 'Mediassive, Intern March 2026, Full-Time Since August 2026',
       scope: '3 Roles, Web & Mobile',
       links: {
         instagram: 'https://www.instagram.com/finderrlink/',
@@ -157,7 +157,7 @@ const filesystem = {
         'Built out the Coral and Charcoal color system with a secondary palette and signature gradient, paired Source Sans 3 across four weights, and defined photography direction, pattern language, and real-world mockups spanning UI, print, business cards, signage, and branded merchandise.',
       ],
       role: 'Brand Designer',
-      duration: 'Mediassive, 2026',
+      context: 'Mediassive, 2026',
       scope: 'Brand Identity, V1.0',
       links: {},
     },
@@ -175,7 +175,7 @@ const filesystem = {
         'Built out supporting pages for the doctor\u2019s profile, the clinic itself, and contact, plus a Google-reviews section and WhatsApp/phone quick-contact, keeping the patient journey to booking as short as possible.',
       ],
       role: 'Freelance UX/UI Designer',
-      duration: 'Client Project, 2026',
+      context: 'Client Project, 2026',
       scope: 'Bilingual Web Platform, Booking Flow',
       links: {
         live: 'https://centreorltanger.ma/',
@@ -195,7 +195,7 @@ const filesystem = {
         'Carried the narrative through feature breakdowns, a "Redefine Your Reality" technical section, and customer voices, then adapted the full flow for mobile so the same wow-to-proof journey holds up on a smaller screen.',
       ],
       role: 'Personal / Concept Project',
-      duration: 'Self-Directed',
+      context: 'Self-Directed',
       scope: 'Landing Page, Desktop & Mobile',
       links: {
         behance: 'https://www.behance.net/gallery/241679579/LUMA-AR-2026-UIUX-Case-Study',
@@ -215,7 +215,7 @@ const filesystem = {
         'Brought the interface to life with a clean, image-forward home feed, category shortcuts, and product cards, tied together with a Poppins type system and a considered colour palette to give Styla its own distinct, modern brand identity.',
       ],
       role: 'Personal / Concept Project',
-      duration: 'Self-Directed',
+      context: 'Self-Directed',
       scope: 'Mobile App, UX Research & UI Design',
       links: {
         behance: 'https://www.behance.net/gallery/241378235/Styla-Fashion-App-Streamlined-Shopping-Experience',
@@ -235,7 +235,7 @@ const filesystem = {
         'Extended the same restrained, gallery-like language into a private viewing selection and service pages, then adapted the full experience for mobile so the brand feel held up across devices.',
       ],
       role: 'Personal / Concept Project',
-      duration: 'Self-Directed',
+      context: 'Self-Directed',
       scope: 'Web Platform, Desktop & Mobile',
       links: {
         behance: 'https://www.behance.net/gallery/245854745/AUREUM-High-End-Jewelry-House-UIUX-Case-Study',
@@ -255,7 +255,7 @@ const filesystem = {
         'Backed the direction with a defined user persona and a bold Clash Display type system, then carried the same guided, cinematic pacing through to the mobile layout so the experience held together at every size.',
       ],
       role: 'Personal / Concept Project',
-      duration: 'Self-Directed',
+      context: 'Self-Directed',
       scope: 'Landing Page, Desktop & Mobile',
       links: {
         behance: 'https://www.behance.net/gallery/241963467/Aetherix-UXUI-Case-Study-2026',
@@ -276,7 +276,7 @@ const filesystem = {
         'Worked on this collaboratively with Karina Kudina, a UX/UI designer from Ukraine.',
       ],
       role: 'Collaborative Project (with Karina Kudina)',
-      duration: 'Collaborative Project, 2026',
+      context: 'Collaborative Project, 2026',
       scope: 'Web Platform, Desktop & Mobile',
       links: {
         behance: 'https://www.behance.net/gallery/252029567/ESIVO-Next-Gen-GPU-Architecture-UXUI-Design',
