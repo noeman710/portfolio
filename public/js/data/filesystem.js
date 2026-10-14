@@ -74,6 +74,10 @@ const filesystem = {
     type: 'file', kind: 'photo', title: 'Iconic Pic 12', parent: 'photos',
     data: { src: '/assets/images/photos/photo-13.jpg', alt: 'Iconic Pic 12' },
   },
+  'photo-14': {
+    type: 'file', kind: 'photo', title: 'Iconic Pic 13', parent: 'photos',
+    data: { src: '/assets/images/photos/photo-14.jpg', alt: 'Iconic Pic 13' },
+  },
   'roux': {
     type: 'file', kind: 'case-study', title: 'Roux.case', parent: 'work',
     data: {
