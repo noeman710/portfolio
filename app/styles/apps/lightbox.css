@@ -1,0 +1,46 @@
+/* ---------- Lightbox (Photos + About Me portrait) ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6,6,8,0.88);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease;
+  padding: 40px;
+}
+.lightbox.is-visible { opacity: 1; visibility: visible; }
+.lightbox-img {
+  max-width: min(90vw, 1100px);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+  transform: scale(0.96);
+  transition: transform 0.22s ease;
+}
+.lightbox.is-visible .lightbox-img { transform: scale(1); }
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 26px;
+  width: 40px; height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+.finder-file.photo-file .icon-glyph.thumb { width: 100%; height: 92px; border-radius: 8px; }
+.finder-file.photo-file .icon-glyph.thumb img { border-radius: 8px; }

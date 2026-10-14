@@ -15,7 +15,8 @@ npm run build && npm start
 app/
   layout.jsx            page shell: <head>, server-rendered markup, analytics
   [[...slug]]/page.jsx  makes /, /work, /about, /photos ... resolve (the app handles the URL itself)
-  globals.css           all styles
+  globals.css           imports the files in styles/, in cascade order
+  styles/               one CSS file per area (base, desktop, dock, windows, mobile, trash ...), apps/ for app windows
 components/
   PlainView.jsx         text version of the site (SEO / no-JS), hidden once the desktop loads
   LegacyApp.jsx         loads the interactive scripts in order
@@ -23,7 +24,15 @@ content/
   desktop.html          desktop markup (menu bar, icons, dock, windows) — rendered on the server
 public/
   assets/ icons/        images, audio, PDFs, icon set
-  js/                   main.js (window manager, widgets, mail), gravity.js, trash.js, liquid-bg.js
+  js/
+    core/               constants, sound, router, window manager / drag / resize, triggers
+    data/               virtual filesystem (icons, projects, photos)
+    desktop/            menu bar, dock magnify, boot sequence
+    widgets/            clock-side widgets: coffee, quote, music, carousel
+    apps/               finder, photos, spotlight, maps, notes, mail
+    effects/            gravity (+ toggle), liquid background
+    features/           trash
+    boot.js             starts everything (load order lives in components/LegacyApp.jsx)
 ```
 
 The interactive layer (`public/js/*`) is still plain browser JavaScript; the Next.js shell hosts it

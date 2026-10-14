@@ -1,0 +1,78 @@
+/* ---------- Menu bar ---------- */
+
+.menu-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  background: var(--menubar-bg);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  font-size: 0.8rem;
+  z-index: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.menu-left, .menu-right { display: flex; align-items: center; gap: 16px; }
+
+.menu-app-name { font-weight: 600; }
+
+.menu-search-btn {
+  background: none;
+  border: none;
+  color: var(--parchment, #f2f2f3);
+  display: flex;
+  align-items: center;
+}
+
+.menu-sound-btn {
+  background: none;
+  border: none;
+  color: var(--parchment, #f2f2f3);
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+}
+
+.menu-sound-btn:hover { opacity: 1; }
+
+.menu-gravity-btn {
+  background: none; border: 1px solid transparent; color: var(--parchment, #f2f2f3);
+  display: flex; align-items: center; gap: 6px; opacity: 0.85;
+  font: inherit; font-size: 0.8rem; padding: 2px 8px; border-radius: 6px;
+}
+.menu-gravity-btn:hover { opacity: 1; }
+.g-switch { width: 28px; height: 16px; border-radius: 999px; background: rgba(255,255,255,0.22); position: relative; transition: background .2s; flex: none; }
+.g-switch i { position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.menu-gravity-btn[aria-checked="true"] .g-switch { background: var(--accent, #34c759); }
+.menu-gravity-btn[aria-checked="true"] .g-switch i { transform: translateX(12px); }
+.desktop.gravity-on .desktop-icon, .desktop.gravity-on .widget { cursor: grab; touch-action: none; }
+.desktop.gravity-on .desktop-icon.is-grabbed, .desktop.gravity-on .widget.is-grabbed { cursor: grabbing; z-index: 30; }
+.desktop.gravity-on .desktop-icon:hover { background: none; }
+/* gravity: window contents fall inside the window, so no scrolling while it's on */
+.window-body.g-lock, .trash-list.g-lock { overflow: hidden !important; }
+.desktop.gravity-on .finder-file { cursor: grab; touch-action: none; }
+.desktop.gravity-on .finder-file.is-grabbed { cursor: grabbing; z-index: 5; position: relative; }
+@media (max-width: 760px) { .menu-gravity-btn { display: none; } }
+
+.menu-sound-btn .icon-sound-off { display: none; }
+.menu-sound-btn[aria-pressed="true"] .icon-sound-on { display: none; }
+.menu-sound-btn[aria-pressed="true"] .icon-sound-off { display: block; }
+
+.ios-status-glyphs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ios-battery-pct {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.menu-clock { color: var(--text-primary); font-variant-numeric: tabular-nums; }

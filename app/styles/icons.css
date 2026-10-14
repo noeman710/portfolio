@@ -1,0 +1,21 @@
+/* Supplied portfolio icon set */
+.icon-glyph {
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.icon-glyph::before, .icon-glyph::after { display: none; }
+.icon-glyph svg { display: none; }
+.icon-glyph.is-real-logo { background: none; box-shadow: none; }
+.icon-glyph.is-real-logo img { object-fit: contain; border-radius: 0; }
+.icon-glyph.folder { background: transparent url("/icons/Folder.png") center / contain no-repeat; }
+[data-open="photos"] .icon-glyph.folder { background-image: url("/icons/Photos.png"); }
+.icon-glyph.doc { background: transparent url("/icons/Document.png") center / contain no-repeat; }
+[data-open="about"] .icon-glyph.doc { background-image: url("/icons/Contacts.png"); }
+.icon-glyph.notes { background: transparent url("/icons/Notes.png") center / contain no-repeat; }
+.icon-glyph.mail { background: transparent url("/icons/Mail.png") center / contain no-repeat; }
+.icon-glyph.maps { background: transparent url("/icons/Maps.png") center / contain no-repeat; }
