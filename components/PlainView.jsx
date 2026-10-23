@@ -29,16 +29,16 @@ export default function PlainView() {
 
       <h2>Experience</h2>
       <ul>
-        <li><strong>UX/UI, Graphic & Brand Designer</strong>, <a href="https://mediassive.com/" target="_blank" rel="noopener">Mediassive</a>, TechnoPark Tangier (August 2026, Present). Sole in-house designer for the agency: UX/UI design, native mobile app design, brand guidelines, and social media content, including the complete <a href="https://www.instagram.com/finderrlink/" target="_blank" rel="noopener">FinderrLink brand identity</a>.</li>
-        <li><strong>Freelance UX Research & UI Designer</strong>, Independent, Various Clients (2025, Present)</li>
+        <li><strong>Product Designer (UX/UI, Brand & Interaction)</strong>, <a href="https://mediassive.com/" target="_blank" rel="noopener">Mediassive</a>, TechnoPark Tangier (August 2026, Present). Sole in-house designer for the agency: UX/UI design, native mobile app design, brand guidelines, and social media content, including the complete <a href="https://www.instagram.com/finderrlink/" target="_blank" rel="noopener">FinderrLink brand identity</a>.</li>
+        <li><strong>Freelance UX/UI Designer</strong>, Independent, Various Clients (2025, Present)</li>
         <li><strong>UX/UI Design Intern</strong>, Mediassive, Tangier (March 2026, 1 Month)</li>
-        <li><strong>Content Creator & Social Media Manager</strong>, Instagram @icon_ui.ux (2025, Present)</li>
+        <li><strong>Design Content Creator</strong>, Instagram @icon_ui.ux (2025, Present)</li>
       </ul>
 
       <h2>Education</h2>
       <ul>
         <li>Technicien Spécialisé, Digital Design (UI Option), Cité des Métiers et des Compétences (CMC) Tanger-Tétouan-Al Hoceïma, graduated 2026</li>
-        <li>Baccalauréat Professionnel, Génie Électrique, Lycée Al Khawarizmi, Tangier (2022)</li>
+        <li>Baccalauréat Professionnel, Génie Électrique, Lycée Al Khawarizmi, Tangier (2021 – 2022)</li>
       </ul>
 
       <h2>Certifications</h2>
@@ -47,9 +47,10 @@ export default function PlainView() {
       </ul>
 
       <h2>Skills</h2>
-      <p><strong>Design & PM Tools:</strong> Figma, Framer, Webflow, Adobe Photoshop, Adobe XD, Rive, Notion, Miro, Excalidraw, Trello, Jira.</p>
-      <p><strong>AI Tools:</strong> Claude AI, ChatGPT, Kimi, Figma Make, Replit, Framer Workshop AI, NotebookLM, Google AI Studio.</p>
-      <p><strong>Core Skills:</strong> User Research, User Interviews, Questionnaire Analysis, User Journey Mapping, User Flows, User Stories, User-Centred Design, Information Architecture, Interaction Design, Visual Design, Design Systems, Atomic Design, Wireframing, Prototyping, Usability Testing, Product Design, Cross-Functional Collaboration, Agile/Scrum, Responsive Design, Mobile App Design, SaaS Design.</p>
+      <p><strong>Design & PM Tools:</strong> Figma, FigJam, Framer, Webflow, Adobe Photoshop, Adobe XD, Notion.</p>
+      <p><strong>AI Tools:</strong> Claude AI, ChatGPT, Figma Make, NotebookLM, Google AI Studio.</p>
+      <p><strong>Core Skills:</strong> User Research, User Interviews, Questionnaire Analysis, User Journey Mapping, User Flows, User Stories, User-Centred Design, Information Architecture, Interaction Design, Micro-interactions, Visual Identity & Brand Guidelines, Design Systems, Atomic Design, Wireframing, Prototyping, Usability Testing, Product Design, Cross-Functional Collaboration, Agile/Scrum, Responsive Design, Mobile App Design, SaaS Design.</p>
+      <p><strong>Languages:</strong> Arabic (native), English (B1–B2), French (intermediate).</p>
     </div>
   );
 }
