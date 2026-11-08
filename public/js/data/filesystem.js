@@ -85,44 +85,45 @@ const filesystem = {
     type: 'file', kind: 'case-study', title: 'Ruvaty.case', parent: 'work',
     data: {
       title: 'Ruvaty',
-      tag: 'Web Platform · Real Project, 2026',
-      summary: 'A social media management platform that brings scheduling, analytics, mentions, ads, and AI assistance into one calm workspace for agencies, freelancers, and creators.',
+      tag: 'Web Platform · In Development, 2026',
+      summary: 'A social media management platform that brings scheduling, analytics, mentions, ads, and AI assistance into one calm workspace for agencies, freelancers, and creators. The coming-soon site and waitlist are live while the app is being built.',
       cover: '/assets/images/projects/ruvaty-cover.jpg',
       body: [
-        'Ruvaty is built for people who run social media for a living. Instead of juggling tabs, spreadsheets, and screenshots, agencies, freelance social media managers, and creators plan, approve, and report on every channel from one workspace. I designed the experience from scratch, starting from the promise behind the product: converge chaos into calm with unified social command.',
-        'The product is organised around the way these teams actually work: a command center for engagement, pending approvals, and campaign status; a visual content calendar with bulk scheduling and drag and drop; a unified stream for comments and mentions; cross-platform analytics; ad campaign management; and an AI assistant that suggests schedules and content but never posts without approval.',
-        'Agencies need clear separation between clients, so each account lives in its own space with its own channels, schedule, and approval state. The interface makes that structure visible at a glance, with a clean light canvas, soft purple accents, and playful hand-drawn annotations that explain each idea without cluttering the product.',
-        'The public website follows the same logic. A \u2018Liquid Precision\u2019 direction runs through the hero, the features, and the platform integrations, then moves into trust, with a clear explanation of how data is handled, and into the personas the product is engineered for, before closing on the early access waitlist.',
+        'Ruvaty is built for people who run social media for a living. Instead of juggling tabs, spreadsheets, and screenshots, agencies, freelance social media managers, and creators will plan, approve, and report on every channel from one workspace. I am designing the experience from scratch, starting from the promise behind the product: converge chaos into calm with unified social command.',
+        'The product is still in development, so the first thing we shipped is the coming-soon website. It explains the product and its principles, and lets people join the early access waitlist today, so we can start building an audience and learning from real sign-ups before the app is ready.',
+        'Alongside the site we published the Privacy Policy and Terms of Service. Platforms like Meta require them before granting API access, so they are what lets Ruvaty become a trusted platform that can connect to people\u2019s accounts. Because of that, the site spends a whole section on trust: how data is encrypted, that access is user-authorised and can be revoked, and that nothing is sold.',
+        'The app itself is being designed around the way these teams actually work: a command center for engagement, pending approvals, and campaign status; a visual content calendar with bulk scheduling; a unified stream for comments and mentions; cross-platform analytics; ad management; and an AI assistant that suggests but never posts without approval. Each client lives in its own space, with a clean light canvas, soft purple accents, and playful hand-drawn annotations.',
       ],
       role: 'UX/UI Design, End to End',
-      context: 'Real Project, 2026',
-      scope: 'Web Platform & Marketing Site',
+      context: 'In Development, Coming-Soon Site Live, 2026',
+      scope: 'Product Design & Coming-Soon Site',
       ux: {
         "keywords": [
           "Persona-driven design",
           "Multi-client workflows",
           "Approval flows",
           "Dashboard design",
-          "Information architecture",
-          "Progressive disclosure",
-          "Trust & data transparency"
+          "Waitlist conversion",
+          "Trust & data transparency",
+          "Platform compliance (Meta API)",
+          "Progressive disclosure"
         ],
         "rows": [
           [
             "The problem",
-            "Social media managers juggle many clients and platforms, and lose hours to tabs, spreadsheets, screenshots, and chasing approvals."
+            "Social media managers juggle many clients and platforms, and lose hours to tabs, spreadsheets, screenshots, and chasing approvals. On the product side, platforms will only open their APIs to services they can trust."
           ],
           [
             "The goal",
-            "One calm workspace where planning, approval, and reporting for every client happen in one place, with an AI assistant that helps but never acts on its own."
+            "Two goals in sequence: launch a coming-soon page that explains the product and collects early-access sign-ups, and earn platform approval by publishing clear privacy and terms pages. In parallel, design a calm single workspace for planning, approval, and reporting."
           ],
           [
-            "How people use it",
-            "A manager opens the command center, sees which clients are active or waiting for approval, schedules posts in the calendar, answers comments from a single stream, and shares clean reports."
+            "How people will use it",
+            "A visitor reads what Ruvaty will do, checks how their data is handled, and joins the waitlist. Once the app launches, a manager will open the command center, see which clients are waiting on approval, schedule posts, answer comments from one stream, and share reports."
           ],
           [
-            "How I iterated",
-            "I shaped the flows around three personas (agencies, freelancers, creators), tested the structure against real day-to-day workflows, and refined it from feedback, for example by making each client’s space and approval status visible at a glance."
+            "How I iterate",
+            "I designed around three personas (agencies, freelancers, creators) and shipped the smallest useful version first, the coming-soon site, to learn from real sign-ups and platform requirements. I keep refining the app flows with the team as feedback arrives."
           ]
         ]
       },

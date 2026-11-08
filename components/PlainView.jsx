@@ -26,7 +26,7 @@ export default function PlainView() {
       <div className="plain-card"><h3>Aureum</h3><span>Web Platform · Personal Project, 2026</span></div>
       <div className="plain-card"><h3>Aetherix</h3><span>Landing Page · Personal Project, 2026</span></div>
       <div className="plain-card"><h3>ESIVO</h3><span>Web Platform · Collaborative Project, 2026</span></div>
-      <div className="plain-card"><h3>Ruvaty</h3><span>Web Platform · Real Project, 2026</span></div>
+      <div className="plain-card"><h3>Ruvaty</h3><span>Web Platform · In Development, 2026</span></div>
       <div className="plain-card"><h3>ROUX</h3><span>Brand & Web Design · Photography Studio, 2026</span></div>
 
       <h2>Experience</h2>
