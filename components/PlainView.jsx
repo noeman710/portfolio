@@ -19,6 +19,7 @@ export default function PlainView() {
       <div className="plain-card"><h3>Sura</h3><span>Landing Page · Personal Project, 2026</span></div>
       <div className="plain-card"><h3>FinderrLink</h3><span>SaaS Platform · Mediassive, 2026</span></div>
       <div className="plain-card"><h3>FinderrLink Brand Guidelines</h3><span>Brand Identity · Mediassive, 2026</span></div>
+      <div className="plain-card"><h3>Collatera</h3><span>Brand Identity & Web Design · Mediassive, 2026</span></div>
       <div className="plain-card"><h3>Centre ORL Tanger</h3><span>Web Platform · Freelance, 2026</span></div>
       <div className="plain-card"><h3>LUMA</h3><span>Landing Page · Personal Project, 2026</span></div>
       <div className="plain-card"><h3>Styla</h3><span>Mobile App · Personal Project, 2026</span></div>

@@ -184,6 +184,27 @@ const filesystem = {
       links: {},
     },
   },
+  'collatera': {
+    type: 'file', kind: 'case-study', title: 'Collatera.case', parent: 'mediassive',
+    data: {
+      title: 'Collatera',
+      tag: 'Brand Identity & Web Design · Mediassive, 2026',
+      summary: 'The brand identity and website for Collatera, an independent SAP compliance consultancy that engineers e-invoicing and statutory reporting for global enterprises.',
+      cover: '/assets/images/projects/collatera-cover.jpg',
+      body: [
+        'Collatera is a specialist consultancy for SAP Document and Reporting Compliance (DRC), e-invoicing, and e-reporting, helping large enterprises meet tax mandates that change from one country to the next. We launched it together with Mediassive, and I was the only designer on the team, working alongside the developers and engineers who built it.',
+        'I created the brand identity from scratch and designed the full website experience. The challenge was making a dense, regulation-heavy subject feel clear and trustworthy for finance, tax, and IT teams at once, so the identity stays precise and calm, with a crisp blue accent on a clean light canvas.',
+        'The site is structured around the way these teams make decisions: choosing a compliance path, exploring the expertise modules, understanding the SAP DRC architecture, and seeing how an engagement runs from readiness audit to go-live and global operations.',
+        'The centrepiece is the Mandates by Country live tracker, a dotted world map with country markers that turns e-invoicing timelines, regulatory models, and SAP DRC readiness across jurisdictions into something you can scan in seconds.',
+      ],
+      role: 'Brand Identity & UX/UI Designer (sole designer)',
+      context: 'Mediassive, 2026',
+      scope: 'Brand Identity & Responsive Web',
+      links: {
+        live: 'https://collatera.co/',
+      },
+    },
+  },
   'entclinic': {
     type: 'file', kind: 'case-study', title: 'CentreORLTanger.case', parent: 'work',
     data: {
