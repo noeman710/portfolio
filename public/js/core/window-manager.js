@@ -110,6 +110,16 @@ const WM = {
     }
 
     el.querySelector('.case-paragraphs').innerHTML = data.body.map((p) => `<p>${p}</p>`).join('');
+    const uxBox = el.querySelector('.case-ux');
+    if (uxBox) {
+      const ux = data.ux;
+      uxBox.hidden = !ux;
+      uxBox.innerHTML = ux
+        ? `<h3 class="case-ux-title">UX approach</h3>
+           <div class="case-ux-keywords">${ux.keywords.map((k) => `<span>${k}</span>`).join('')}</div>
+           <dl class="case-ux-list">${ux.rows.map(([label, text]) => `<div><dt>${label}</dt><dd>${text}</dd></div>`).join('')}</dl>`
+        : '';
+    }
     el.querySelector('.case-role').textContent = data.role;
     el.querySelector('.case-context').textContent = data.context;
     el.querySelector('.case-scope').textContent = data.scope;

@@ -97,6 +97,35 @@ const filesystem = {
       role: 'UX/UI Design, End to End',
       context: 'Real Project, 2026',
       scope: 'Web Platform & Marketing Site',
+      ux: {
+        "keywords": [
+          "Persona-driven design",
+          "Multi-client workflows",
+          "Approval flows",
+          "Dashboard design",
+          "Information architecture",
+          "Progressive disclosure",
+          "Trust & data transparency"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Social media managers juggle many clients and platforms, and lose hours to tabs, spreadsheets, screenshots, and chasing approvals."
+          ],
+          [
+            "The goal",
+            "One calm workspace where planning, approval, and reporting for every client happen in one place, with an AI assistant that helps but never acts on its own."
+          ],
+          [
+            "How people use it",
+            "A manager opens the command center, sees which clients are active or waiting for approval, schedules posts in the calendar, answers comments from a single stream, and shares clean reports."
+          ],
+          [
+            "How I iterated",
+            "I shaped the flows around three personas (agencies, freelancers, creators), tested the structure against real day-to-day workflows, and refined it from feedback, for example by making each client’s space and approval status visible at a glance."
+          ]
+        ]
+      },
       links: {
         live: 'https://ruvaty.com/',
       },
@@ -118,6 +147,34 @@ const filesystem = {
       role: 'Brand & Web Design (with Kari)',
       context: 'Collaborative Project, 2026',
       scope: 'Visual Identity & Responsive Web',
+      ux: {
+        "keywords": [
+          "Persona-driven flow",
+          "Visual hierarchy",
+          "Content strategy",
+          "Pacing & rhythm",
+          "Responsive design",
+          "Collaboration"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Photography sites are often organised by service, while visitors simply want to judge the style quickly and decide whether the studio fits them."
+          ],
+          [
+            "The goal",
+            "Let a client discover the work fast, understand the visual style, and feel confident enough to get in touch."
+          ],
+          [
+            "How people use it",
+            "A visitor scans the fashion, editorial, portrait, and campaign sections, led by the imagery, and reaches out once the style feels right."
+          ],
+          [
+            "How I iterated",
+            "I anchored the flow on a fictional client persona, then refined the pacing and layout in rounds with my collaborator Kari and feedback from other designers."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/256328111/ROUX-A-Visual-World-Built-Around-Photography',
       },
@@ -138,6 +195,34 @@ const filesystem = {
       role: 'Personal / Concept Project',
       context: 'Self-Directed',
       scope: 'Responsive Web, Desktop & Mobile',
+      ux: {
+        "keywords": [
+          "Trust-building UX",
+          "Goal setting",
+          "Sketch to high-fidelity",
+          "Data-driven layout",
+          "Responsive design",
+          "Performance"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Most agencies talk about marketing, but visitors can’t tell whether they can be trusted with real results."
+          ],
+          [
+            "The goal",
+            "Make trust feel earned through clarity and proof, so a visitor understands the offer quickly and knows what to do next."
+          ],
+          [
+            "How people use it",
+            "A visitor scans the data-driven sections on desktop or mobile, checks the proof, and takes the next step."
+          ],
+          [
+            "How I iterated",
+            "I started on paper, sketching and analysing the core goals, then moved from rough sketch to high-fidelity, adjusting after feedback on clarity and speed."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/250656571/SURA-Digital-Growth-Agency-Landing-Page',
       },
@@ -159,6 +244,42 @@ const filesystem = {
       role: 'UX/UI Design Intern, now UX/UI, Graphic & Brand Designer',
       context: 'Mediassive, Intern March 2026, Full-Time Since August 2026',
       scope: '3 Roles, Web & Mobile',
+      ux: {
+        "keywords": [
+          "Multi-role UX",
+          "User research",
+          "Journey mapping",
+          "User flows",
+          "Information architecture",
+          "Usability testing",
+          "Google Analytics",
+          "Bounce-rate analysis",
+          "Conversion optimisation",
+          "Iterative design"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Hiring and finding missions across three very different roles was slow and unclear: too many steps to publish a mission, and no quick way to see which missions actually matched a freelancer."
+          ],
+          [
+            "The goal",
+            "Let every role reach its main outcome in as few steps as possible: a freelancer finds a matching mission, an enterprise publishes one, and an agency manages hiring and collaboration."
+          ],
+          [
+            "How people use it",
+            "A freelancer lands on a dashboard with KPIs and a mission board, then asks the AI assistant for matches. An enterprise describes a need in plain words and the assistant turns it into a published mission in under 30 seconds. An agency runs hiring and collaboration from the same system."
+          ],
+          [
+            "How I iterated",
+            "I designed each role’s flow separately, reviewed it with the developers for feasibility, then kept refining screens from real user feedback after release, shipping the changes to production with the engineering team."
+          ],
+          [
+            "What the data told us",
+            "With the dev team I set up Google Analytics to see who visits (the types of users), where they come from, and where they leave. We used it to find the points where visitors dropped off, reduce the bounce rate, and improve the path that leads to conversion."
+          ]
+        ]
+      },
       links: {
         live: 'https://finderrlink.com/',
         instagram: 'https://www.instagram.com/finderrlink/',
@@ -181,6 +302,34 @@ const filesystem = {
       role: 'Brand Designer',
       context: 'Mediassive, 2026',
       scope: 'Brand Identity, V1.0',
+      ux: {
+        "keywords": [
+          "Brand strategy",
+          "Brand values & personality",
+          "Tone of voice",
+          "Design system foundations",
+          "Consistency",
+          "Scalability"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "A new product needed to look and sound like one brand everywhere (product, social media, print) without a shared reference to design from."
+          ],
+          [
+            "The goal",
+            "Give the whole team one source of truth, so anyone can make an on-brand decision quickly without waiting for the designer."
+          ],
+          [
+            "How people use it",
+            "Designers, developers, and content creators open the guidelines to pick the right logo variant, colour, typeface, or wording, from product copy to social captions."
+          ],
+          [
+            "How I iterated",
+            "I checked the logo and colour at every size, from a 16px favicon to large-format signage, and refined the system after reviewing real mockups with the team."
+          ]
+        ]
+      },
       links: {},
     },
   },
@@ -200,6 +349,36 @@ const filesystem = {
       role: 'Brand Identity & UX/UI Designer (sole designer)',
       context: 'Mediassive, 2026',
       scope: 'Brand Identity & Responsive Web',
+      ux: {
+        "keywords": [
+          "Stakeholder alignment",
+          "Audience analysis",
+          "Information architecture",
+          "Content hierarchy",
+          "Data visualisation",
+          "Trust & credibility",
+          "Responsive design",
+          "Developer handoff"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Compliance mandates differ by country and keep changing, and the people deciding (finance, tax, and IT) each look for something different in a dense, intimidating subject."
+          ],
+          [
+            "The goal",
+            "Help a visitor understand within seconds what Collatera does, which mandates affect them, and how to start a conversation, building trust from the very first screen."
+          ],
+          [
+            "How people use it",
+            "A visitor chooses their compliance path, checks the Mandates by Country tracker for their jurisdiction, reads how an engagement runs, then books a short readiness assessment."
+          ],
+          [
+            "How I iterated",
+            "As the only designer, I reviewed each version with the client and the developers, simplified the content hierarchy after every round of feedback, and kept the design aligned with what could be built and run."
+          ]
+        ]
+      },
       links: {
         live: 'https://collatera.co/',
       },
@@ -220,6 +399,34 @@ const filesystem = {
       role: 'Freelance UX/UI Designer',
       context: 'Client Project, 2026',
       scope: 'Bilingual Web Platform, Booking Flow',
+      ux: {
+        "keywords": [
+          "Patient-centred design",
+          "Bilingual UX (FR/AR)",
+          "Booking flow",
+          "Trust signals",
+          "Mobile-first",
+          "Atomic design system"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Patients looking for ENT care in Tangier need reassurance and a fast way to book, in French or Arabic, often from their phone."
+          ],
+          [
+            "The goal",
+            "Make the path from a health worry to a booked consultation as short as possible, while building trust in the doctor."
+          ],
+          [
+            "How people use it",
+            "A patient finds their concern in the service list, checks the doctor’s credentials and Google reviews, then books through the form, WhatsApp, or a phone call."
+          ],
+          [
+            "How I iterated",
+            "I refined the booking flow with the client until it stayed visible and short on every screen, and kept the Arabic and French labels aligned across all 7 responsive screens."
+          ]
+        ]
+      },
       links: {
         live: 'https://centreorltanger.ma/',
       },
@@ -240,6 +447,34 @@ const filesystem = {
       role: 'Personal / Concept Project',
       context: 'Self-Directed',
       scope: 'Landing Page, Desktop & Mobile',
+      ux: {
+        "keywords": [
+          "Human-centred research",
+          "Value proposition",
+          "Storytelling flow",
+          "Persona",
+          "Credibility & proof",
+          "Responsive design"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "AR eyewear is new to most people, so visitors need both emotion and hard proof before they trust it."
+          ],
+          [
+            "The goal",
+            "Carry the visitor from an emotional “wow” moment to technical evidence, without losing them on the way."
+          ],
+          [
+            "How people use it",
+            "A visitor lands on the hero, scrolls through features and the technical section, and reads customer voices before deciding."
+          ],
+          [
+            "How I iterated",
+            "I defined the audience and value propositions from research, then reordered sections after feedback so proof arrives right when doubt appears."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/241679579/LUMA-AR-2026-UIUX-Case-Study',
       },
@@ -260,6 +495,35 @@ const filesystem = {
       role: 'Personal / Concept Project',
       context: 'Self-Directed',
       scope: 'Mobile App, UX Research & UI Design',
+      ux: {
+        "keywords": [
+          "User research",
+          "Problem statement",
+          "Personas",
+          "Visual product discovery",
+          "Prototyping",
+          "Usability testing",
+          "Iteration"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Online fashion shoppers struggle with cluttered browsing, hard-to-find products, and outdated interfaces."
+          ],
+          [
+            "The goal",
+            "A seamless shopping experience built around easy navigation, visual product discovery, and personalised recommendations."
+          ],
+          [
+            "How people use it",
+            "A shopper opens an image-led home feed, jumps in through category shortcuts, and finds products on clear, scannable cards."
+          ],
+          [
+            "How I iterated",
+            "I followed discovery, personas (goals, frustrations, tech habits), prototyping, then testing and iteration, so each screen answered a real user need."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/241378235/Styla-Fashion-App-Streamlined-Shopping-Experience',
       },
@@ -280,6 +544,33 @@ const filesystem = {
       role: 'Personal / Concept Project',
       context: 'Self-Directed',
       scope: 'Web Platform, Desktop & Mobile',
+      ux: {
+        "keywords": [
+          "Restraint & hierarchy",
+          "Luxury UX",
+          "Service journey",
+          "Content-first design",
+          "Responsive design"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Luxury buyers distrust noisy interfaces: heavy branding and promotion get in the way of the product itself."
+          ],
+          [
+            "The goal",
+            "Let the jewellery lead, and keep the interface quiet enough that the product carries the luxury."
+          ],
+          [
+            "How people use it",
+            "A visitor browses the Signature Collections and Curated Masterpieces, then requests a private viewing through a simple service flow."
+          ],
+          [
+            "How I iterated",
+            "I kept removing elements until only what a buyer needs remained, then checked the hierarchy again on mobile and refined it from feedback."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/245854745/AUREUM-High-End-Jewelry-House-UIUX-Case-Study',
       },
@@ -300,6 +591,33 @@ const filesystem = {
       role: 'Personal / Concept Project',
       context: 'Self-Directed',
       scope: 'Landing Page, Desktop & Mobile',
+      ux: {
+        "keywords": [
+          "Progressive disclosure",
+          "Persona",
+          "Information architecture",
+          "Value-first storytelling",
+          "Responsive design"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Premium drone pages either drown people in technical data or oversell with lifestyle imagery."
+          ],
+          [
+            "The goal",
+            "Draw the user in emotionally first, then deliver the specs and social proof serious buyers need, in the right order."
+          ],
+          [
+            "How people use it",
+            "A visitor is pulled in by the hero, explores real-world use cases in the gallery, and only then meets performance data and proof as they scroll."
+          ],
+          [
+            "How I iterated",
+            "I designed around a defined persona and tested the order of the story, moving content until the emotional and technical parts supported each other, on desktop and mobile."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/241963467/Aetherix-UXUI-Case-Study-2026',
       },
@@ -321,6 +639,34 @@ const filesystem = {
       role: 'Collaborative Project (with Karina Kudina)',
       context: 'Collaborative Project, 2026',
       scope: 'Web Platform, Desktop & Mobile',
+      ux: {
+        "keywords": [
+          "Technical audience research",
+          "Information hierarchy",
+          "Data-led storytelling",
+          "Credibility design",
+          "Collaboration",
+          "Responsive design"
+        ],
+        "rows": [
+          [
+            "The problem",
+            "Deeply technical hardware has to feel credible to an engineering-literate audience without overwhelming everyone else."
+          ],
+          [
+            "The goal",
+            "Let the numbers and the six engineering systems prove the product, with the company story to back them up."
+          ],
+          [
+            "How people use it",
+            "A visitor reads the six systems, compares the headline performance numbers, then checks the team, funding, and founding story."
+          ],
+          [
+            "How I iterated",
+            "I co-designed with Karina Kudina, reviewing each other’s work in rounds and refining the hierarchy of specs versus story until it read clearly on desktop and mobile."
+          ]
+        ]
+      },
       links: {
         behance: 'https://www.behance.net/gallery/252029567/ESIVO-Next-Gen-GPU-Architecture-UXUI-Design',
       },
