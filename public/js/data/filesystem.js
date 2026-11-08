@@ -81,6 +81,27 @@ const filesystem = {
   'mediassive': {
     type: 'folder', kind: 'folder', title: 'Mediassive', parent: 'work',
   },
+  'ruvaty': {
+    type: 'file', kind: 'case-study', title: 'Ruvaty.case', parent: 'work',
+    data: {
+      title: 'Ruvaty',
+      tag: 'Web Platform · Real Project, 2026',
+      summary: 'A social media management platform that brings scheduling, analytics, mentions, ads, and AI assistance into one calm workspace for agencies, freelancers, and creators.',
+      cover: '/assets/images/projects/ruvaty-cover.jpg',
+      body: [
+        'Ruvaty is built for people who run social media for a living. Instead of juggling tabs, spreadsheets, and screenshots, agencies, freelance social media managers, and creators plan, approve, and report on every channel from one workspace. I designed the experience from scratch, starting from the promise behind the product: converge chaos into calm with unified social command.',
+        'The product is organised around the way these teams actually work: a command center for engagement, pending approvals, and campaign status; a visual content calendar with bulk scheduling and drag and drop; a unified stream for comments and mentions; cross-platform analytics; ad campaign management; and an AI assistant that suggests schedules and content but never posts without approval.',
+        'Agencies need clear separation between clients, so each account lives in its own space with its own channels, schedule, and approval state. The interface makes that structure visible at a glance, with a clean light canvas, soft purple accents, and playful hand-drawn annotations that explain each idea without cluttering the product.',
+        'The public website follows the same logic. A \u2018Liquid Precision\u2019 direction runs through the hero, the features, and the platform integrations, then moves into trust, with a clear explanation of how data is handled, and into the personas the product is engineered for, before closing on the early access waitlist.',
+      ],
+      role: 'UX/UI Design, End to End',
+      context: 'Real Project, 2026',
+      scope: 'Web Platform & Marketing Site',
+      links: {
+        live: 'https://ruvaty.com/',
+      },
+    },
+  },
   'roux': {
     type: 'file', kind: 'case-study', title: 'Roux.case', parent: 'work',
     data: {
@@ -139,6 +160,7 @@ const filesystem = {
       context: 'Mediassive, Intern March 2026, Full-Time Since August 2026',
       scope: '3 Roles, Web & Mobile',
       links: {
+        live: 'https://finderrlink.com/',
         instagram: 'https://www.instagram.com/finderrlink/',
       },
     },
