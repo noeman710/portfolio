@@ -369,6 +369,7 @@ void main() {
       const mount = new ShaderMount(canvas, warpFragmentShader, uniforms, { antialias: false, alpha: false, preserveDrawingBuffer: true }, currentSpeed, preset.offset * 10);
       mount.setUniforms(uniforms);
       window.LiquidBg = { pause: () => mount.setSpeed(0), play: () => mount.setSpeed(currentSpeed) };
+      if (document.documentElement.dataset.wallpaper === 'aero') window.LiquidBg.pause(); // hidden behind the shards: don't burn GPU
     } catch (e) {
       console.warn('Liquid background unavailable, falling back to static wallpaper.', e);
       canvas.style.display = 'none';

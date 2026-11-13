@@ -65,6 +65,11 @@ export default function Wallpaper() {
     document.documentElement.dataset.wallpaper = useAero ? 'aero' : 'liquid';
   }, [useAero]);
 
+  // The shards layer is opaque, so it must not stay on screen once the classic wallpaper is chosen.
+  useEffect(() => {
+    if (host) host.style.display = useAero ? '' : 'none';
+  }, [host, useAero]);
+
   // Hide + pause the liquid canvas while the shards are showing, resume when it is chosen again.
   useEffect(() => {
     const canvas = document.querySelector('.liquid-bg');

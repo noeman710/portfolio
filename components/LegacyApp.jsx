@@ -28,6 +28,7 @@ const SCRIPTS = [
   '/js/widgets/coffee.js',
   '/js/widgets/quote.js',
   '/js/widgets/music.js',
+  '/js/widgets/border-glow.js',
   // apps
   '/js/apps/finder.js',
   '/js/apps/photos.js',
