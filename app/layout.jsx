@@ -3,6 +3,7 @@ import path from 'node:path';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import LegacyApp from '@/components/LegacyApp';
+import Wallpaper from '@/components/Wallpaper';
 import PlainView from '@/components/PlainView';
 import './globals.css';
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
         <PlainView />
         <div style={{ display: 'contents' }} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: read('desktop.html') }} />
         <LegacyApp />
+        <Wallpaper />
         {children}
         {/* Only on Vercel: these load /_vercel/* scripts that don't exist locally */}
         {process.env.VERCEL ? <><Analytics /><SpeedInsights /></> : null}

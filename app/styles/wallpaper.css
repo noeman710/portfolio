@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Aero Shards wallpaper (components/Wallpaper.jsx), mounted inside .desktop above the liquid canvas
+   ========================================================================== */
+
+.wallpaper-aero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #04070d;
+}

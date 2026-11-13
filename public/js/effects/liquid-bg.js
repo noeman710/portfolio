@@ -368,6 +368,7 @@ void main() {
     try {
       const mount = new ShaderMount(canvas, warpFragmentShader, uniforms, { antialias: false, alpha: false, preserveDrawingBuffer: true }, currentSpeed, preset.offset * 10);
       mount.setUniforms(uniforms);
+      window.LiquidBg = { pause: () => mount.setSpeed(0), play: () => mount.setSpeed(currentSpeed) };
     } catch (e) {
       console.warn('Liquid background unavailable, falling back to static wallpaper.', e);
       canvas.style.display = 'none';

@@ -78,7 +78,7 @@
   function openMenu(x, y, rows) {
     menu.innerHTML = rows.map((r, i) => r === '-' ? '<div class="ctx-sep"></div>'
       : r.head ? `<div class="ctx-head">${esc(r.head)}</div>`
-      : `<button class="ctx-item${r.danger ? ' is-danger' : ''}" data-i="${i}" role="menuitem"${r.disabled ? ' disabled' : ''}>${r.icon || ''}<span>${esc(r.text)}</span></button>`).join('');
+      : `<button class="ctx-item${r.danger ? ' is-danger' : ''}" data-i="${i}" role="menuitem"${r.disabled ? ' disabled' : ''}>${r.icon || (r.check !== undefined ? `<span class="ctx-check">${r.check ? '\u2713' : ''}</span>` : '')}<span>${esc(r.text)}</span></button>`).join('');
     menu.hidden = false;
     openedAt = performance.now();
     const w = menu.offsetWidth, h = menu.offsetHeight;
@@ -114,6 +114,7 @@
       { head: 'Desktop' },
       { text: 'Open Trash' + (trashed.length ? ` (${trashed.length})` : ''), icon: TRASH_SVG, run: openPanel },
       { text: 'Restore everything', disabled: !trashed.length, run: () => restoreAll() },
+      ...(window.deskMenuExtras ? window.deskMenuExtras() : []),
     ];
   }
 

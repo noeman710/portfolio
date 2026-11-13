@@ -39,6 +39,7 @@ const SCRIPTS = [
   // start everything, then the features that hook into the running desktop
   '/js/boot.js',
   '/js/features/trash.js',
+  '/js/features/wallpaper-menu.js',
 ];
 
 // Scripts download in parallel but run strictly in list order (async = false).

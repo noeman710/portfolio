@@ -79,3 +79,5 @@ body.is-trash-dragging, body.is-trash-dragging * { user-select: none; cursor: gr
 #trash-dock { transition: transform .15s var(--ease); }
 #trash-dock.is-hot { transform: scale(1.35) translateY(-8px) !important; }
 #trash-dock.is-hot .icon-glyph { filter: drop-shadow(0 0 10px rgba(255,69,58,.8)); }
+
+.ctx-check { display: inline-block; width: 15px; text-align: center; font-size: .8rem; }
