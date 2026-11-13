@@ -3,16 +3,17 @@
    Every .widget becomes a glow card: the border + outer glow light up on the side the pointer is closest to. */
 
 (function () {
+  // Exactly the React Bits defaults / usage example.
   const OPTS = {
     edgeSensitivity: 30,
-    glowColor: '212 92 68',                     // "H S L", a soft blue like the wallpaper
-    backgroundColor: 'rgba(24, 28, 38, 0.55)',
-    borderRadius: 16,
-    glowRadius: 28,
+    glowColor: '40 80 80',
+    backgroundColor: '#120F17',
+    borderRadius: 28,
+    glowRadius: 40,
     glowIntensity: 1.0,
     coneSpread: 25,
     fillOpacity: 0.5,
-    colors: ['#4F8FE6', '#66B3FF', '#A5D0FF'],
+    colors: ['#c084fc', '#f472b6', '#38bdf8'],
   };
 
   const GRADIENT_POSITIONS = ['80% 55%', '69% 34%', '8% 6%', '41% 38%', '86% 85%', '82% 18%', '51% 4%'];

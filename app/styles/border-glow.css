@@ -154,12 +154,11 @@
 }
 
 
-/* ---- Widget overrides (keep the original look, add the glow) ---- */
+/* ---- Widgets: only layout glue, the card itself is the untouched BorderGlow style above ---- */
 .widget.border-glow-card {
-  padding: 16px 18px;
-  border-color: var(--window-border);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .widget .border-glow-inner { overflow: visible; min-width: 0; }
