@@ -6,6 +6,7 @@
   const KEY = 'icon_wallpaper';
   const OPTIONS = [
     { id: 'aero', text: 'Aero Shards' },
+    { id: 'waves', text: 'Gradient Waves' },
     { id: 'liquid', text: 'Liquid (classic)' },
   ];
 
