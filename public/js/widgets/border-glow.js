@@ -87,7 +87,7 @@
 
   function init() {
     document.querySelectorAll('.widget').forEach((w) => apply(w));
-    document.querySelectorAll('.os-window').forEach(applyTab);
+    document.querySelectorAll('.os-window, .dock, .spotlight-box').forEach(applyTab);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

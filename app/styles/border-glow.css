@@ -183,3 +183,10 @@
   .trash-panel.glow-tab.border-glow-card { transform: translateY(100%); }
   .trash-panel.glow-tab.is-in.border-glow-card { transform: translateY(0); }
 }
+
+/* ---- Dock + Spotlight: same tab card ---- */
+.dock.glow-tab.border-glow-card { position: absolute; display: flex; transform: translateX(-50%); }
+.dock.glow-tab > .border-glow-inner { flex: none; flex-direction: row; align-items: flex-end; gap: 10px; overflow: visible; border-radius: 0; }
+
+.spotlight-box.glow-tab.border-glow-card { position: relative; display: flex; transform: none; }
+.spotlight-box.glow-tab > .border-glow-inner { min-width: 0; }
