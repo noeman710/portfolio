@@ -7,7 +7,7 @@
   const OPTS = {
     edgeSensitivity: 30,
     glowColor: '40 80 80',
-    backgroundColor: '#120F17',
+    backgroundColor: '#05080C',
     borderRadius: 28,
     glowRadius: 40,
     glowIntensity: 1.0,
