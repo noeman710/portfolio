@@ -71,12 +71,14 @@
   menu.setAttribute('role', 'menu');
   menu.hidden = true;
   document.body.appendChild(menu);
+  if (window.BorderGlow) window.BorderGlow.applyTab(menu, { borderRadius: 20 });
+  const menuBody = menu.querySelector('.border-glow-inner') || menu;
   const TRASH_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   let openedAt = 0;
-  function closeMenu() { menu.hidden = true; menu.innerHTML = ''; }
+  function closeMenu() { menu.hidden = true; menuBody.innerHTML = ''; }
   function openMenu(x, y, rows) {
-    menu.innerHTML = rows.map((r, i) => r === '-' ? '<div class="ctx-sep"></div>'
+    menuBody.innerHTML = rows.map((r, i) => r === '-' ? '<div class="ctx-sep"></div>'
       : r.head ? `<div class="ctx-head">${esc(r.head)}</div>`
       : `<button class="ctx-item${r.danger ? ' is-danger' : ''}" data-i="${i}" role="menuitem"${r.disabled ? ' disabled' : ''}>${r.icon || (r.check !== undefined ? `<span class="ctx-check">${r.check ? '\u2713' : ''}</span>` : '')}<span>${esc(r.text)}</span></button>`).join('');
     menu.hidden = false;
@@ -248,6 +250,7 @@
         <div class="rm-step">${esc(steps[0])}</div>
         <div class="rm-bar"><i></i></div>
         <div class="rm-pct">0%</div></div>`;
+      if (window.BorderGlow) window.BorderGlow.applyTab(loader.querySelector('.rm-card'), { borderRadius: 24 });
       loader.hidden = false;
       requestAnimationFrame(() => loader.classList.add('is-in'));
       const bar = loader.querySelector('.rm-bar i');

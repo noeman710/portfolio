@@ -82,7 +82,7 @@
 
   // Windows ("tabs") use the same card, on the dark #05080C background.
   const TAB = { backgroundColor: '#05080C' };
-  function applyTab(el) { el.classList.add('glow-tab'); apply(el, TAB); }
+  function applyTab(el, over) { el.classList.add('glow-tab'); apply(el, { ...TAB, ...(over || {}) }); }
   window.BorderGlow = { apply, applyTab };
 
   function init() {
