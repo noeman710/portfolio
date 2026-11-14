@@ -162,3 +162,28 @@
   -webkit-backdrop-filter: none;
 }
 .widget .border-glow-inner { overflow: visible; min-width: 0; }
+
+/* ---- Tabs (windows + Trash): same card, background #05080C.
+   BorderGlow's own position/display/overflow/transform would break them, so restore those. ---- */
+.glow-tab.border-glow-card { background: var(--card-bg); backdrop-filter: none; -webkit-backdrop-filter: none; border-radius: var(--border-radius); overflow: visible; flex-direction: column; }
+.glow-tab > .border-glow-inner { flex: 1; min-height: 0; overflow: hidden; border-radius: calc(var(--border-radius) - 1px); }
+.glow-tab .window-titlebar { background: transparent; }
+
+.os-window.glow-tab.border-glow-card { position: absolute; display: none; transform: scale(0.9); }
+.os-window.glow-tab.is-visible.border-glow-card { display: flex; }
+.os-window.glow-tab.is-animated-in.border-glow-card { transform: scale(1); }
+
+.trash-panel.glow-tab.border-glow-card { position: fixed; display: flex; transform: translateY(10px) scale(.96); }
+.trash-panel.glow-tab.border-glow-card[hidden] { display: none; }
+.trash-panel.glow-tab.is-in.border-glow-card { transform: none; }
+
+@media (max-width: 760px) {
+  /* full-page sheets on phones: no card glow, plain solid background */
+  .glow-tab.border-glow-card { border-radius: 0; border: 0; }
+  .glow-tab > .border-glow-inner { border-radius: 0; }
+  .glow-tab.border-glow-card::before, .glow-tab.border-glow-card::after, .glow-tab.border-glow-card > .edge-light { display: none; }
+  .os-window.glow-tab.border-glow-card { position: fixed; transform: translateY(100%); }
+  .os-window.glow-tab.is-animated-in.border-glow-card { transform: translateY(0); }
+  .trash-panel.glow-tab.border-glow-card { transform: translateY(100%); }
+  .trash-panel.glow-tab.is-in.border-glow-card { transform: translateY(0); }
+}

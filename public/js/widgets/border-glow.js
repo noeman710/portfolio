@@ -54,18 +54,19 @@
     card.style.setProperty('--cursor-angle', deg.toFixed(3) + 'deg');
   }
 
-  function apply(card) {
+  function apply(card, over) {
     if (card.classList.contains('border-glow-card')) return;
-    card.classList.add('border-glow-card', 'widget-glow');
+    const o = { ...OPTS, ...(over || {}) };
+    card.classList.add('border-glow-card');
     const vars = {
-      '--card-bg': OPTS.backgroundColor,
-      '--edge-sensitivity': OPTS.edgeSensitivity,
-      '--border-radius': OPTS.borderRadius + 'px',
-      '--glow-padding': OPTS.glowRadius + 'px',
-      '--cone-spread': OPTS.coneSpread,
-      '--fill-opacity': OPTS.fillOpacity,
-      ...glowVars(OPTS.glowColor, OPTS.glowIntensity),
-      ...gradientVars(OPTS.colors),
+      '--card-bg': o.backgroundColor,
+      '--edge-sensitivity': o.edgeSensitivity,
+      '--border-radius': o.borderRadius + 'px',
+      '--glow-padding': o.glowRadius + 'px',
+      '--cone-spread': o.coneSpread,
+      '--fill-opacity': o.fillOpacity,
+      ...glowVars(o.glowColor, o.glowIntensity),
+      ...gradientVars(o.colors),
     };
     Object.entries(vars).forEach(([k, v]) => card.style.setProperty(k, v));
 
@@ -73,11 +74,20 @@
     edge.className = 'edge-light';
     const inner = document.createElement('div');
     inner.className = 'border-glow-inner';
-    while (card.firstChild) inner.appendChild(card.firstChild); // moves the nodes, so their listeners stay attached
+    // Moves the nodes (listeners stay attached). Window resize handles stay on the card so they are not clipped.
+    [...card.childNodes].forEach((n) => { if (!(n.classList && n.classList.contains('window-resize-handle'))) inner.appendChild(n); });
     card.append(edge, inner);
     card.addEventListener('pointermove', onMove);
   }
 
-  function init() { document.querySelectorAll('.widget').forEach(apply); }
+  // Windows ("tabs") use the same card, on the dark #05080C background.
+  const TAB = { backgroundColor: '#05080C' };
+  function applyTab(el) { el.classList.add('glow-tab'); apply(el, TAB); }
+  window.BorderGlow = { apply, applyTab };
+
+  function init() {
+    document.querySelectorAll('.widget').forEach((w) => apply(w));
+    document.querySelectorAll('.os-window').forEach(applyTab);
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

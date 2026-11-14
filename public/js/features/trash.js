@@ -411,6 +411,7 @@
     <div class="trash-list"></div>
     <div class="trash-foot"><button class="trash-act" data-act="restore-all">Restore All</button><button class="trash-act is-danger" data-act="empty">Empty Trash</button></div>`;
   document.body.appendChild(panel);
+  if (window.BorderGlow) window.BorderGlow.applyTab(panel);
   const listEl = panel.querySelector('.trash-list');
   const KIND = { app: 'App', project: 'Project', image: 'Image', widget: 'Widget' };
 
