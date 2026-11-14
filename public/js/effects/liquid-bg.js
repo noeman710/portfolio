@@ -171,6 +171,9 @@ void main() {
   }
   const speedEase = cubicBezier(0.65, 0, 0.88, 0.77);
 
+  // The wallpaper is soft and blurry by design: rendering it at 1x (not 2-3x on retina/phones) is visually identical and far cheaper.
+  const renderScale = () => 1;
+
   /* ---- Vanilla WebGL2 shader mount (port of ShaderMount) ---- */
   class ShaderMount {
     constructor(canvas, fragmentShader, uniforms = {}, webGlContextAttributes, speed = 1, seed = 0) {
@@ -229,7 +232,7 @@ void main() {
     }
 
     handleResize() {
-      const pixelRatio = window.devicePixelRatio || 1;
+      const pixelRatio = renderScale();
       const newWidth = this.canvas.clientWidth * pixelRatio;
       const newHeight = this.canvas.clientHeight * pixelRatio;
       if (this.canvas.width !== newWidth || this.canvas.height !== newHeight) {
@@ -252,7 +255,7 @@ void main() {
       this.gl.uniform1f(this.uniformLocations.u_time, this.totalAnimationTime * 0.001);
       if (this.resolutionChanged) {
         this.gl.uniform2f(this.uniformLocations.u_resolution, this.gl.canvas.width, this.gl.canvas.height);
-        this.gl.uniform1f(this.uniformLocations.u_pixelRatio, window.devicePixelRatio || 1);
+        this.gl.uniform1f(this.uniformLocations.u_pixelRatio, renderScale());
         this.resolutionChanged = false;
       }
       this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);

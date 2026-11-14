@@ -18,7 +18,7 @@ const SHARDS = {
   mouseInteraction: true,
   pulseOnClick: true,
   holdToGather: true,
-  dpr: 1.5,
+  dpr: 1, // soft, glowing shards look the same at 1x and cost about half as much as 1.5x
 };
 
 // Phones: fewer shards keeps the frame rate and the battery happy.
@@ -65,11 +65,6 @@ export default function Wallpaper() {
     document.documentElement.dataset.wallpaper = useAero ? 'aero' : 'liquid';
   }, [useAero]);
 
-  // The shards layer is opaque, so it must not stay on screen once the classic wallpaper is chosen.
-  useEffect(() => {
-    if (host) host.style.display = useAero ? '' : 'none';
-  }, [host, useAero]);
-
   // Hide + pause the liquid canvas while the shards are showing, resume when it is chosen again.
   useEffect(() => {
     const canvas = document.querySelector('.liquid-bg');
@@ -80,9 +75,20 @@ export default function Wallpaper() {
     return () => clearTimeout(t);
   }, [useAero]);
 
+  // Phones show windows as full-page opaque sheets: stop rendering the wallpaper behind them completely.
+  useEffect(() => {
+    if (!host) return undefined;
+    const covered = () => isPhone() && !!document.querySelector('.os-window.is-visible, .trash-panel:not([hidden])');
+    const sync = () => { host.style.display = useAero && !covered() ? '' : 'none'; };
+    sync();
+    const mo = new MutationObserver(sync);
+    mo.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class', 'hidden'] });
+    return () => mo.disconnect();
+  }, [host, useAero]);
+
   if (!host || !useAero) return null;
   return createPortal(
-    <AeroShards {...SHARDS} count={isPhone() ? 700 : 1300} onError={(err) => { console.warn('Aero Shards unavailable, using the liquid wallpaper.', err); setFailed(true); }} />,
+    <AeroShards {...SHARDS} count={isPhone() ? 400 : 800} onError={(err) => { console.warn('Aero Shards unavailable, using the liquid wallpaper.', err); setFailed(true); }} />,
     host,
   );
 }
