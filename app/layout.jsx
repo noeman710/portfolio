@@ -5,12 +5,30 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import LegacyApp from '@/components/LegacyApp';
 import Wallpaper from '@/components/Wallpaper';
 import PlainView from '@/components/PlainView';
+import { OG_IMAGE, SITE_URL } from '@/lib/site';
 import './globals.css';
 
+const TITLE = 'ICON: Noemane El Afia, UX/UI Designer';
+const DESCRIPTION = 'Noemane El Afia (ICON), UX/UI Designer based in Tangier, Morocco. A portfolio built as a working desktop.';
+
 export const metadata = {
-  title: 'ICON: Noemane El Afia, UX/UI Designer',
-  description: 'Noemane El Afia (ICON), UX/UI Designer based in Tangier, Morocco. A portfolio built as a working desktop.',
+  metadataBase: new URL(SITE_URL),
+  title: { default: TITLE, template: '%s | ICON' },
+  description: DESCRIPTION,
+  applicationName: 'ICON Portfolio',
+  authors: [{ name: 'Noemane El Afia' }],
+  keywords: ['UX/UI designer', 'product designer', 'portfolio', 'Tangier', 'Morocco', 'Noemane El Afia', 'ICON'],
+  alternates: { canonical: '/' },
   icons: { icon: '/assets/favicon.png' },
+  openGraph: {
+    type: 'website',
+    siteName: 'ICON',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/',
+    images: [OG_IMAGE],
+  },
+  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION, images: ['/assets/images/portrait.jpg'] },
 };
 
 export const viewport = {
@@ -18,6 +36,7 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: 'cover',
+  themeColor: '#04070d',
 };
 
 // The desktop's markup lives in content/*.html and is rendered on the server, so search
@@ -31,8 +50,6 @@ export default function RootLayout({ children }) {
       <head>
         {/* the plain-text fallback is hidden straight away; visitors without JavaScript get it back */}
         <style dangerouslySetInnerHTML={{ __html: 'html.js #plain-view{display:none}' }} />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
       </head>
       <body>
         <PlainView />

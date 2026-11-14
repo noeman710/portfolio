@@ -15,9 +15,13 @@ npm run build && npm start
 app/
   layout.jsx            page shell: <head>, server-rendered markup, analytics
   [[...slug]]/page.jsx  makes /, /work, /about, /photos ... resolve (the app handles the URL itself)
+  sitemap.js robots.js  generated /sitemap.xml and /robots.txt
   globals.css           imports the files in styles/, in cascade order
   styles/               one CSS file per area (base, desktop, dock, windows, mobile, trash ...), apps/ for app windows
+lib/
+  routes.js             list of valid URLs (404s, sitemap, per-page titles); site.js = public address
 components/
+  Wallpaper.jsx         wallpaper choice (Aero Shards / Gradient Waves / Liquid), code-split with next/dynamic
   PlainView.jsx         text version of the site (SEO / no-JS), hidden once the desktop loads
   LegacyApp.jsx         loads the interactive scripts in order
 content/

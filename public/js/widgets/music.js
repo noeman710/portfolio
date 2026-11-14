@@ -18,6 +18,7 @@ function initMusicWidget() {
   if (!widgets.length) return;
 
   const audio = new Audio();
+  audio.preload = 'metadata'; // don't download a 3 MB track until someone presses play
   let index = 0;
 
   const refs = Array.from(widgets).map((widget) => ({

@@ -43,11 +43,25 @@ const SCRIPTS = [
   '/js/features/wallpaper-menu.js',
 ];
 
+// Local scripts get a per-deploy tag so a browser never runs an old copy after a release.
+const BUILD = process.env.NEXT_PUBLIC_BUILD;
+const withVersion = (src) => (src.startsWith('/') ? `${src}?v=${BUILD}` : src);
+
+// Leaflet's stylesheet is only needed once Maps opens, so it loads without blocking the first paint.
+function loadLeafletCss() {
+  if (document.getElementById('leaflet-css')) return;
+  const link = document.createElement('link');
+  link.id = 'leaflet-css';
+  link.rel = 'stylesheet';
+  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+  document.head.appendChild(link);
+}
+
 // Scripts download in parallel but run strictly in list order (async = false).
 function loadAll(list) {
   return Promise.all(list.map((src) => new Promise((resolve) => {
     const s = document.createElement('script');
-    s.src = src;
+    s.src = withVersion(src);
     s.async = false;
     s.onload = resolve;
     s.onerror = resolve; // a failed CDN script must not stop the rest of the site
@@ -59,6 +73,7 @@ export default function LegacyApp() {
   useEffect(() => {
     if (window.__legacyAppLoaded) return;
     window.__legacyAppLoaded = true;
+    loadLeafletCss();
     loadAll(SCRIPTS);
   }, []);
   return null;

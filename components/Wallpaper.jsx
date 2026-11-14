@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import AeroShards from './AeroShards';
-import GradientWaves from './GradientWaves';
+import dynamic from 'next/dynamic';
+
+// Only the chosen wallpaper's code is downloaded (the shards pull in a whole WebGPU library).
+const AeroShards = dynamic(() => import('./AeroShards'), { ssr: false });
+const GradientWaves = dynamic(() => import('./GradientWaves'), { ssr: false });
 
 const KEY = 'icon_wallpaper'; // 'aero' (default), 'waves' or 'liquid' (the original animated wallpaper)
 const CHOICES = ['aero', 'waves', 'liquid'];
@@ -110,8 +113,13 @@ export default function Wallpaper() {
   // GradientWaves removes its own canvas if the GPU refuses the shader; then use the liquid wallpaper instead of an empty screen.
   useEffect(() => {
     if (shown !== 'waves' || !host) return undefined;
-    const t = setTimeout(() => { if (!host.querySelector('canvas.gradient-waves-canvas')) setNoGL2(true); }, 600);
-    return () => clearTimeout(t);
+    // The code downloads on demand, so give it a few seconds before giving up.
+    const started = Date.now();
+    const t = setInterval(() => {
+      if (host.querySelector('canvas.gradient-waves-canvas')) clearInterval(t);
+      else if (Date.now() - started > 6000) { clearInterval(t); setNoGL2(true); }
+    }, 500);
+    return () => clearInterval(t);
   }, [shown, host]);
 
   if (!host || !useAero) return null;
