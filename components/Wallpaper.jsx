@@ -107,10 +107,17 @@ export default function Wallpaper() {
     return () => mo.disconnect();
   }, [host, useAero]);
 
+  // GradientWaves removes its own canvas if the GPU refuses the shader; then use the liquid wallpaper instead of an empty screen.
+  useEffect(() => {
+    if (shown !== 'waves' || !host) return undefined;
+    const t = setTimeout(() => { if (!host.querySelector('canvas.gradient-waves-canvas')) setNoGL2(true); }, 600);
+    return () => clearTimeout(t);
+  }, [shown, host]);
+
   if (!host || !useAero) return null;
-  if (shown === 'waves') return createPortal(<GradientWaves {...WAVES} quality={isPhone() ? 'low' : 'medium'} />, host);
+  if (shown === 'waves') return createPortal(<GradientWaves key="waves" {...WAVES} quality={isPhone() ? 'low' : 'medium'} />, host);
   return createPortal(
-    <AeroShards {...SHARDS} count={isPhone() ? 400 : 800} onError={(err) => { console.warn('Aero Shards unavailable, using the liquid wallpaper.', err); setFailed(true); }} />,
+    <AeroShards key="aero" {...SHARDS} count={isPhone() ? 400 : 800} onError={(err) => { console.warn('Aero Shards unavailable, using the liquid wallpaper.', err); setFailed(true); }} />,
     host,
   );
 }
