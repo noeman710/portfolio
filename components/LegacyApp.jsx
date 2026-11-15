@@ -36,7 +36,6 @@ const SCRIPTS = [
   '/js/apps/maps.js',
   '/js/apps/notes.js',
   '/js/apps/mail.js',
-  '/js/apps/about-graph.js',
   '/js/effects/gravity-toggle.js',
   // start everything, then the features that hook into the running desktop
   '/js/boot.js',
