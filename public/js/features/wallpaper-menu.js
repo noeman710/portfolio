@@ -13,7 +13,7 @@
   function current() {
     const shown = document.documentElement.dataset.wallpaper; // what is really on screen
     if (shown) return shown;
-    try { return localStorage.getItem(KEY) || 'aero'; } catch (e) { return 'aero'; }
+    try { return localStorage.getItem(KEY) || 'liquid'; } catch (e) { return 'liquid'; }
   }
 
   window.deskMenuExtras = function () {

@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 const AeroShards = dynamic(() => import('./AeroShards'), { ssr: false });
 const GradientWaves = dynamic(() => import('./GradientWaves'), { ssr: false });
 
-const KEY = 'icon_wallpaper'; // 'aero' (default), 'waves' or 'liquid' (the original animated wallpaper)
+const KEY = 'icon_wallpaper'; // 'liquid' (default, the original animated wallpaper), 'aero' or 'waves'
 const CHOICES = ['aero', 'waves', 'liquid'];
 
 // Same blue family as the liquid wallpaper (#66B3FF).
@@ -45,11 +45,11 @@ const WAVES = {
 const isPhone = () => typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches;
 
 function readChoice() {
-  try { const v = localStorage.getItem(KEY); return CHOICES.includes(v) ? v : 'aero'; } catch { return 'aero'; }
+  try { const v = localStorage.getItem(KEY); return CHOICES.includes(v) ? v : 'liquid'; } catch { return 'liquid'; }
 }
 
 export default function Wallpaper() {
-  const [choice, setChoice] = useState('aero');
+  const [choice, setChoice] = useState('liquid');
   const [failed, setFailed] = useState(false); // WebGPU missing or crashed: quietly use the liquid wallpaper
   const [noGL2, setNoGL2] = useState(false);
   const [host, setHost] = useState(null);
@@ -72,7 +72,7 @@ export default function Wallpaper() {
     if (!('gpu' in navigator)) setFailed(true);
     try { if (!document.createElement('canvas').getContext('webgl2')) setNoGL2(true); } catch { setNoGL2(true); }
     const onSet = (e) => {
-      const next = CHOICES.includes(e.detail) ? e.detail : 'aero';
+      const next = CHOICES.includes(e.detail) ? e.detail : 'liquid';
       try { localStorage.setItem(KEY, next); } catch {}
       setChoice(next);
     };
