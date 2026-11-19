@@ -199,3 +199,9 @@
 .rm-loader.is-in .rm-card.glow-tab.border-glow-card { transform: none; }
 .rm-card.glow-tab > .border-glow-inner { flex: none; overflow: visible; }
 .trash-toast { background: #05080C; }
+
+/* The Mac-style dock belongs to the desktop layout only. Its glow-card rules above set display:flex,
+   which was beating mobile.css and showing a second dock behind the phone dock. */
+@media (max-width: 760px) {
+  .dock.glow-tab.border-glow-card { display: none; }
+}
